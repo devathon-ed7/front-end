@@ -1,21 +1,26 @@
-import { User } from "../../interfaces/index.interface";
+import { API, baseUrl } from "../../constants/API";
+import { UserLogin } from "../../interfaces/index.interface";
 
-export const loginService = async (user: User) => {
+export const loginService = async (user: UserLogin) => {
   try {
-    throw new Error("No se pudo loguear, porque la api no esta establecida XD");
-
-    const resp = await fetch(`http://localhost/api/auth/login`, {
+    const resp = await fetch(`${API + baseUrl}/auth/login`, {
       method: "POST",
-      body: JSON.stringify(user),
+      body: JSON.stringify({
+        username: user.userName,
+        password: user.password,
+      }),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
+    const respJson = await resp.json();
+    if (!resp.ok) {
+      throw new Error(respJson.error);
+    }
 
-    return await resp.json();
+    return respJson;
   } catch (error) {
-    console.log({ error });
     throw (error as Error).message;
     //Error de Backend en base a conexion
   }

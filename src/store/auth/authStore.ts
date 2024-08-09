@@ -10,7 +10,7 @@ export interface UseAuthStoreState extends AuthState {
 export const initiValues: AuthState = {
   checking: false,
   errorMessage: undefined,
-  status: "checking",
+  status: "not-authenticated",
   user: undefined,
 };
 
