@@ -1,9 +1,10 @@
-import { Box } from "@mui/material";
+import { Box } from '@mui/material';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 export const RolePages = () => {
   return (
     <Box>
-      <h1>Bienvenido Roles</h1>
+      <Breadcrumb />
     </Box>
   );
-}
+};

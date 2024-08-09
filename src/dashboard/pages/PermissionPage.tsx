@@ -1,5 +1,10 @@
+import { Box } from '@mui/material';
+import { Breadcrumb } from '../components/Breadcrumb';
+
 export const PermissionPage = () => {
   return (
-    <div>PermissionPage</div>
-  )
-}
+    <Box>
+      <Breadcrumb />
+    </Box>
+  );
+};

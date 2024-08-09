@@ -1,7 +1,7 @@
-import { Box, Stack, Avatar, Badge } from "@mui/material";
+import { Box, Stack, Avatar, Badge, Typography } from "@mui/material";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { styled } from '@mui/material/styles';
-
+import dayjs from 'dayjs';
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     backgroundColor: '#44b700',
@@ -70,12 +70,16 @@ function stringAvatar(name: string) {
     children: initials,
   };
 }
-
+const currentTime = dayjs().format('hh:mm A');
 export const Header = () => {
   return (
+    
     <Box paddingX={3} paddingBottom={1} sx={{ borderBottom: '0.25rem solid black' }}>
       <Stack direction="row" justifyContent="space-between" alignItems="center" >
-        <AccessTimeIcon />
+      <Box display="flex" alignItems="center">
+          <AccessTimeIcon />
+          <Typography marginLeft={1} sx={{ fontSize: 'extra', fontWeight: 600 }} >{currentTime}</Typography>
+        </Box>
         <StyledBadge
           overlap="circular"
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}

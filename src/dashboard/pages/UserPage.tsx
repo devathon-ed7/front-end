@@ -1,8 +1,9 @@
 import { Box } from '@mui/material';
+import { Breadcrumb } from '../components/Breadcrumb';
 export const UserPage = () => {
   return (
     <Box>
-      <h1>Bienvenido Usuarios</h1>
+      <Breadcrumb/>
     </Box>
   );
 };

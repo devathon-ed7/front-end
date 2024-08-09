@@ -1,5 +1,10 @@
+import { Box } from "@mui/material"
+import { Breadcrumb } from "../components/Breadcrumb"
+
 export const ProductPage = () => {
   return (
-    <div>ProductPage</div>
+   <Box>
+    <Breadcrumb/>
+   </Box>
   )
 }
