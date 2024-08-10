@@ -2,12 +2,14 @@ import { Box, Typography } from "@mui/material";
 import { NavLink } from "./NavLink";
 import { NavSection } from "./NavSection";
 import { useLocation } from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
-import PeopleIcon from "@mui/icons-material/People";
-import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
-import CategoryIcon from "@mui/icons-material/Category";
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import InventoryIcon from '@mui/icons-material/Inventory';
+import {
+  Home as HomeIcon,
+  People as PeopleIcon,
+  AssignmentInd as AssignmentIndIcon,
+  Category as CategoryIcon,
+  AdminPanelSettings as AdminPanelSettingsIcon,
+  Inventory as InventoryIcon
+} from '@mui/icons-material';
 
 export const SideBar = () => {
   const location = useLocation();

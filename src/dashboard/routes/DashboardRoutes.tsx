@@ -1,11 +1,13 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { HomePage } from "../pages/HomePage";
-import { UserPage } from "../pages/UserPage";
 import { DashboardLayout } from "../layout/DashboardLayout";
-import { RolePages } from "../pages/RolePages";
-import { PermissionPage } from '../pages/PermissionPage';
-import { ProductPage } from "../pages/ProductPage";
-import { CategoryPage } from "../pages/CategoryPage";
+import {
+  HomePage,
+  UserPage,
+  RolePages,
+  PermissionPage,
+  ProductPage,
+  CategoryPage
+} from "../pages";
 
 export const DashboardRoutes = () => {
   return (
