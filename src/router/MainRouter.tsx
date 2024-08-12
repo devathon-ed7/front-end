@@ -9,7 +9,7 @@ export const MainRouter = () => {
   return (
     <>
       <Routes>
-        {status === "authenticated" ? (
+        {status === "not-authenticated" ? (
           <>
             <Route path="/auth/*" element={<AuthRoutes />} />
             <Route path="/*" element={<Navigate to="/auth" />} />
