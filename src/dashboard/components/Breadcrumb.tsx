@@ -1,21 +1,11 @@
-import { Box,Typography } from "@mui/material";
+import { useMemo } from "react";
+import { Box, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
-
-const routeNames: { [key: string]: string } = {
-  "/usuarios": "Usuarios",
-  "/roles": "Roles",
-  "/permisos": "Permisos",
-  "/productos": "Productos",
-  "/categorias": "Categorias",
-};
-
+import { routeNames } from "../utils/routeName";
 export const Breadcrumb = () => {
   const location = useLocation();
   const path = location.pathname;
-  //   console.log(path)
-  const routeName = routeNames[path] || "Desconocido";
-  //   console.log(routeName)
-
+  const routeName = useMemo(() => routeNames[path] || "Desconocido", [path]);
   return (
     <Box sx={{ display: "inline-block" }}>
       <Typography
