@@ -6,7 +6,9 @@ import {
   RolePages,
   PermissionPage,
   ProductPage,
-  CategoryPage
+  ProductNew, 
+  CategoryPage,
+  ProductEdit 
 } from "../pages";
 
 export const DashboardRoutes = () => {
@@ -19,6 +21,8 @@ export const DashboardRoutes = () => {
         <Route path="roles" element={<RolePages />} />
         <Route path="permisos" element={<PermissionPage />} />
         <Route path="productos" element={<ProductPage />} />
+        <Route path="productos/nuevo" element={<ProductNew />} />
+        <Route path="productos/editar/:id" element={<ProductEdit />} />
         <Route path="categorias" element={<CategoryPage />} />
         <Route path="*" element={<Navigate to="home" />} />
       </Route>
