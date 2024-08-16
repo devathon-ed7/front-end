@@ -11,11 +11,13 @@ interface Product {
   category: string;
   imageUrl: string;
 }
-
 interface Props {
   product: Product;
   onDelete: (id: number) => void;
 }
+const handleEdit = () => {
+  navigate(`/productos/editar/${product.id}`);
+};
 
 export const CardProduct = ({ product, onDelete }: Props) => {
   const {
@@ -25,7 +27,8 @@ export const CardProduct = ({ product, onDelete }: Props) => {
     techLabel,
     image,
     imageContainer,
-    buttonContainer,
+    hoverOverlay,
+    button,
     priceContainer,
   } = styles;
   const navigate = useNavigate();
@@ -42,11 +45,20 @@ export const CardProduct = ({ product, onDelete }: Props) => {
           <Label sx={techLabel}>{product.category}</Label>
         </Box>
         <Box sx={imageContainer}>
-          <CardMedia component="img"
-          image={product.imageUrl}
-          alt={product.name}
-          sx={image} 
-          />         
+          <CardMedia
+            component="img"
+            image={product.imageUrl}
+            alt={product.name}
+            sx={image}
+          />
+          <Box className="hoverOverlay" sx={hoverOverlay}>
+            <Button variant="outlined" color="warning" sx={button} onClick={handleEdit}>
+              Editar
+            </Button>
+            <Button variant="outlined" color="error" sx={button} onClick={() => onDelete(product.id)}>
+              Eliminar
+            </Button>
+          </Box>
         </Box>
         <Box sx={priceContainer}>
           <Typography variant="body1" fontWeight="500">

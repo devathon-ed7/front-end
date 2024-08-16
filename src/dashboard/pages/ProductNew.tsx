@@ -1,16 +1,11 @@
 import { Breadcrumb } from "../components/Breadcrumb";
-import {
-  TextField,
-  Box,
-  Button,
-  Typography,
-  Grid
-} from "@mui/material";
+import { TextField, Box, Button, Typography, Grid } from "@mui/material";
 import { CardProductLayout } from "../layout/CardProductLayout";
 import { useProductForm } from "../../hooks/useProductForm";
 import { ImageUploadButton } from "../components/Products/ImageUploadButton";
 import { useMemo } from "react";
 import { CategorySelect } from "../components/Products/CategorySelect";
+import { useSnackbar } from 'notistack';
 
 export const ProductNew = () => {
   const {
@@ -27,13 +22,25 @@ export const ProductNew = () => {
     handleSave,
   } = useProductForm();
 
-  const categorySelect = useMemo(() => (
-    <CategorySelect category={category} setCategory={setCategory} />
-  ), [category, setCategory]);
+  const { enqueueSnackbar } = useSnackbar();
 
-  const imageUploadButton = useMemo(() => (
-    <ImageUploadButton onChangeUrl={onChangeUrl} />
-  ), [onChangeUrl]);
+  const categorySelect = useMemo(
+    () => <CategorySelect category={category} setCategory={setCategory} />,
+    [category, setCategory]
+  );
+
+  const imageUploadButton = useMemo(
+    () => <ImageUploadButton onChangeUrl={onChangeUrl} />,
+    [onChangeUrl]
+  );
+
+  const handleSaveWithValidation = () => {
+    if (!name || !price || !stock || !category) {
+      enqueueSnackbar('Todos los campos son requeridos', { variant: 'error' });
+      return;
+    }
+    handleSave();
+  };
 
   return (
     <Box>
@@ -43,7 +50,11 @@ export const ProductNew = () => {
           <form>
             <Grid container direction="column" spacing={2}>
               <Grid item>
-                <Button variant="contained" color="success" onClick={handleSave}>
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={handleSaveWithValidation}
+                >
                   <Typography color="white" sx={{ fontWeight: "bold" }}>
                     Guardar
                   </Typography>
@@ -73,7 +84,11 @@ export const ProductNew = () => {
                   id="outlined-number"
                   label="Stock"
                   type="number"
-                  onChange={(e) => setStock(parseInt(e.target.value))}
+                  onChange={({target}) =>
+                    setStock(
+                      target.value === "" ? 0 : parseInt(target.value)
+                    )
+                  }
                   InputLabelProps={{ shrink: true }}
                 />
               </Grid>

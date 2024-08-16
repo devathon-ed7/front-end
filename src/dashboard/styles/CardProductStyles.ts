@@ -18,18 +18,39 @@ const styles = {
   },
   image: {
     width: "100%", 
-    height: "100%", // Asegura que la imagen ocupe toda la altura del contenedor
-    objectFit: "cover", // Asegura que la imagen cubra todo el contenedor
+    height: "100%", 
+    objectFit: "cover", 
   },
   imageContainer: {
     width: "264px",
-    height: "200px", // Establece una altura fija para el contenedor de la imagen
-    overflow: "hidden", // Asegura que el contenido adicional no se muestre
+    height: "200px", 
+    overflow: "hidden", 
+    position: "relative", 
+    "&:hover .hoverOverlay": {
+      opacity: 1,
+    },
+  },
+  hoverOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    opacity: 0,
+    transition: "opacity 0.3s ease",
+  },
+  button: {
+    margin: "8px 0",
   },
   priceContainer: {
     display: "flex",
     justifyContent: "space-between",
-    marginTop: "8px", // Añade un margen superior para separar del contenedor de la imagen
+    marginTop: "8px", 
   },
   headerContainer: {
     display: "flex",

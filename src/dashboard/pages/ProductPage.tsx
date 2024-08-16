@@ -3,9 +3,12 @@ import { Breadcrumb } from "../components/Breadcrumb";
 import { CardProduct } from "../components/CardProduct";
 import { useNavigate } from "react-router-dom";
 import { productStore } from "../../store/dashboard/productStore"; 
+// import { useProducts } from "../hooks/useProducts";
 
 export const ProductPage = () => {
-  const products = productStore((state) => state.products);
+  // // const { products } = useProducts();
+  const storeProducts = productStore((state) => state.products);
+  const deleteProduct = productStore((state) => state.deleteProduct);
   const navigate = useNavigate();
 
   const handleNewProduct = () => {
@@ -21,9 +24,9 @@ export const ProductPage = () => {
       </Box>
       <Box sx={{ height: '400px', overflowY: 'auto' }}>
         <Grid container spacing={2}>
-          {products.map((product) => (
+          {storeProducts.map((product) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
-              <CardProduct product={product} />
+              <CardProduct product={product} onDelete={deleteProduct} />
             </Grid>
           ))}
         </Grid>
