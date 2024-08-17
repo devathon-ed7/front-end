@@ -7,20 +7,13 @@ export const useProductForm = () => {
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState<number>(0);
   const [category, setCategory] = useState("");
-  const [imageUrl, setImageUrl] = useState<string>(null);
+  const [imageUrl, setImageUrl] = useState("");
   const addProduct = productStore((state) => state.addProduct);
   const navigate = useNavigate();
 
-  const onChangeUrl = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImageUrl(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  }, []);
+  const onChangeUrl = (url: string) => {
+    setImageUrl(url);
+  };
 
   const handleSave = useCallback(() => {
     if (!name || !price || !category) {

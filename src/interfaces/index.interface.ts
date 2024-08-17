@@ -23,6 +23,8 @@ export interface Product{
   imageUrl: string;
 }
 export interface ProductState {
+  updateProduct: (updatedProduct: Product) => void;
   products: Product[];
   addProduct: (product: Product) => void;
+  deleteProduct: (id: number) => void;
 }

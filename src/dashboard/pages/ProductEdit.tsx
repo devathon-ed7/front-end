@@ -1,21 +1,26 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography, Grid  } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { productStore } from "../../store/dashboard/productStore";
-import { Breadcrumb } from "../components/Breadcrumb";
-import { Grid } from "@mui/material";
 import { CardProductLayout } from "../layout/CardProductLayout";
-import { CategorySelect } from "../components/Products/CategorySelect";
-import { ImageUploadButton } from '../components/Products/ImageUploadButton';
-
+import { ImageUploadButton, CategorySelect,Breadcrumb } from "../components";
+import { Product } from "../../interfaces/index.interface";
+interface ChangeEvent {
+  target: {
+    name: string;
+    value: string;
+  };
+}
 export const ProductEdit = () => {
+  
   const { id } = useParams();
   const navigate = useNavigate();
-  const { products, updateProduct } = productStore((state) => ({
-    products: state.products,
-    updateProduct: state.updateProduct,
+  const { products, updateProduct } = productStore(({products,updateProduct}) => ({
+    products: products,
+    updateProduct: updateProduct,
   }));
-  const [product, setProduct] = useState(null);
+  
+  const [product, setProduct] = useState<any>(null);
   const [category, setCategory] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
@@ -28,19 +33,17 @@ export const ProductEdit = () => {
     }
   }, [id, products]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProduct((prev) => ({ ...prev, [name]: value }));
+  const handleChange = ({target}: ChangeEvent) => {
+    const { name, value } = target;
+    setProduct((prev:Product) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    updateProduct({ ...product, category, imageUrl });
+    const updatedProduct = { ...product, category, imageUrl };
+    console.log(updatedProduct);
+    updateProduct(updatedProduct);
     navigate("/productos");
-  };
-
-  const onChangeUrl = (url) => {
-    setImageUrl(url);
   };
 
   const categorySelect = useMemo(
@@ -48,10 +51,15 @@ export const ProductEdit = () => {
     [category, setCategory]
   );
 
+  const onChangeUrl = useCallback((url: string) => {
+    setImageUrl(url);
+  }, []);
+
   const imageUploadButton = useMemo(
     () => <ImageUploadButton onChangeUrl={onChangeUrl} />,
     [onChangeUrl]
   );
+
 
   if (!product) return <Typography>Cargando...</Typography>;
 

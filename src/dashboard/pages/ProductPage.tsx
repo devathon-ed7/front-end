@@ -1,12 +1,10 @@
 import { Box, Grid, Typography, Button } from "@mui/material";
-import { Breadcrumb } from "../components/Breadcrumb";
-import { CardProduct } from "../components/CardProduct";
+import { Breadcrumb,CardProduct } from "../components";
 import { useNavigate } from "react-router-dom";
 import { productStore } from "../../store/dashboard/productStore"; 
-// import { useProducts } from "../hooks/useProducts";
 
 export const ProductPage = () => {
-  // // const { products } = useProducts();
+ 
   const storeProducts = productStore((state) => state.products);
   const deleteProduct = productStore((state) => state.deleteProduct);
   const navigate = useNavigate();

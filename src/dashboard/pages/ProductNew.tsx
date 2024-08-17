@@ -1,10 +1,8 @@
-import { Breadcrumb } from "../components/Breadcrumb";
 import { TextField, Box, Button, Typography, Grid } from "@mui/material";
 import { CardProductLayout } from "../layout/CardProductLayout";
 import { useProductForm } from "../../hooks/useProductForm";
-import { ImageUploadButton } from "../components/Products/ImageUploadButton";
 import { useMemo } from "react";
-import { CategorySelect } from "../components/Products/CategorySelect";
+import { CategorySelect,ImageUploadButton ,Breadcrumb } from "../components";
 import { useSnackbar } from 'notistack';
 
 export const ProductNew = () => {
@@ -39,6 +37,14 @@ export const ProductNew = () => {
       enqueueSnackbar('Todos los campos son requeridos', { variant: 'error' });
       return;
     }
+    const productData = {
+      name,
+      price,
+      stock,
+      category,
+      imageUrl,
+    };
+    console.log(productData);
     handleSave();
   };
 
@@ -64,7 +70,7 @@ export const ProductNew = () => {
                 <TextField
                   id="name"
                   label="Nombre de producto"
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={({target}) => setName(target.value)}
                   variant="outlined"
                   InputLabelProps={{ shrink: true }}
                 />
@@ -74,7 +80,7 @@ export const ProductNew = () => {
                   id="outlined-number"
                   label="Precio"
                   type="number"
-                  onChange={(e) => setPrice(e.target.value)}
+                  onChange={({target}) => setPrice(target.value)}
                   InputLabelProps={{ shrink: true }}
                   inputProps={{ step: "0.01" }}
                 />
