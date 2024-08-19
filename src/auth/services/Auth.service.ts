@@ -6,8 +6,7 @@ export const loginService = async (user: UserLogin) => {
     const resp = await fetch(`${API + baseUrl}/auth/login`, {
       method: "POST",
       body: JSON.stringify({
-        username: user.userName,
-        password: user.password,
+        ...user,
       }),
       headers: {
         Accept: "application/json",
