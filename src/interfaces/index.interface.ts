@@ -7,27 +7,11 @@ export interface AuthState {
 
 export type StatusSession = "authenticated" | "not-authenticated" | "checking";
 
-export interface UserLogin extends Required<Pick<User, "username">> {
+export interface UserLogin extends Required<Pick<User, "userName">> {
   password: string;
 }
 
-export interface User extends UserDetails {
-  id?: string;
-  idUser?: string;
-  username?: string;
-}
-
-export interface UserDetails {
-  name?: string;
-  email?: string;
+export interface User {
+  userName?: string;
   role?: string;
-  role_id?: string;
-  profile_filename?: string | null;
-}
-
-
-export interface Roles {
-  id: number;
-  name: string;
-  description: string;
 }

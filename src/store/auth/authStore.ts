@@ -32,7 +32,6 @@ export const useAuthStore = create<UseAuthStoreState>((set) => ({
     })),
   setOnChecking: () =>
     set(() => ({
-      status: "checking",
       checking: true,
       errorMessage: undefined,
       user: undefined,
