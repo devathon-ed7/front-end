@@ -5,7 +5,7 @@ import { useForm } from "../../hooks/useForm";
 import { UserLogin } from "../../interfaces/index.interface";
 
 const formData: UserLogin = {
-  username: "",
+  userName: "",
   password: "",
 };
 export const useLogin = () => {

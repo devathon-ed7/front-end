@@ -30,12 +30,12 @@ export const FormLogin = () => {
       }}
     >
       <TextField
-        id="username"
-        name="username"
+        id="userName"
+        name="userName"
         label="Usuario..."
         type="text"
         required
-        value={form.username}
+        value={form.userName}
         onChange={handleInputChange}
         autoComplete="off"
       />
