@@ -4,14 +4,19 @@ import {
   getListUsersService,
 } from "@/dashboard/services/users.service";
 import { snackBarElement } from "@/helpers/snackBarElement";
+import { useAuth } from "@/hooks/useAuth";
 import { User } from "@/interfaces/index.interface";
 import { nanoid } from "nanoid";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useUI } from "../UI/useUI";
 
 export const useUsers = () => {
+  const { user, startLogout } = useAuth();
   const { resetDialogResultState } = useUI();
   const { UsersDataGrid, setDatagrid } = useContext(UsersContext);
+
+  const navigate = useNavigate();
 
   const setListUsersDataGrid = async () => {
     try {
@@ -35,10 +40,12 @@ export const useUsers = () => {
 
   const deleteUserById = async (id: string) => {
     try {
-      const resp = await deleteUserByIdService(id);
-
-      snackBarElement("success", resp.message);
-
+      await deleteUserByIdService(id);
+      snackBarElement("success", "User deleted");
+      if (id === user?.idUser) {
+        await startLogout();
+        navigate("/login");
+      }
       setListUsersDataGrid();
     } catch (error) {
       snackBarElement("error", error as string);

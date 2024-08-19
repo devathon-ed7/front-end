@@ -1,17 +1,35 @@
 import {
-    Box,
-    Button,
-    FormControl,
-    InputLabel,
-    MenuItem,
-    Select,
-    TextField,
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
 } from "@mui/material";
 
+import { NewUserForm } from "@/dashboard/interfaces/users.interface";
+import { Roles } from "@/interfaces/index.interface";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
-import { ChangeEvent, useState } from "react";
-export const FormNewUser = () => {
-  const [ImageUrl, setImageUrl] = useState<string>("");
+import { SelectChangeEvent } from "@mui/material";
+import { nanoid } from "nanoid";
+import { ChangeEvent } from "react";
+
+interface Props {
+  form: NewUserForm;
+  rolesList: Roles[];
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSelectChange: (e: SelectChangeEvent) => void;
+  setFile: (data: File) => void;
+}
+
+export const FormNewUser = ({
+  form,
+  rolesList = [],
+  handleInputChange,
+  handleSelectChange,
+  setFile,
+}: Props) => {
   const handleCaptureImageByCamera = async (
     event: ChangeEvent<HTMLInputElement>
   ) => {
@@ -21,8 +39,8 @@ export const FormNewUser = () => {
       return;
     }
 
-    console.log({ file: files[0], url: event.target.value });
-    setImageUrl(URL.createObjectURL(files[0]));
+    setFile(files[0]);
+
     event.target.value = "";
   };
 
@@ -36,13 +54,38 @@ export const FormNewUser = () => {
         width: "15.625em",
       }}
     >
-      <TextField value={undefined} size="small" label="Usuario..." required />
-      <TextField value={undefined} size="small" label="Nombre..." required />
       <TextField
-        value={undefined}
+        value={form.username}
+        onChange={handleInputChange}
+        name="username"
+        size="small"
+        label="Usuario..."
+        required
+      />
+      <TextField
+        value={form.password}
+        onChange={handleInputChange}
+        name="password"
+        size="small"
+        label="Contraseña..."
+        type="password"
+        required
+      />
+      <TextField
+        value={form.name}
+        onChange={handleInputChange}
+        name="name"
+        size="small"
+        label="Nombre..."
+        required
+      />
+      <TextField
+        value={form.email}
+        onChange={handleInputChange}
         size="small"
         type="email"
         label="E-mail..."
+        name="email"
         required
       />
       <FormControl fullWidth size="small" required>
@@ -50,11 +93,16 @@ export const FormNewUser = () => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={undefined}
-          label="Age"
+          value={form.role_id || ""}
+          label="Rol"
+          name="role_id"
+          onChange={handleSelectChange}
         >
-          <MenuItem value={10}>Admin</MenuItem>
-          <MenuItem value={20}>Operator</MenuItem>
+          {rolesList.map(({ id, name }) => (
+            <MenuItem key={nanoid()} value={id}>
+              {name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
 
@@ -70,12 +118,11 @@ export const FormNewUser = () => {
           accept="image/png, image/jpeg, image/jpg"
           hidden
           type="file"
+          name="profile_filename"
           //   capture="user"
           onChange={handleCaptureImageByCamera}
         />
       </Button>
-
-      <img src={ImageUrl} alt="IMG" />
     </Box>
   );
 };
