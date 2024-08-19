@@ -2,6 +2,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 import { useUI } from "@/dashboard/hooks/UI/useUI";
 import { useUsers } from "@/dashboard/hooks/users/useUsers";
+import { useAuth } from "@/hooks/useAuth";
 import { User } from "@/interfaces/index.interface";
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -52,9 +53,11 @@ const columns: GridColDef[] = [
     align: "center",
     minWidth: 200,
     renderCell({ row }) {
+      const { user } = useAuth();
       const rowData = row as User;
       const navigate = useNavigate();
       const { setDialogResultState } = useUI();
+      const willBeCloseSession = user?.idUser == rowData.idUser;
       return (
         <Box
           sx={{
@@ -78,7 +81,9 @@ const columns: GridColDef[] = [
               setDialogResultState({
                 isOpen: true,
                 title: `¿Está seguro de eliminar el usuario: ${rowData.username}`,
-                message: "Una vez realizada la acción no se puede deshacer!",
+                message: willBeCloseSession
+                  ? "Se cerrará la sesión y esta acción de eliminar no se podrá deshacer!"
+                  : "Una vez realizada la acción no se puede deshacer!",
                 idRegister: rowData.idUser,
               })
             }

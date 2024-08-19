@@ -1,3 +1,4 @@
+import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 
 export const useForm = <T extends Object>(initState: T) => {
@@ -5,6 +6,15 @@ export const useForm = <T extends Object>(initState: T) => {
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
+    setForm((form: any) => ({
+      ...form,
+      [name]: value,
+    }));
+  };
+
+  const handleSelectChange = ({ target }: SelectChangeEvent) => {
+    const { name, value } = target;
+
     setForm((form: any) => ({
       ...form,
       [name]: value,
@@ -19,6 +29,7 @@ export const useForm = <T extends Object>(initState: T) => {
     ...form,
     form,
     handleInputChange,
+    handleSelectChange,
     resetForm,
   };
 };

@@ -22,4 +22,12 @@ export interface UserDetails {
   email?: string;
   role?: string;
   role_id?: string;
+  profile_filename?: string | null;
+}
+
+
+export interface Roles {
+  id: number;
+  name: string;
+  description: string;
 }
