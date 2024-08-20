@@ -1,10 +1,10 @@
+import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 import { Divider, ListItemIcon, ListItemText } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 interface Props {
   anchorEl: null | HTMLElement;
@@ -13,12 +13,12 @@ interface Props {
 }
 
 export default function BasicMenu({ anchorEl, open, handleClose }: Props) {
-  const { startLogout } = useAuth(); 
-  const navigate = useNavigate(); 
+  const { user, startLogout } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await startLogout(); 
-    navigate("/login"); 
+    await startLogout();
+    navigate("/login");
   };
 
   return (
@@ -35,7 +35,7 @@ export default function BasicMenu({ anchorEl, open, handleClose }: Props) {
         <ListItemIcon>
           <PersonIcon fontSize="small" />
         </ListItemIcon>
-        <ListItemText>Usuario</ListItemText>
+        <ListItemText>{user?.username || "Usuario"} </ListItemText>
       </MenuItem>
       <Divider />
       <MenuItem

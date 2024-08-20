@@ -1,20 +1,18 @@
-import { Box, Stack, Avatar, Typography } from "@mui/material";
+import { useAuth } from "@/hooks/useAuth";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { Avatar, Box, Stack, Typography } from "@mui/material";
 import dayjs from "dayjs";
-import { StyledBadge } from "./StyledBadge";
+import { useMenu } from "../hooks/useMenu";
 import { stringAvatar } from "../utils/stringAvatar";
 import BasicMenu from "./BasicMenu";
-import { useMenu } from "../hooks/useMenu";
+import { StyledBadge } from "./StyledBadge";
 
 export const Header = () => {
+  const { user } = useAuth();
   const currentTime = dayjs().format("hh:mm A");
   const { anchorEl, open, handleClick, handleClose } = useMenu();
   return (
-    <Box
-      paddingX={3}
-      paddingBottom={1}
-      sx={{ borderBottom: "0.25rem solid black" }}
-    >
+    <Box paddingX={3} py={1} sx={{ borderBottom: "0.25rem solid black" }}>
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Box display="flex" alignItems="center">
           <AccessTimeIcon />
@@ -31,7 +29,18 @@ export const Header = () => {
           variant="dot"
           sx={{ cursor: "pointer" }}
         >
-          <Avatar {...stringAvatar("Raydberg")} onClick={handleClick} />
+          {user?.profile_filename ? (
+            <Avatar
+              src={`${user?.profile_filename}`}
+              sx={{ border: "2px solid", borderColor: "info.dark" }}
+              onClick={handleClick}
+            />
+          ) : (
+            <Avatar
+              {...stringAvatar(`${user?.username}`)}
+              onClick={handleClick}
+            />
+          )}
         </StyledBadge>
         <BasicMenu anchorEl={anchorEl} open={open} handleClose={handleClose} />
       </Stack>

@@ -54,6 +54,14 @@ export const Theme = createTheme({
           borderWidth: "2px",
         },
       },
+      variants: [
+        {
+          props: { variant: "contained" },
+          style: {
+            color: "white",
+          },
+        },
+      ],
     },
     MuiTextField: {
       defaultProps: {

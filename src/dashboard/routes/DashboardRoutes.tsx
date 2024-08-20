@@ -2,14 +2,15 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { DashboardLayout } from "../layout/DashboardLayout";
 import {
   HomePage,
-  UserPage,
-  RolePages,
   PermissionPage,
   ProductPage,
   ProductNew, 
-  CategoryPage,
-  ProductEdit 
+  ProductEdit,
+  UserPage
 } from "../pages";
+import { NewUserPage } from "../pages/NewUserPage";
+import { CategoryPage } from '../pages/CategoryPage';
+import { RolePages } from '../pages/RolePages';
 
 export const DashboardRoutes = () => {
   return (
@@ -18,6 +19,7 @@ export const DashboardRoutes = () => {
         <Route index element={<Navigate to="home" />} />
         <Route path="home" element={<HomePage />} />
         <Route path="usuarios" element={<UserPage />} />
+        <Route path="usuarios/nuevo" element={<NewUserPage />} />
         <Route path="roles" element={<RolePages />} />
         <Route path="permisos" element={<PermissionPage />} />
         <Route path="productos" element={<ProductPage />} />
