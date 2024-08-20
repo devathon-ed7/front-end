@@ -1,3 +1,5 @@
+export  { ProductNew } from './ProductNew';
+export  {ProductEdit} from './ProductEdit'
 export { HomePage } from "./HomePage";
 export { UserPage } from "./UserPage";
 export { RolePages } from "./RolePages";

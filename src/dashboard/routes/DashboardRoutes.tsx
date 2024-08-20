@@ -1,14 +1,16 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { DashboardLayout } from "../layout/DashboardLayout";
 import {
-  CategoryPage,
   HomePage,
   PermissionPage,
   ProductPage,
-  RolePages,
+  ProductNew, 
+  ProductEdit,
   UserPage
 } from "../pages";
 import { NewUserPage } from "../pages/NewUserPage";
+import { CategoryPage } from '../pages/CategoryPage';
+import { RolePages } from '../pages/RolePages';
 
 export const DashboardRoutes = () => {
   return (
@@ -21,6 +23,8 @@ export const DashboardRoutes = () => {
         <Route path="roles" element={<RolePages />} />
         <Route path="permisos" element={<PermissionPage />} />
         <Route path="productos" element={<ProductPage />} />
+        <Route path="productos/nuevo" element={<ProductNew />} />
+        <Route path="productos/editar/:id" element={<ProductEdit />} />
         <Route path="categorias" element={<CategoryPage />} />
         <Route path="*" element={<Navigate to="home" />} />
       </Route>
