@@ -18,7 +18,7 @@ export default function BasicMenu({ anchorEl, open, handleClose }: Props) {
 
   const handleLogout = async () => {
     await startLogout();
-    navigate("/login");
+    navigate("/auth/login");
   };
 
   return (

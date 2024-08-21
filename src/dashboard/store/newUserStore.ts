@@ -14,7 +14,7 @@ export const initiValues: NewUserForm = {
   name: "",
   email: "",
   password: "",
-  role_id: undefined,
+  role_id: "",
 };
 
 export const useNewUserStore = create<UseNewUserStoreState>((set) => ({

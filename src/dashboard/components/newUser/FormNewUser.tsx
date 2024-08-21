@@ -98,7 +98,7 @@ export const FormNewUser = ({
           name="role_id"
           onChange={handleSelectChange}
         >
-          {rolesList.map(({ id, name }) => (
+          {(rolesList || []).map(({ id, name }) => (
             <MenuItem key={nanoid()} value={id}>
               {name}
             </MenuItem>

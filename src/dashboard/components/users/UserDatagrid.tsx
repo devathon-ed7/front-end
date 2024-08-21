@@ -2,10 +2,10 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 import { useUI } from "@/dashboard/hooks/UI/useUI";
 import { useUsers } from "@/dashboard/hooks/users/useUsers";
+import { snackBarElement } from "@/helpers/snackBarElement";
 import { useAuth } from "@/hooks/useAuth";
 import { User } from "@/interfaces/index.interface";
 import { Box, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { DialogResult } from "../UI/DialogResult";
 const columns: GridColDef[] = [
   {
@@ -55,7 +55,7 @@ const columns: GridColDef[] = [
     renderCell({ row }) {
       const { user } = useAuth();
       const rowData = row as User;
-      const navigate = useNavigate();
+      // const navigate = useNavigate();
       const { setDialogResultState } = useUI();
       const willBeCloseSession = user?.idUser == rowData.idUser;
       return (
@@ -69,7 +69,13 @@ const columns: GridColDef[] = [
           }}
         >
           <Button
-            onClick={() => navigate(`/usuarios/editar/${rowData.idUser}`)}
+            onClick={() => {
+              snackBarElement(
+                "info",
+                "Característica editar usuario no implementada por el momento"
+              );
+              // navigate(`/usuarios/editar/${rowData.idUser}`);
+            }}
             variant="contained"
             size="small"
             color="warning"
