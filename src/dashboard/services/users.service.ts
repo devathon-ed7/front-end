@@ -1,5 +1,5 @@
 import { API, baseUrl } from "@/constants/API";
-import { Roles } from "@/interfaces/index.interface";
+import { Roles } from "@/interfaces";
 
 export const getListUsersService = async () => {
   try {

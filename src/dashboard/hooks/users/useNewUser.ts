@@ -2,7 +2,7 @@ import { newUserService } from "@/dashboard/services/users.service";
 import { initiValues, useNewUserStore } from "@/dashboard/store/newUserStore";
 import { snackBarElement } from "@/helpers/snackBarElement";
 import { useForm } from "@/hooks/useForm";
-import { Roles } from "@/interfaces/index.interface";
+import { Roles } from "@/interfaces";
 import { useEffect, useState } from "react";
 import { useSelects } from "../useSelects";
 

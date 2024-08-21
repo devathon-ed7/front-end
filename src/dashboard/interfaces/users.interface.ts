@@ -1,4 +1,4 @@
-import { User } from "@/interfaces/index.interface";
+import { User } from "@/interfaces";
 
 export interface NewUserForm
   extends Pick<User, "username" | "name" | "email" | "role_id"> {

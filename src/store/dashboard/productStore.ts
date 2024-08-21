@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import { ProductState } from '../../interfaces/index.interface';
+import { ProductState } from '../../interfaces';
 
 export const productStore = create<ProductState>((set) => ({
   products: [],

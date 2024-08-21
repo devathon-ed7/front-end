@@ -1,40 +1,27 @@
-import { create } from "zustand";
-import { AuthState, User } from "../../interfaces/index.interface";
+import { create, StateCreator } from "zustand";
+import { AuthStore, StatusSession, User } from "../../interfaces";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
-export interface UseAuthStoreState extends AuthState {
-  setLogin: (data: User) => void;
-  setLogout: (msg?: string) => void;
-  setOnChecking: () => void;
-}
-
-export const initiValues: AuthState = {
+const AuthApi: StateCreator<AuthStore, [["zustand/devtools", never]]> = (set) => ({
   checking: false,
   errorMessage: undefined,
   status: "not-authenticated",
   user: undefined,
-};
+  token: undefined,
+  setChecking: (value: boolean) => set({ checking: value }, false,"SET_CHECKING"),
+  setErrorMessage: (value: string | undefined) => set({ errorMessage: value  }, false, "SET_ERROR_MESSAGE"),
+  setStatus: (value: StatusSession) => set({ status: value }, false, "SET_STATUS"),
+  setUser: (value: User) => set({ user: value }, false ,"SET_USER"),
+  setToken: (value: string | undefined) => set({ token: value }, false, "SET_TOKEN"),
+  
+});
 
-export const useAuthStore = create<UseAuthStoreState>((set) => ({
-  ...initiValues,
-  setLogin: (data) =>
-    set((_state) => ({
-      checking: false,
-      errorMessage: undefined,
-      status: "authenticated",
-      user: data,
-    })),
-  setLogout: (msg) =>
-    set((_state) => ({
-      checking: false,
-      errorMessage: msg,
-      status: "not-authenticated",
-      user: undefined,
-    })),
-  setOnChecking: () =>
-    set(() => ({
-      status: "checking",
-      checking: true,
-      errorMessage: undefined,
-      user: undefined,
-    })),
-}));
+export const useAuthStore = create<AuthStore>()(
+  devtools(
+    persist(AuthApi,{
+      name: "auth-store",
+      storage: createJSONStorage(() => sessionStorage),
+    })
+  )
+
+);

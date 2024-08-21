@@ -5,6 +5,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { useAuthStore } from "@/store/auth/authStore";
 
 interface Props {
   anchorEl: null | HTMLElement;
@@ -13,11 +14,12 @@ interface Props {
 }
 
 export default function BasicMenu({ anchorEl, open, handleClose }: Props) {
-  const { user, startLogout } = useAuth();
+  const { Logout } = useAuth();
   const navigate = useNavigate();
+  const user = useAuthStore( state => state.user);
 
   const handleLogout = async () => {
-    await startLogout();
+    await Logout();
     navigate("/login");
   };
 

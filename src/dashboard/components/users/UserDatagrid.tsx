@@ -3,7 +3,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useUI } from "@/dashboard/hooks/UI/useUI";
 import { useUsers } from "@/dashboard/hooks/users/useUsers";
 import { useAuth } from "@/hooks/useAuth";
-import { User } from "@/interfaces/index.interface";
+import { User } from "@/interfaces";
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { DialogResult } from "../UI/DialogResult";

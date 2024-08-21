@@ -1,57 +1,40 @@
 import { loginService } from "../auth/services/Auth.service";
 import { snackBarElement } from "../helpers/snackBarElement";
-import { UserLogin } from "../interfaces/index.interface";
+import { UserLogin } from "../interfaces";
 import { useAuthStore } from "../store/auth/authStore";
 
 export const useAuth = () => {
-  const {
-    status,
-    errorMessage,
-    checking,
-    user,
-    setLogin,
-    setLogout,
-    setOnChecking,
-  } = useAuthStore();
+  const setOnChecking =  useAuthStore( state => state.setChecking);
+  const setStatus =  useAuthStore( state => state.setStatus);
+  const setUser =  useAuthStore( state => state.setUser);
+  const setToken =  useAuthStore( state => state.setToken);
 
-  const startLogin = async (user: UserLogin) => {
+  const Login = async (user: UserLogin) => {
     try {
-      setOnChecking();
+      setOnChecking(true);
       const resp = await loginService(user);
-      const { id, username, user_details } = resp.user;
-      setLogin({
-        idUser: id,
-        username,
-        email: user_details.email,
-        name: user_details.name,
-        profile_filename: user_details.profile_filename,
-        role: user_details.role.name,
-        role_id: user_details.role_id,
-      });
+      if (resp.status === 200) {
+        const respJson = await resp.json();
+        const user = respJson.user;
+        const token = respJson.token;
+        setStatus("authenticated");
+        setUser(user);
+        setToken(token);
 
-      //Agregar token al localStorage
-      localStorage.setItem("token", resp.token);
+      }
     } catch (error) {
       snackBarElement("error", error as string);
     }
   };
 
-  const checkAuthToken = async () => {};
-
-  const startLogout = async () => {
-    setLogout();
-    localStorage.removeItem("token");
+  const Logout = async () => {
+    setStatus("not-authenticated");
+    setUser(undefined);
+    setToken(undefined);
   };
 
   return {
-    //Properties
-    status,
-    errorMessage,
-    checking,
-    user,
-    //Methods
-    startLogin,
-    checkAuthToken,
-    startLogout,
+    Login,
+    Logout,
   };
 };

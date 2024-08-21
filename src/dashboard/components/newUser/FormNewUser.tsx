@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 import { NewUserForm } from "@/dashboard/interfaces/users.interface";
-import { Roles } from "@/interfaces/index.interface";
+import { Roles } from "@/interfaces";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { SelectChangeEvent } from "@mui/material";
 import { nanoid } from "nanoid";

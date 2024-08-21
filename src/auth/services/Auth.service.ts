@@ -1,5 +1,5 @@
 import { API, baseUrl } from "../../constants/API";
-import { UserLogin } from "../../interfaces/index.interface";
+import { UserLogin } from "../../interfaces";
 
 export const loginService = async (user: UserLogin) => {
   try {
@@ -13,12 +13,8 @@ export const loginService = async (user: UserLogin) => {
         "Content-Type": "application/json",
       },
     });
-    const respJson = await resp.json();
-    if (!resp.ok) {
-      throw new Error(respJson.error);
-    }
-
-    return respJson;
+    return await resp;
+    
   } catch (error) {
     throw (error as Error).message;
     //Error de Backend en base a conexion

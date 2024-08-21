@@ -1,4 +1,4 @@
-import { User } from "@/interfaces/index.interface";
+import { User } from "@/interfaces";
 import { UsersState } from "./";
 
 type UsersActionType = { type: "[Users] - SET_DATAGRID"; payload: User[] };

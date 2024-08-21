@@ -1,5 +1,5 @@
 import { FC, useReducer } from "react";
-import { User } from "../../../interfaces/index.interface";
+import { User } from "../../../interfaces";
 import { UsersContext, UsersReducer } from "./";
 
 export interface UsersState {
