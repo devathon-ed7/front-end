@@ -22,7 +22,7 @@ export const NewUser = () => {
   };
 
   useEffect(() => {
-    setIsDisabled(!areValuesValid({form}));
+    setIsDisabled(!areValuesValid({ form }));
   }, [form]);
 
   useEffect(() => {

@@ -14,7 +14,7 @@ export const useNewUser = () => {
   const [rolesList, setRolesList] = useState<Roles[]>([]);
   useEffect(() => {
     getSelectsRoles().then((resp) => {
-      setRolesList(resp);
+      setRolesList((resp as any).roles || []);
     });
   }, []);
 
