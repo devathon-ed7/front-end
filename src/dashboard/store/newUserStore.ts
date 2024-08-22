@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { NewUserForm } from "../interfaces/users.interface";
+import { NewUserForm } from "../../interfaces/users.interface";
 
 export interface UseNewUserStoreState {
   newUserForm: NewUserForm;

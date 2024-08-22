@@ -1,21 +1,19 @@
-import { newUserService } from "@/dashboard/services/users.service";
+import { newUserService } from "@/services/users.service";
 import { initiValues, useNewUserStore } from "@/dashboard/store/newUserStore";
 import { snackBarElement } from "@/helpers/snackBarElement";
 import { useForm } from "@/hooks/useForm";
-import { Roles } from "@/interfaces";
-import { useEffect, useState } from "react";
-import { useSelects } from "../useSelects";
+import { useEffect } from "react";
+import { useRoles } from "./useRoles";
+import { useRoleStore } from "@/store/roleStore";
 
 export const useNewUser = () => {
   const { newUserForm, setNewUserForm, file, setFile, resetNewUserFormState } =
     useNewUserStore();
-  const { getSelectsRoles } = useSelects();
+  const { getRoles } = useRoles();
+  const roles = useRoleStore((state) => state.roles);
 
-  const [rolesList, setRolesList] = useState<Roles[]>([]);
   useEffect(() => {
-    getSelectsRoles().then((resp) => {
-      setRolesList(resp);
-    });
+    getRoles();
   }, []);
 
   const { form, handleInputChange, handleSelectChange, resetForm } =
@@ -49,7 +47,7 @@ export const useNewUser = () => {
 
   return {
     form,
-    rolesList,
+    roles,
     file,
     setFile,
     handleInputChange,

@@ -1,5 +1,5 @@
 import { create, StateCreator } from "zustand";
-import { AuthStore, StatusSession, User } from "../../interfaces";
+import { AuthStore, StatusSession, User } from "@/interfaces";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
 const AuthApi: StateCreator<AuthStore, [["zustand/devtools", never]]> = (

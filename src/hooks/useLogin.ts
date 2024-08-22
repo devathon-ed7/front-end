@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { snackBarElement } from "../../helpers/snackBarElement";
-import { useAuth } from "../../hooks/useAuth";
-import { useForm } from "../../hooks/useForm";
-import { UserLogin } from "../../interfaces";
-import { useAuthStore } from "@/store/auth/authStore";
+import { snackBarElement } from "../helpers/snackBarElement";
+import { useAuth } from "./useAuth";
+import { useForm } from "./useForm";
+import { UserLogin } from "../interfaces";
+import { useAuthStore } from "@/store/authStore";
 
 const formData: UserLogin = {
   username: "",
@@ -12,9 +12,9 @@ const formData: UserLogin = {
 export const useLogin = () => {
   const { form, handleInputChange } = useForm(formData);
   const [showPassword, setShowPassword] = useState(false);
-  
-  const checking = useAuthStore( state => state.checking);
-  const errorMessage = useAuthStore( state => state.errorMessage);
+
+  const checking = useAuthStore((state) => state.checking);
+  const errorMessage = useAuthStore((state) => state.errorMessage);
 
   const { Login } = useAuth();
 
