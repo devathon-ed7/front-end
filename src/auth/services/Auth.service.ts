@@ -13,8 +13,18 @@ export const loginService = async (user: UserLogin) => {
         "Content-Type": "application/json",
       },
     });
-    return await resp;
-    
+    if (!resp.ok) {
+      if (resp.status === 401 || resp.status === 404) {
+        throw new Error("Usuario o contraseña incorrectos.");
+      }
+      if (resp.status === 400) {
+        throw new Error("La solicitud es inválida.");
+      }
+
+      throw new Error("Ocurrió un error desconocido.");
+    }
+
+    return await resp.json();
   } catch (error) {
     throw (error as Error).message;
     //Error de Backend en base a conexion
