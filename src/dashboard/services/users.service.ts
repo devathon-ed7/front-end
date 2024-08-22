@@ -1,13 +1,34 @@
 import { API, baseUrl } from "@/constants/API";
-import { Roles } from "@/interfaces/index.interface";
+import { Roles } from "@/interfaces";
+
+const getTokenFromSessionStorage = (): string | null => {
+  const authStore = sessionStorage.getItem("auth-store");
+  if (!authStore) return null;
+
+  try {
+    const parsedStore = JSON.parse(authStore);
+    return parsedStore?.state.token || null; // Ajusta según la estructura de tu objeto
+  } catch (error) {
+    console.error("Error al parsear el auth-store:", error);
+    return null;
+  }
+};
 
 export const getListUsersService = async () => {
   try {
+    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
+
+    if (!token) {
+      throw new Error(
+        "No se encontró el token. El usuario puede no estar autenticado."
+      );
+    }
+
     const resp = await fetch(`${API + baseUrl}/users`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        authorization: "bearer " + localStorage.getItem("token") || "",
+        authorization: `Bearer ${token}`,
       },
     });
     const respJson = await resp.json();
@@ -24,11 +45,18 @@ export const getListUsersService = async () => {
 
 export const newUserService = async (formData: FormData) => {
   try {
+    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
+
+    if (!token) {
+      throw new Error(
+        "No se encontró el token. El usuario puede no estar autenticado."
+      );
+    }
     const resp = await fetch(`${API + baseUrl}/users`, {
       method: "POST",
       body: formData,
       headers: {
-        authorization: "bearer " + localStorage.getItem("token") || "",
+        authorization: `Bearer ${token}`,
       },
     });
     const respJson = await resp.json();
@@ -45,10 +73,17 @@ export const newUserService = async (formData: FormData) => {
 
 export const deleteUserByIdService = async (id: string) => {
   try {
+    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
+
+    if (!token) {
+      throw new Error(
+        "No se encontró el token. El usuario puede no estar autenticado."
+      );
+    }
     const resp = await fetch(`${API + baseUrl}/users/${id}`, {
       method: "DELETE",
       headers: {
-        authorization: "bearer " + localStorage.getItem("token") || "",
+        authorization: `Bearer ${token}`,
       },
     });
     if (!resp.ok) {
@@ -65,9 +100,16 @@ export const deleteUserByIdService = async (id: string) => {
 
 export const getSelectsRolesService = async (): Promise<Roles[]> => {
   try {
+    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
+
+    if (!token) {
+      throw new Error(
+        "No se encontró el token. El usuario puede no estar autenticado."
+      );
+    }
     const resp = await fetch(`${API + baseUrl}/roles`, {
       headers: {
-        authorization: "bearer " + localStorage.getItem("token") || "",
+        authorization: `Bearer ${token}`,
       },
     });
     const respJson = await resp.json();

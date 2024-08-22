@@ -1,4 +1,3 @@
-import { useAuth } from "@/hooks/useAuth";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 import dayjs from "dayjs";
@@ -6,9 +5,10 @@ import { useMenu } from "../hooks/useMenu";
 import { stringAvatar } from "../utils/stringAvatar";
 import BasicMenu from "./BasicMenu";
 import { StyledBadge } from "./StyledBadge";
+import { useAuthStore } from "@/store/auth/authStore";
 
 export const Header = () => {
-  const { user } = useAuth();
+  const user = useAuthStore((state) => state.user);
   const currentTime = dayjs().format("hh:mm A");
   const { anchorEl, open, handleClick, handleClose } = useMenu();
   return (

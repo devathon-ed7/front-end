@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { User } from '../../../interfaces/index.interface';
+import { User } from '../../../interfaces';
 import { UsersState } from './Users.provider';
 
 interface ContextProps extends UsersState {

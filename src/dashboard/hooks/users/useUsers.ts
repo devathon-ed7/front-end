@@ -5,7 +5,7 @@ import {
 } from "@/dashboard/services/users.service";
 import { snackBarElement } from "@/helpers/snackBarElement";
 import { useAuth } from "@/hooks/useAuth";
-import { User } from "@/interfaces/index.interface";
+import { User } from "@/interfaces";
 import { nanoid } from "nanoid";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";

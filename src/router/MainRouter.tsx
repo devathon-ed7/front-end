@@ -2,10 +2,10 @@ import { Backdrop, CircularProgress } from "@mui/material";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthRoutes } from "../auth/routes/AuthRoutes";
 import { DashboardRoutes } from "../dashboard/routes/DashboardRoutes";
-import { useAuth } from "../hooks/useAuth";
+import { useAuthStore } from "../store/auth/authStore";
 
 export const MainRouter = () => {
-  const { status } = useAuth();
+  const  status  = useAuthStore( state => state.status);
 
   return (
     <>

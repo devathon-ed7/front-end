@@ -1,5 +1,5 @@
 import { API, baseUrl } from "../../constants/API";
-import { UserLogin } from "../../interfaces/index.interface";
+import { UserLogin } from "../../interfaces";
 
 export const loginService = async (user: UserLogin) => {
   try {
@@ -13,12 +13,18 @@ export const loginService = async (user: UserLogin) => {
         "Content-Type": "application/json",
       },
     });
-    const respJson = await resp.json();
     if (!resp.ok) {
-      throw new Error(respJson.error);
+      if (resp.status === 401 || resp.status === 404) {
+        throw new Error("Usuario o contraseña incorrectos.");
+      }
+      if (resp.status === 400) {
+        throw new Error("La solicitud es inválida.");
+      }
+
+      throw new Error("Ocurrió un error desconocido.");
     }
 
-    return respJson;
+    return await resp.json();
   } catch (error) {
     throw (error as Error).message;
     //Error de Backend en base a conexion
