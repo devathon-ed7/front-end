@@ -8,7 +8,7 @@ interface Product {
   name: string;
   price: number;
   stock: number;
-  category: string;
+  category_id: number;
   imageUrl: string;
 }
 interface Props {
@@ -42,7 +42,7 @@ export const CardProduct = ({ product, onDelete }: Props) => {
       <CardContent>
         <Box sx={headerContainer}>
           <Label sx={stockLabel}>Stock: {product.stock}</Label>
-          <Label sx={techLabel}>{product.category}</Label>
+          <Label sx={techLabel}>{product.category_id}</Label>
         </Box>
         <Box sx={imageContainer}>
           <CardMedia

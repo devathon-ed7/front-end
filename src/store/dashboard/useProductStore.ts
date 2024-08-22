@@ -4,8 +4,9 @@ import { Product, ProductState } from '../../interfaces';
 
 export const useProductStore = create<ProductState>((set) => ({
   products: [],
+  categories: [] ,
   setProducts: (products: Product[]) => set({ products }),
-// addProduct: (product: Product) => set(({products}) => ({ products: [...products, product] })),
+  setCategories: (categories: Product[]) => set({ categories }),
 }));
 
 
