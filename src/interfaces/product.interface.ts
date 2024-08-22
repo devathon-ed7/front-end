@@ -8,8 +8,9 @@ export interface Product{
 }
 
 export interface ProductState {
-    updateProduct: (updatedProduct: Product) => void;
     products: Product[];
-    addProduct: (product: Product) => void;
-    deleteProduct: (id: number) => void;
+    setProducts: (products: Product[]) => void;
+    // addProduct: (product: Product) => void;
+    // updateProduct: (updatedProduct: Product) => void;
+    // deleteProduct: (id: number) => void;
 }
