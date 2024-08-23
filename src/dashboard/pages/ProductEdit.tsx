@@ -1,9 +1,9 @@
-import { Box, Button, TextField, Typography, Grid  } from "@mui/material";
+import { Box, Button, TextField, Typography, Grid } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { productStore } from "../../store/dashboard/productStore";
+import { useProductStore } from "@/store/dashboard/useproductStore";
 import { CardProductLayout } from "../layout/CardProductLayout";
-import { ImageUploadButton, CategorySelect,Breadcrumb } from "../components";
+import { ImageUploadButton, CategorySelect, Breadcrumb } from "../components";
 import { Product } from "../../interfaces";
 interface ChangeEvent {
   target: {
@@ -12,14 +12,15 @@ interface ChangeEvent {
   };
 }
 export const ProductEdit = () => {
-  
   const { id } = useParams();
   const navigate = useNavigate();
-  const { products, updateProduct } = productStore(({products,updateProduct}) => ({
-    products: products,
-    updateProduct: updateProduct,
-  }));
-  
+  const { products, updateProduct } = useProductStore(
+    ({ products, updateProduct }) => ({
+      products: products,
+      updateProduct: updateProduct,
+    })
+  );
+
   const [product, setProduct] = useState<any>(null);
   const [category, setCategory] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -33,12 +34,12 @@ export const ProductEdit = () => {
     }
   }, [id, products]);
 
-  const handleChange = ({target}: ChangeEvent) => {
+  const handleChange = ({ target }: ChangeEvent) => {
     const { name, value } = target;
-    setProduct((prev:Product) => ({ ...prev, [name]: value }));
+    setProduct((prev: Product) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const updatedProduct = { ...product, category, imageUrl };
     console.log(updatedProduct);
@@ -60,7 +61,6 @@ export const ProductEdit = () => {
     [onChangeUrl]
   );
 
-
   if (!product) return <Typography>Cargando...</Typography>;
 
   return (
@@ -71,11 +71,7 @@ export const ProductEdit = () => {
           <form onSubmit={handleSubmit}>
             <Grid container direction="column" spacing={2}>
               <Grid item>
-                <Button
-                  variant="contained"
-                  color="success"
-                  type="submit"
-                >
+                <Button variant="contained" color="success" type="submit">
                   <Typography color="white" sx={{ fontWeight: "bold" }}>
                     Guardar
                   </Typography>

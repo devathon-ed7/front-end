@@ -19,8 +19,10 @@ export default function BasicMenu({ anchorEl, open, handleClose }: Props) {
   const user = useAuthStore((state) => state.user);
 
   const handleLogout = async () => {
+
     await Logout();
     navigate("/login");
+
   };
 
   return (
