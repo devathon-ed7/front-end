@@ -1,4 +1,3 @@
-<!-- # React + TypeScript + Vite -->
 <div align="center">
 
 # Inventory system
@@ -25,9 +24,53 @@ This invention system, which is participating in an event called devathon, which
    ```sh
    git clone https://github.com/devathon-ed7/FrontEndV2.git
    ```
+
 2. install dependencies
 
    ```bash
    npm install
    ```
 
+3. create .env file
+   ```bash
+    touch .env
+   ```
+4. add the following variables to the .env file
+   ```env
+    VITE_BACKEND_SERVER=http://localhost:3000/
+    VITE_NODE_ENV=development
+   ```
+5. run the project
+   ```bash
+    npm run dev
+   ```
+6. Desing on Figma
+   [here](https://www.figma.com/design/SCcubbrfRBqwdriPYy2KjW/Team-%237-Inventory-System?node-id=0-1&t=CS321tOWWvTWDKCg-0)
+
+## Data Flow Diagram
+
+### Diagram for Home
+
+![alt text](./public/img/DiagramHome.png)
+
+### Diagram for Categories
+
+![alt text](./public/img/DiagramenCategories.png)
+
+### Diagram for Products
+
+![alt text](./public/img/DesingProduct.png)
+
+# Component Desing
+
+### Component for Login
+
+![alt text](./public/img/DesingLogin.png)
+
+### Component for User
+
+![alt text](./public/img/DesingUser.png)
+
+### Component for Product
+
+![alt text](./public/img/DesingProduct.png)
