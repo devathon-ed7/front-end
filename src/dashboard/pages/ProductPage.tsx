@@ -1,13 +1,17 @@
 import { Box, Grid, Typography, Button } from "@mui/material";
-import { Breadcrumb,CardProduct } from "../components";
+import { Breadcrumb, CardProduct } from "../components";
 import { useNavigate } from "react-router-dom";
-import { productStore } from "../../store/dashboard/productStore"; 
+import { useProducts } from "@/hooks/useProducts";
+import { useEffect } from "react";
+
 
 export const ProductPage = () => {
- 
-  const storeProducts = productStore((state) => state.products);
-  const deleteProduct = productStore((state) => state.deleteProduct);
+  const { getProducts, products } = useProducts();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const handleNewProduct = () => {
     navigate("/productos/nuevo");
@@ -22,9 +26,9 @@ export const ProductPage = () => {
       </Box>
       <Box sx={{ height: '400px', overflowY: 'auto' }}>
         <Grid container spacing={2}>
-          {storeProducts.map((product) => (
+          {Array.isArray(products) && products.map((product) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
-              <CardProduct product={product} onDelete={deleteProduct} />
+              <CardProduct product={product} onDelete={""} />
             </Grid>
           ))}
         </Grid>

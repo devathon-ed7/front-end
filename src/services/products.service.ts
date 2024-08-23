@@ -1,5 +1,4 @@
 import { API, baseUrl } from "@/constants/API";
-import { Roles } from "@/interfaces";
 
 const getTokenFromSessionStorage = (): string | null => {
   const authStore = sessionStorage.getItem("auth-store");
@@ -7,16 +6,16 @@ const getTokenFromSessionStorage = (): string | null => {
 
   try {
     const parsedStore = JSON.parse(authStore);
-    return parsedStore?.state.token || null; // Ajusta según la estructura de tu objeto
+    return parsedStore?.state.token || null;
   } catch (error) {
     console.error("Error al parsear el auth-store:", error);
     return null;
   }
 };
 
-export const getListUsersService = async () => {
+const getProducts = async () => {
   try {
-    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
+    const token = getTokenFromSessionStorage();
 
     if (!token) {
       throw new Error(
@@ -24,7 +23,7 @@ export const getListUsersService = async () => {
       );
     }
 
-    const resp = await fetch(`${API + baseUrl}/users`, {
+    const resp = await fetch(`${API + baseUrl}/products`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -42,17 +41,43 @@ export const getListUsersService = async () => {
     //Error de Backend en base a conexion
   }
 };
-
-export const newUserService = async (formData: FormData) => {
+const getCategories = async () => {
   try {
-    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
+    const token = getTokenFromSessionStorage();
 
     if (!token) {
       throw new Error(
         "No se encontró el token. El usuario puede no estar autenticado."
       );
     }
-    const resp = await fetch(`${API + baseUrl}/users`, {
+
+    const resp = await fetch(`${API + baseUrl}/categories`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+    });
+    const respJson = await resp.json();
+    if (!resp.ok) {
+      throw new Error(respJson.error);
+    }
+
+    return respJson;
+  } catch (error) {
+    throw (error as Error).message;
+  }
+};
+const newProduct = async (formData: FormData) => {
+  try {
+    const token = getTokenFromSessionStorage();
+
+    if (!token) {
+      throw new Error(
+        "No se encontró el token. El usuario puede no estar autenticado."
+      );
+    }
+    const resp = await fetch(`${API + baseUrl}/products`, {
       method: "POST",
       body: formData,
       headers: {
@@ -71,16 +96,15 @@ export const newUserService = async (formData: FormData) => {
   }
 };
 
-export const deleteUserByIdService = async (id: string) => {
+const deleteProduct = async (id: string) => {
   try {
-    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
-
+    const token = getTokenFromSessionStorage();
     if (!token) {
       throw new Error(
         "No se encontró el token. El usuario puede no estar autenticado."
       );
     }
-    const resp = await fetch(`${API + baseUrl}/users/${id}`, {
+    const resp = await fetch(`${API + baseUrl}/products/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${token}`,
@@ -98,28 +122,11 @@ export const deleteUserByIdService = async (id: string) => {
   }
 };
 
-export const getSelectsRolesService = async (): Promise<Roles[]> => {
-  try {
-    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
-
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-    const resp = await fetch(`${API + baseUrl}/roles`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const respJson = await resp.json();
-    if (!resp.ok) {
-      throw new Error(respJson.error);
-    }
-
-    return respJson;
-  } catch (error) {
-    throw (error as Error).message;
-    //Error de Backend en base a conexion
-  }
+const productService = {
+  getProducts,
+  newProduct,
+  deleteProduct,
+  getCategories
 };
+
+export default productService;

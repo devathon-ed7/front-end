@@ -1,8 +1,7 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 import { useUI } from "@/dashboard/hooks/UI/useUI";
-import { useUsers } from "@/dashboard/hooks/users/useUsers";
-import { snackBarElement } from "@/helpers/snackBarElement";
+import { useUsers } from "@/hooks/useUsers";
 import { useAuth } from "@/hooks/useAuth";
 import { User } from "@/interfaces";
 import { Box, Button } from "@mui/material";

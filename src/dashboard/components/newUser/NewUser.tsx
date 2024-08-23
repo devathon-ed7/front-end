@@ -1,4 +1,4 @@
-import { useNewUser } from "@/dashboard/hooks/users/useNewUser";
+import { useNewUser } from "@/hooks/useNewUser";
 import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { FormNewUser } from "./FormNewUser";
@@ -6,7 +6,7 @@ import { FormNewUser } from "./FormNewUser";
 export const NewUser = () => {
   const {
     form,
-    rolesList,
+    roles,
     file,
     handleSaveNewUser,
     handleInputChange,
@@ -52,7 +52,7 @@ export const NewUser = () => {
         <FormNewUser
           setFile={setFile}
           form={form}
-          rolesList={rolesList}
+          rolesList={roles}
           handleInputChange={handleInputChange}
           handleSelectChange={handleSelectChange}
         />

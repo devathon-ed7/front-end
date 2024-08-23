@@ -1,6 +1,6 @@
+import { useProductStore } from "@/store/dashboard/useProductStore";
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { productStore } from "../store/dashboard/productStore"; 
 
 export const useProductForm = () => {
   const [name, setName] = useState("");
@@ -8,7 +8,7 @@ export const useProductForm = () => {
   const [stock, setStock] = useState<number>(0);
   const [category, setCategory] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const addProduct = productStore((state) => state.addProduct);
+  const addProduct = useProductStore((state) => state.setProducts);
   const navigate = useNavigate();
 
   const onChangeUrl = (url: string) => {

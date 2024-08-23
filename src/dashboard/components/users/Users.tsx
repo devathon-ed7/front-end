@@ -1,4 +1,4 @@
-import { useUsers } from "@/dashboard/hooks/users/useUsers";
+import { useUsers } from "@/hooks/useUsers";
 import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { UserDatagrid } from "./UserDatagrid";

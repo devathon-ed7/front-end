@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 
-import { NewUserForm } from "@/dashboard/interfaces/users.interface";
+import { NewUserForm } from "@/interfaces/users.interface";
 import { Roles } from "@/interfaces";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { SelectChangeEvent } from "@mui/material";

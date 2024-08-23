@@ -5,7 +5,7 @@ import { useMenu } from "../hooks/useMenu";
 import { stringAvatar } from "../utils/stringAvatar";
 import BasicMenu from "./BasicMenu";
 import { StyledBadge } from "./StyledBadge";
-import { useAuthStore } from "@/store/auth/authStore";
+import { useAuthStore } from "@/store/authStore";
 
 export const Header = () => {
   const user = useAuthStore((state) => state.user);
