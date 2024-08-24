@@ -1,5 +1,5 @@
 import { Box, Grid, Typography, Button } from "@mui/material";
-import { Breadcrumb, CardProduct } from "../dashboard/components";
+import { Breadcrumb, CardProduct } from "@/components";
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "@/hooks/useProducts";
 import { useEffect } from "react";

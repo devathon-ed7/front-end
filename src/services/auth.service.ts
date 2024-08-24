@@ -1,5 +1,5 @@
-import { API, baseUrl } from "../../constants/API";
-import { UserLogin } from "../../interfaces";
+import { API, baseUrl } from "../constants/API";
+import { UserLogin } from "@/interfaces";
 
 export const loginService = async (user: UserLogin) => {
   try {

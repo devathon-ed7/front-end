@@ -1,6 +1,6 @@
 import { API, baseUrl } from "@/constants/API";
 import { Roles } from "@/interfaces";
-import { getTokenFromSessionStorage } from "@/services/getToken";
+import { getTokenFromSessionStorage } from "@/utils/getToken";
 
 const getRoles = async (): Promise<Roles[]> => {
   try {

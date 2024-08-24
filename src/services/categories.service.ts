@@ -1,6 +1,6 @@
 import { API, baseUrl } from "@/constants/API";
 import { ResponseCategories } from "@/interfaces";
-import { getTokenFromSessionStorage } from "@/services/getToken";
+import { getTokenFromSessionStorage } from "@/utils/getToken";
 
 const getCategories = async (): Promise<ResponseCategories> => {
   try {

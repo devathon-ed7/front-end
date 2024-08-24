@@ -1,6 +1,6 @@
 import { SxProps } from "@mui/material";
 import { Box } from "@mui/system";
-import BackGroundImage from "../assets/BackGroundImage.png";
+import BackGroundImage from "@/assets/BackGroundImage.png";
 
 interface Props {
   children: React.ReactNode;

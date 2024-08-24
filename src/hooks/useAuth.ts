@@ -1,7 +1,7 @@
-import { loginService } from "../auth/services/Auth.service";
-import { snackBarElement } from "../helpers/snackBarElement";
-import { UserLogin } from "../interfaces";
-import { useAuthStore } from "../store/authStore";
+import { loginService } from "@/services/auth.service";
+import { snackBarElement } from "@/helpers/snackBarElement";
+import { UserLogin } from "@/interfaces";
+import { useAuthStore } from "@/store/authStore";
 
 export const useAuth = () => {
   const setOnChecking = useAuthStore((state) => state.setChecking);

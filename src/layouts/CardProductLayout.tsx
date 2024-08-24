@@ -1,5 +1,5 @@
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { Label } from "../dashboard/components";
+import { Label } from "@/components";
 
 interface Props {
   name?: string;

@@ -1,5 +1,5 @@
 import { API, baseUrl } from "@/constants/API";
-import { getTokenFromSessionStorage } from "@/services/getToken";
+import { getTokenFromSessionStorage } from "@/utils/getToken";
 
 export const getListUsersService = async () => {
   try {

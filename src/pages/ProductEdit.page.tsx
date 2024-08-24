@@ -2,12 +2,8 @@ import { Box, Button, TextField, Typography, Grid } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useProductStore } from "@/store/product.store";
-import { CardProductLayout } from "../layouts/CardProductLayout";
-import {
-  ImageUploadButton,
-  CategorySelect,
-  Breadcrumb,
-} from "../dashboard/components";
+import { CardProductLayout } from "@/layouts/CardProductLayout";
+import { ImageUploadButton, CategorySelect, Breadcrumb } from "@/components";
 import { Product } from "../interfaces";
 interface ChangeEvent {
   target: {

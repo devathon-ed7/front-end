@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import { FormLogin } from "../components/FormLogin";
-import { AuthLayout } from "../auth/layouts/AuthLayout";
+import { FormLogin } from "@/components/FormLogin";
+import { AuthLayout } from "../layouts/AuthLayout";
 
 export const LoginPage = () => {
   return (
