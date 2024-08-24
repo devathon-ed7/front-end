@@ -1,0 +1,10 @@
+export { ProductNew } from "./ProductNew.page";
+export { ProductEdit } from "./ProductEdit.page";
+export { HomePage } from "./Home.page";
+export { UserPage } from "./User.page";
+export { RolePages } from "./Role.pages";
+export { PermissionPage } from "./Permission.page";
+export { ProductPage } from "./Product.page";
+export { CategoryPage } from "./Category.page";
+export { NewUserPage } from "./NewUser.page";
+export { LoginPage } from "./Login.page";
