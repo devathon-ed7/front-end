@@ -41,6 +41,7 @@ const getProducts = async () => {
     //Error de Backend en base a conexion
   }
 };
+
 const getCategories = async () => {
   try {
     const token = getTokenFromSessionStorage();
@@ -68,6 +69,7 @@ const getCategories = async () => {
     throw (error as Error).message;
   }
 };
+
 const newProduct = async (formData: FormData) => {
   try {
     const token = getTokenFromSessionStorage();
@@ -126,7 +128,7 @@ const productService = {
   getProducts,
   newProduct,
   deleteProduct,
-  getCategories
+  getCategories,
 };
 
 export default productService;

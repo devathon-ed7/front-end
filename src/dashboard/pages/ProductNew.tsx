@@ -3,7 +3,7 @@ import { TextField, Box, Button, Typography, Grid } from "@mui/material";
 import { CardProductLayout } from "../layout/CardProductLayout";
 import { CategorySelect, ImageUploadButton, Breadcrumb } from "../components";
 import { useSnackbar } from "notistack";
-import productService from "@/dashboard/services/products.service";
+import productService from "@/services/products.service";
 import { useProducts } from "@/hooks/useProducts";
 
 export const ProductNew = () => {
