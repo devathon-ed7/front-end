@@ -1,3 +1,5 @@
+import { Roles } from "./roles.interface";
+
 export interface UserLogin {
   username: string;
   password: string;
@@ -11,9 +13,9 @@ export interface User {
 export interface UserDetails {
   name?: string;
   email?: string;
-  role_id?: string;
+  role_id?: number;
   profile_filename?: string | null;
-  role?: string;
+  role?: Roles;
 }
 
 export interface UsersReponse {
@@ -32,4 +34,17 @@ export interface UserDatagrid {
   email: string | null;
   role_id: number | null;
   role: string | null;
+}
+
+export interface NewUserForm{
+  username: undefined | string;
+  password: undefined | string;
+  name: undefined | string;
+  email: undefined | string;
+  role_id: undefined | number;
+}
+
+export interface UserNewRequest {
+  user: NewUserForm;
+  file: File | null;
 }

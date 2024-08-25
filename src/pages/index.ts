@@ -6,5 +6,5 @@ export { RolePages } from "./Role.pages";
 export { PermissionPage } from "./Permission.page";
 export { ProductPage } from "./Product.page";
 export { CategoryPage } from "./Category.page";
-export { NewUserPage } from "./User/NewUser.page";
+export { UserNewPage } from "./User/UserNew.page";
 export { LoginPage } from "./Login.page";

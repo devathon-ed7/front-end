@@ -1,19 +1,20 @@
-import { useNewUser } from "@/hooks/useNewUser";
+import { useUsers } from "@/hooks/useUsers";
 import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { FormNewUser } from "@/components/Users/FormNewUser";
+import { useRoles } from "@/hooks/useRoles";
+import { useRoleStore } from "@/store/roleStore";
+import { snackBarElement } from "@/utils/snackBarElement";
+import { useForm } from "@/hooks/useForm";
+import { NewUserForm } from "@/interfaces";
 
-export const NewUser = () => {
-  const {
-    form,
-    roles,
-    file,
-    handleSaveNewUser,
-    handleInputChange,
-    handleSelectChange,
-    setFile,
-    resetNewUserFormState,
-  } = useNewUser();
+export const UserNew = () => {
+//stores
+  const roles = useRoleStore((state) => state.roles);
+  //hooks
+  const { userCreate } = useUsers();
+  const { getRoles } = useRoles();
+
   const [isDisabled, setIsDisabled] = useState(false);
   const areValuesValid = (obj: Record<string, any>): boolean => {
     return Object.values(obj).every(
@@ -21,14 +22,52 @@ export const NewUser = () => {
     );
   };
 
+
+const initialValues: NewUserForm = ({
+username: "",
+  name: "",
+  email: "",
+  password: "",
+  role_id: 0,
+  });
+const { form, handleInputChange, handleSelectChange, resetForm } =
+useForm(initialValues);
+
+const [file, setFile] = useState<File | null>(null);
+
+
+
+  //call getRoles on mount
+  useEffect(() => {
+    getRoles();
+  }, []);
+
   useEffect(() => {
     setIsDisabled(!areValuesValid({ form }));
   }, [form]);
 
-  useEffect(() => {
-    resetNewUserFormState();
-  }, []);
 
+
+  const handleSaveUser = async () => {
+    try {
+      const formData = new FormData();
+      if (file) formData.append("file", file);
+
+      formData.append("user[username]", form.username!);
+      formData.append("user[password]", form.password!);
+      formData.append("user[user_details][name]", form.name!);
+      formData.append("user[user_details][email]", form.email!);
+      formData.append("user[user_details][role_id]", form.role_id!);
+
+      await userCreate(formData);
+      snackBarElement("success", "Usuario creado exitosamente");
+    } catch (error) {
+      snackBarElement("error", error as string);
+    } finally {
+      setFile(null);
+      resetForm(initialValues);
+    }
+  };
   return (
     <Box
       sx={{
@@ -41,7 +80,7 @@ export const NewUser = () => {
     >
       <Box sx={{ display: "grid", rowGap: "0.625em", justifyItems: "start" }}>
         <Button
-          onClick={handleSaveNewUser}
+          onClick={handleSaveUser}
           disabled={isDisabled}
           variant="outlined"
           color="success"

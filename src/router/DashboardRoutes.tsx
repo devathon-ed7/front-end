@@ -9,7 +9,7 @@ import {
 } from "@/pages";
 import { CategoryPage } from "@/pages/Category.page";
 import { RolePages } from "@/pages/Role.pages";
-import { NewUserPage, UserEditPage, UserPage } from "@/pages/User";
+import { UserNewPage, UserEditPage, UserPage } from "@/pages/User";
 
 export const DashboardRoutes = () => {
   return (
@@ -18,7 +18,7 @@ export const DashboardRoutes = () => {
         <Route index element={<Navigate to="home" />} />
         <Route path="home" element={<HomePage />} />
         <Route path="usuarios" element={<UserPage />} />
-        <Route path="usuarios/nuevo" element={<NewUserPage />} />
+        <Route path="usuarios/nuevo" element={<UserNewPage />} />
         <Route path="usuarios/editar/:id" element={<UserEditPage />} />
         <Route path="roles" element={<RolePages />} />
         <Route path="permisos" element={<PermissionPage />} />

@@ -48,11 +48,20 @@ export const useUsers = () => {
     }));
   };
 
+  const userCreate = async (formData: FormData) => {
+    try {
+      await usersService.userCreate(formData);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return {
     //Properties
     UsersDataGrid,
     //Methods
     setListUsersDataGrid,
     deleteUserById,
+    userCreate,
   };
 };

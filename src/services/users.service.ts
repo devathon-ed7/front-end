@@ -30,7 +30,7 @@ const getUsers = async () => {
   }
 };
 
-const createUser = async (formData: FormData) => {
+const userCreate = async (formData: FormData) => {
   try {
     const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
 
@@ -87,6 +87,6 @@ const deleteUser = async (id: string) => {
 
 export default {
   getUsers,
-  createUser,
+  userCreate,
   deleteUser,
 };
