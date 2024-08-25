@@ -1,5 +1,4 @@
 import { Box, Grid, Typography, Button } from "@mui/material";
-import { Breadcrumb, CardProduct } from "@/components";
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "@/hooks/useProducts";
 import { useEffect } from "react";
@@ -18,7 +17,6 @@ export const ProductPage = () => {
 
   return (
     <Box>
-      <Breadcrumb />
       <Box display="flex" gap={2} my={4}>
         <Typography>Listado de productos</Typography>
         <Button variant="contained" onClick={handleNewProduct}>

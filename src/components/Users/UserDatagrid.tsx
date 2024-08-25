@@ -1,11 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { Box, Button } from "@mui/material";
 
 import { useUI } from "@/dashboard/hooks/UI/useUI";
 import { useUsers } from "@/hooks/useUsers";
 import { useAuth } from "@/hooks/useAuth";
 import { User } from "@/interfaces";
-import { Box, Button } from "@mui/material";
+
 import { DialogResult } from "@/components/UI/DialogResult";
+import { snackBarElement } from "@/utils/snackBarElement";
+
 const columns: GridColDef[] = [
   {
     flex: 1,
@@ -54,9 +58,9 @@ const columns: GridColDef[] = [
     renderCell({ row }) {
       const { user } = useAuth();
       const rowData = row as User;
-      // const navigate = useNavigate();
+      const navigate = useNavigate();
       const { setDialogResultState } = useUI();
-      const willBeCloseSession = user?.idUser == rowData.idUser;
+      const willBeCloseSession = user?.id == rowData.id;
       return (
         <Box
           sx={{
@@ -73,7 +77,7 @@ const columns: GridColDef[] = [
                 "info",
                 "Característica editar usuario no implementada por el momento"
               );
-              // navigate(`/usuarios/editar/${rowData.idUser}`);
+              navigate(`/usuarios/editar/${rowData.id}`);
             }}
             variant="contained"
             size="small"
@@ -89,7 +93,7 @@ const columns: GridColDef[] = [
                 message: willBeCloseSession
                   ? "Se cerrará la sesión y esta acción de eliminar no se podrá deshacer!"
                   : "Una vez realizada la acción no se puede deshacer!",
-                idRegister: rowData.idUser,
+                idRegister: rowData.id,
               })
             }
             variant="contained"

@@ -11,7 +11,25 @@ export interface User {
 export interface UserDetails {
   name?: string;
   email?: string;
-  role?: string;
   role_id?: string;
   profile_filename?: string | null;
+  role?: string;
+}
+
+export interface UsersReponse {
+  users: User[];
+}
+
+export interface UsersStore {
+  users: User[];
+  setUsers: (value: User[]) => void;
+}
+
+export interface UserDatagrid {
+  id: number;
+  username: string;
+  name: string | null;
+  email: string | null;
+  role_id: number | null;
+  role: string | null;
 }

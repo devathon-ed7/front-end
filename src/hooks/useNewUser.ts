@@ -1,4 +1,4 @@
-import { newUserService } from "@/services/users.service";
+import usersService from "@/services/users.service";
 import { initiValues, useNewUserStore } from "@/dashboard/store/newUserStore";
 import { snackBarElement } from "@/utils/snackBarElement";
 import { useForm } from "@/hooks/useForm";
@@ -34,7 +34,7 @@ export const useNewUser = () => {
       formData.append("user[user_details][email]", newUserForm.email!);
       formData.append("user[user_details][role_id]", newUserForm.role_id!);
 
-      const resp = await newUserService(formData);
+      const resp = await usersService.createUser(formData);
 
       snackBarElement("success", resp.message);
     } catch (error) {

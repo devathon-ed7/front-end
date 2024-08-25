@@ -6,11 +6,10 @@ import {
   ProductPage,
   ProductNew,
   ProductEdit,
-  UserPage,
 } from "@/pages";
-import { NewUserPage } from "@/pages/NewUser.page";
 import { CategoryPage } from "@/pages/Category.page";
 import { RolePages } from "@/pages/Role.pages";
+import { NewUserPage, UserEditPage, UserPage } from "@/pages/User";
 
 export const DashboardRoutes = () => {
   return (
@@ -20,6 +19,7 @@ export const DashboardRoutes = () => {
         <Route path="home" element={<HomePage />} />
         <Route path="usuarios" element={<UserPage />} />
         <Route path="usuarios/nuevo" element={<NewUserPage />} />
+        <Route path="usuarios/editar/:id" element={<UserEditPage />} />
         <Route path="roles" element={<RolePages />} />
         <Route path="permisos" element={<PermissionPage />} />
         <Route path="productos" element={<ProductPage />} />

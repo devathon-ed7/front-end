@@ -1,7 +1,7 @@
 import { API, baseUrl } from "@/constants/API";
 import { getTokenFromSessionStorage } from "@/utils/getToken";
 
-export const getListUsersService = async () => {
+const getUsers = async () => {
   try {
     const token = getTokenFromSessionStorage();
 
@@ -30,7 +30,7 @@ export const getListUsersService = async () => {
   }
 };
 
-export const newUserService = async (formData: FormData) => {
+const createUser = async (formData: FormData) => {
   try {
     const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
 
@@ -58,7 +58,7 @@ export const newUserService = async (formData: FormData) => {
   }
 };
 
-export const deleteUserByIdService = async (id: string) => {
+const deleteUser = async (id: string) => {
   try {
     const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
 
@@ -83,4 +83,10 @@ export const deleteUserByIdService = async (id: string) => {
     throw (error as Error).message;
     //Error de Backend en base a conexion
   }
+};
+
+export default {
+  getUsers,
+  createUser,
+  deleteUser,
 };

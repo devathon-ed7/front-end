@@ -1,33 +1,21 @@
 import { UsersContext } from "@/dashboard/contexts/Users";
-import {
-  deleteUserByIdService,
-  getListUsersService,
-} from "@/services/users.service";
+import usersService from "@/services/users.service";
 import { snackBarElement } from "@/utils/snackBarElement";
-import { User } from "@/interfaces";
-import { nanoid } from "nanoid";
+import { User, UserDatagrid } from "@/interfaces";
 import { useContext } from "react";
 import { useUI } from "../dashboard/hooks/UI/useUI";
+import { useUsersStore } from "@/store/users.store";
 
 export const useUsers = () => {
   const { resetDialogResultState } = useUI();
   const { UsersDataGrid, setDatagrid } = useContext(UsersContext);
+  const setUsers = useUsersStore((state) => state.setUsers);
 
   const setListUsersDataGrid = async () => {
     try {
-      const resp = await getListUsersService();
-      const users: User[] = (resp.users as any[]).map(
-        ({ id, username, user_details }) => ({
-          id: nanoid(),
-          idUser: id,
-          username,
-          name: user_details?.name,
-          email: user_details?.email,
-          role_id: user_details?.role?.id,
-          role: user_details?.role.name,
-        })
-      );
-      setDatagrid(users);
+      const resp = await usersService.getUsers();
+      setUsers(resp.users);
+      setDatagrid(formatUsers(resp.users));
     } catch (error) {
       snackBarElement("error", error as string);
     }
@@ -35,7 +23,7 @@ export const useUsers = () => {
 
   const deleteUserById = async (id: string) => {
     try {
-      await deleteUserByIdService(id);
+      await usersService.deleteUser(id);
       snackBarElement("success", "User deleted");
       /*if (id === user?.idUser) {
         await startLogout();
@@ -47,6 +35,17 @@ export const useUsers = () => {
     } finally {
       resetDialogResultState();
     }
+  };
+
+  const formatUsers = (users: User[]): UserDatagrid[] => {
+    return users.map((user) => ({
+      id: user.id,
+      username: user.username,
+      name: user.user_details?.name || null,
+      email: user.user_details?.email || null,
+      role_id: user.user_details?.role_id || null,
+      role: user.user_details?.role?.name || null,
+    }));
   };
 
   return {
