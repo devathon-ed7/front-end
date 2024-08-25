@@ -1,5 +1,5 @@
 import { useUI } from "@/dashboard/hooks/UI/useUI";
-import { snackBarElement } from "@/helpers/snackBarElement";
+import { snackBarElement } from "@/utils/snackBarElement";
 import {
   Box,
   Button,

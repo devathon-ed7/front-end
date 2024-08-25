@@ -2,7 +2,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { useMenu } from "@/dashboard/hooks/useMenu";
-import { stringAvatar } from "@/dashboard/utils/stringAvatar";
+import { stringAvatar } from "@/utils/stringAvatar";
 import BasicMenu from "@/components/BasicMenu";
 import { StyledBadge } from "@/components/StyledBadge";
 import { useAuthStore } from "@/store/authStore";

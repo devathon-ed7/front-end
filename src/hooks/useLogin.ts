@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { snackBarElement } from "../helpers/snackBarElement";
+import { snackBarElement } from "../utils/snackBarElement";
 import { useAuth } from "./useAuth";
 import { useForm } from "./useForm";
 import { UserLogin } from "../interfaces";

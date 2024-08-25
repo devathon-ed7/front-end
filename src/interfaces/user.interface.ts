@@ -2,10 +2,11 @@ export interface UserLogin {
   username: string;
   password: string;
 }
-export interface User extends UserDetails {
-  id?: string;
-  idUser?: string;
+export interface User {
+  id?: number;
   username?: string;
+  password?: string;
+  user_details?: UserDetails;
 }
 export interface UserDetails {
   name?: string;

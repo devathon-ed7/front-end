@@ -1,6 +1,6 @@
 import { newUserService } from "@/services/users.service";
 import { initiValues, useNewUserStore } from "@/dashboard/store/newUserStore";
-import { snackBarElement } from "@/helpers/snackBarElement";
+import { snackBarElement } from "@/utils/snackBarElement";
 import { useForm } from "@/hooks/useForm";
 import { useEffect } from "react";
 import { useRoles } from "./useRoles";

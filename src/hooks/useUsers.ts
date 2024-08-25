@@ -3,7 +3,7 @@ import {
   deleteUserByIdService,
   getListUsersService,
 } from "@/services/users.service";
-import { snackBarElement } from "@/helpers/snackBarElement";
+import { snackBarElement } from "@/utils/snackBarElement";
 import { User } from "@/interfaces";
 import { nanoid } from "nanoid";
 import { useContext } from "react";
