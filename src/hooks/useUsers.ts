@@ -2,13 +2,14 @@ import { UsersContext } from "@/dashboard/contexts/Users";
 import usersService from "@/services/users.service";
 import { snackBarElement } from "@/utils/snackBarElement";
 import { User, UserDatagrid } from "@/interfaces";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useUI } from "../dashboard/hooks/UI/useUI";
 import { useUsersStore } from "@/store/users.store";
 
 export const useUsers = () => {
   const { resetDialogResultState } = useUI();
-  const { UsersDataGrid, setDatagrid } = useContext(UsersContext);
+  //const { UsersDataGrid, setDatagrid } = useContext(UsersContext);
+  const [UsersDataGrid, setDatagrid] = useState<User[]>([]);
   const setUsers = useUsersStore((state) => state.setUsers);
 
   const setListUsersDataGrid = async () => {

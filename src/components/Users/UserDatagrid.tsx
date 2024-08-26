@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+
 import { Box, Button } from "@mui/material";
 
 import { useUI } from "@/dashboard/hooks/UI/useUI";
@@ -57,6 +58,7 @@ const columns: GridColDef[] = [
     minWidth: 200,
     renderCell({ row }) {
       const { user } = useAuth();
+      if (!row) return null;
       const rowData = row as User;
       const navigate = useNavigate();
       const { setDialogResultState } = useUI();
@@ -107,18 +109,44 @@ const columns: GridColDef[] = [
     },
   },
 ];
+interface Props {
+  loading: boolean;
+  data: any;
+  deleteUserById: (id: string) => void;
+}
 
-export const UserDatagrid = () => {
-  const { UsersDataGrid, deleteUserById } = useUsers();
+const SkeletonRow = () => {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        height: "2.5rem",
+        gap: "0.5rem",
+        padding: "0 0.5rem",
+      }}
+    >
+      <Skeleton variant="circular" width={20} height={20} />
+      <Skeleton variant="text" width="50%" />
+      <Skeleton variant="text" width="50%" />
+      <Skeleton variant="text" width="50%" />
+      <Skeleton variant="text" width="50%" />
+    </Box>
+  );
+};
+
+export const UserDatagrid = ({ loading, data, deleteUserById }: Props) => {
+  //const { UsersDataGrid, deleteUserById } = useUsers();
 
   return (
     <Box width="100%" overflow="auto">
       <DataGrid
-        rows={UsersDataGrid}
+   
+        rows={loading ? [] : data}
         columns={columns}
         hideFooter
         paginationMode="server"
-        rowCount={0}
+        rowCount={data.length}
         sx={{
           userSelect: "none",
           fontWeight: 600,
@@ -133,6 +161,14 @@ export const UserDatagrid = () => {
             fontSize: { xl: "1em" },
           },
         }}
+        loading={loading}
+        slotProps={{
+          loadingOverlay: {
+            variant: 'linear-progress',
+            noRowsVariant: 'skeleton',
+          },
+        }}
+
       />
       <DialogResult
         handleDialogResultConfirm={(idRegister) => deleteUserById(idRegister)}
