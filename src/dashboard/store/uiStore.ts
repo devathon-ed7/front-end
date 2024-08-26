@@ -10,7 +10,7 @@ export interface dialogResultState {
   isOpen: boolean;
   title?: string;
   message?: string;
-  idRegister?: string;
+  idRegister?: number;
 }
 
 export const initiValues: dialogResultState = {

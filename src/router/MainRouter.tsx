@@ -1,7 +1,7 @@
 import { Backdrop, CircularProgress } from "@mui/material";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { AuthRoutes } from "../auth/routes/AuthRoutes";
-import { DashboardRoutes } from "../dashboard/routes/DashboardRoutes";
+import { AuthRoutes } from "@/router/AuthRoutes";
+import { DashboardRoutes } from "@/router/DashboardRoutes";
 import { useAuthStore } from "@/store/authStore";
 
 export const MainRouter = () => {

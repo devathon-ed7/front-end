@@ -1,22 +1,24 @@
 import { API, baseUrl } from "@/constants/API";
-import { Roles } from "@/interfaces";
+import { ResponseCategories } from "@/interfaces";
 import { getTokenFromSessionStorage } from "@/utils/getToken";
 
-const getRoles = async (): Promise<Roles[]> => {
+const getCategories = async (): Promise<ResponseCategories> => {
   try {
-    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
+    const token = getTokenFromSessionStorage();
 
     if (!token) {
       throw new Error(
         "No se encontró el token. El usuario puede no estar autenticado."
       );
     }
-    const resp = await fetch(`${API + baseUrl}/roles`, {
+
+    const resp = await fetch(`${API + baseUrl}/categories`, {
       headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
         authorization: `Bearer ${token}`,
       },
     });
-
     const respJson = await resp.json();
     if (!resp.ok) {
       throw new Error(respJson.error);
@@ -28,6 +30,4 @@ const getRoles = async (): Promise<Roles[]> => {
   }
 };
 
-export default {
-  getRoles,
-};
+export default { getCategories };

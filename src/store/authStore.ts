@@ -16,7 +16,7 @@ const AuthApi: StateCreator<AuthStore, [["zustand/devtools", never]]> = (
     set({ errorMessage: value }, false, "SET_ERROR_MESSAGE"),
   setStatus: (value: StatusSession) =>
     set({ status: value }, false, "SET_STATUS"),
-  setUser: (value: User) => set({ user: value }, false, "SET_USER"),
+  setUser: (value: User | null) => set({ user: value }, false, "SET_USER"),
   setToken: (value: string) => set({ token: value }, false, "SET_TOKEN"),
 });
 

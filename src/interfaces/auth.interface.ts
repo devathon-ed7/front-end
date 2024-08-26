@@ -6,7 +6,7 @@ export interface AuthStore {
   status: StatusSession;
   user: User | null;
   token: string;
-  setUser: (value: User) => void;
+  setUser: (value: User | null) => void;
   setStatus: (value: StatusSession) => void;
   setErrorMessage: (value: string) => void;
   setChecking: (value: boolean) => void;

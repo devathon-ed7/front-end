@@ -1,17 +1,5 @@
 import { API, baseUrl } from "@/constants/API";
-
-const getTokenFromSessionStorage = (): string | null => {
-  const authStore = sessionStorage.getItem("auth-store");
-  if (!authStore) return null;
-
-  try {
-    const parsedStore = JSON.parse(authStore);
-    return parsedStore?.state.token || null;
-  } catch (error) {
-    console.error("Error al parsear el auth-store:", error);
-    return null;
-  }
-};
+import { getTokenFromSessionStorage } from "@/utils/getToken";
 
 const getProducts = async () => {
   try {
@@ -41,6 +29,7 @@ const getProducts = async () => {
     //Error de Backend en base a conexion
   }
 };
+
 const getCategories = async () => {
   try {
     const token = getTokenFromSessionStorage();
@@ -68,6 +57,7 @@ const getCategories = async () => {
     throw (error as Error).message;
   }
 };
+
 const newProduct = async (formData: FormData) => {
   try {
     const token = getTokenFromSessionStorage();
@@ -126,7 +116,7 @@ const productService = {
   getProducts,
   newProduct,
   deleteProduct,
-  getCategories
+  getCategories,
 };
 
 export default productService;
