@@ -26,7 +26,7 @@ const getUsers = async () => {
     return respJson;
   } catch (error) {
     throw (error as Error).message;
-    //Error de Backend en base a conexion
+   
   }
 };
 
@@ -54,7 +54,7 @@ const userCreate = async (formData: FormData) => {
     return respJson;
   } catch (error) {
     throw (error as Error).message;
-    //Error de Backend en base a conexion
+    
   }
 };
 
@@ -81,7 +81,35 @@ const deleteUser = async (id: string) => {
     return resp.ok;
   } catch (error) {
     throw (error as Error).message;
-    //Error de Backend en base a conexion
+   
+  }
+};
+
+const userUpdate = async (id: number, formData: FormData) => {
+  try {
+    const token = getTokenFromSessionStorage();
+
+    if (!token) {
+      throw new Error(
+        "No se encontró el token. El usuario puede no estar autenticado."
+      );
+    }
+    const resp = await fetch(`${API + baseUrl}/users/${id}`, {
+      method: "PUT",
+      body: formData,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    const respJson = await resp.json();
+    if (!resp.ok) {
+      throw new Error(respJson.error);
+    }
+
+    return respJson;
+  } catch (error) {
+    throw (error as Error).message;
+   
   }
 };
 
@@ -89,4 +117,5 @@ export default {
   getUsers,
   userCreate,
   deleteUser,
+  userUpdate,
 };

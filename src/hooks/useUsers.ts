@@ -57,6 +57,14 @@ export const useUsers = () => {
     }
   };
 
+  const userUpdate = async (id: number, formData: FormData) => {
+    try {
+      await usersService.userUpdate(id, formData);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return {
     //Properties
     UsersDataGrid,
@@ -64,5 +72,6 @@ export const useUsers = () => {
     setListUsersDataGrid,
     deleteUserById,
     userCreate,
+    userUpdate,
   };
 };

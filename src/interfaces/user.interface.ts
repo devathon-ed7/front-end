@@ -16,6 +16,7 @@ export interface UserDetails {
   role_id?: number;
   profile_filename?: string | null;
   role?: Roles;
+  id ?: number;
 }
 
 export interface UsersReponse {
@@ -36,15 +37,16 @@ export interface UserDatagrid {
   role: string | null;
 }
 
-export interface NewUserForm{
-  username: undefined | string;
-  password: undefined | string;
-  name: undefined | string;
-  email: undefined | string;
-  role_id: undefined | number;
+export interface UserForm{
+  username:  string;
+  password:  string;
+  name:  string;
+  email: string;
+  role_id: number;
+  id : number;
 }
 
 export interface UserNewRequest {
-  user: NewUserForm;
+  user: UserForm;
   file: File | null;
 }

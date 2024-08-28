@@ -1,17 +1,17 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { useUsers } from "@/hooks/useUsers";
 import { Box, Button} from "@mui/material";
-import { useEffect, useState } from "react";
-//import { UserDatagrid } from "@/components/Users/UserDatagrid";
 import { UserHeader } from "@/components/Users/UserHeader";
 import { BasicTable } from "@/components/Table/BasicTable";
 import { snackBarElement } from "@/utils/snackBarElement";
-import { useNavigate } from "react-router-dom";
 import { useUI } from "@/dashboard/hooks/UI/useUI";
 
+
 export const Users = () => {
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-   const { setDialogResultState } = useUI();
+  const { setDialogResultState } = useUI();
   const { setListUsersDataGrid, UsersDataGrid, deleteUserById } = useUsers();
   const columnDefinitions = {
       username: {
@@ -78,17 +78,15 @@ export const Users = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
     setListUsersDataGrid();
-    setLoading(false);
-  }, []);
+  },[]);
+
+  
 
   return (
     <Box sx={{ display: "grid", rowGap: "0.625em" }}>
       <UserHeader />
-      
-        <BasicTable loading={loading} data={UsersDataGrid} deleteUserById={deleteUserById} columnDefinitions={columnDefinitions} />
-  
+      <BasicTable  data={UsersDataGrid} deleteUserById={deleteUserById} columnDefinitions={columnDefinitions} />
     </Box>
   );
 };
