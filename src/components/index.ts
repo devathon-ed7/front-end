@@ -9,7 +9,7 @@ export * from "./SideBar";
 export * from "./StyledBadge";
 export * from "./Products/CategorySelect";
 export * from "./Products/ImageUploadButton";
-export * from "./Users/FormNewUser";
+export * from "./Users/FormUser";
 export * from "./Users/UserNew";
 export * from "./Users/UserDatagrid";
 export * from "./Users/UserHeader";

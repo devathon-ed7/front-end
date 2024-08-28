@@ -1,12 +1,12 @@
 import { useUsers } from "@/hooks/useUsers";
 import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { FormNewUser } from "@/components/Users/FormNewUser";
+import { FormUser } from "@/components/Users/FormUser";
 import { useRoles } from "@/hooks/useRoles";
 import { useRoleStore } from "@/store/roleStore";
 import { snackBarElement } from "@/utils/snackBarElement";
 import { useForm } from "@/hooks/useForm";
-import { NewUserForm } from "@/interfaces";
+
 
 export const UserNew = () => {
 //stores
@@ -23,15 +23,9 @@ export const UserNew = () => {
   };
 
 
-const initialValues: NewUserForm = ({
-username: "",
-  name: "",
-  email: "",
-  password: "",
-  role_id: 0,
-  });
-const { form, handleInputChange, handleSelectChange, resetForm } =
-useForm(initialValues);
+
+const {initializeForm, form, handleInputChange, handleSelectChange, resetForm } =
+useForm();
 
 const [file, setFile] = useState<File | null>(null);
 
@@ -40,7 +34,14 @@ const [file, setFile] = useState<File | null>(null);
   //call getRoles on mount
   useEffect(() => {
     getRoles();
-  }, []);
+    initializeForm({
+      username: '',
+      name: '',
+      email: '',
+      password: '',
+      role_id: 0,
+    });
+  },[]);
 
   useEffect(() => {
     setIsDisabled(!areValuesValid({ form }));
@@ -88,7 +89,7 @@ const [file, setFile] = useState<File | null>(null);
         >
           Guardar
         </Button>
-        <FormNewUser
+        <FormUser
           setFile={setFile}
           form={form}
           rolesList={roles}
