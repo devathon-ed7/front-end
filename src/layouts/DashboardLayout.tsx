@@ -1,6 +1,6 @@
 import { Breadcrumb } from "@/components";
-import { Header } from "@/components/Header";
-import { SideBar } from "@/components/SideBar";
+import { Header } from "./Header";
+import { SideBar } from "@/components/Navigation/SideBar";
 import { Box } from "@mui/material";
 
 import { Outlet } from "react-router-dom";
@@ -18,10 +18,8 @@ export const DashboardLayout = () => {
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Header />
           <Box sx={{ flex: 1, padding: 2 }}>
-            
-              <Breadcrumb />
-                <Outlet />
-                
+            <Breadcrumb />
+            <Outlet />
           </Box>
         </Box>
       </Box>

@@ -7,8 +7,8 @@ import {
   CardMedia,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import styles from "../dashboard/styles/CardProductStyles";
-import { Label } from "./Label";
+import styles from "../../dashboard/styles/CardProductStyles";
+import { Label } from "../UI/Label";
 
 interface Product {
   id: number;

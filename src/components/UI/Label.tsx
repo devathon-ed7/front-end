@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Typography } from "@mui/material";
-import styles from "../dashboard/styles/CardProductStyles";
+import styles from "../../dashboard/styles/CardProductStyles";
 interface Props {
   children: ReactNode;
   sx?: object;

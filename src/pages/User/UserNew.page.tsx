@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { UserNew } from "@/components/Users/UserNew";
+import { UserNew } from "@/components";
 
 export const UserNewPage = () => {
   return (

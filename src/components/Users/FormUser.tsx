@@ -2,7 +2,7 @@ import { Box, SelectChangeEvent, TextField } from "@mui/material";
 import { UserForm } from "@/interfaces/";
 import { Roles } from "@/interfaces";
 import { RoleSelect } from "@/components/RoleSelect";
-import { ImageUpload } from "@/components/ImageUpload";
+import { ImageUpload } from "@/components/UI/ImageUpload";
 import { ChangeEvent } from "react";
 
 interface Props {

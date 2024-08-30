@@ -1,7 +1,6 @@
 import { useProducts } from "@/hooks/useProducts";
 import { Box, Typography } from "@mui/material";
-import { GeneralProducts } from "@/components/Home/GeneralProducts";
-import { MonthlyMovements } from "@/components/Home/MonthlyMovements";
+import { GeneralProducts,MonthlyMovements } from "@/components";
 
 export const HomePage = () => {
   const { products } = useProducts();
