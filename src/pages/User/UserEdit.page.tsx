@@ -1,20 +1,13 @@
-import { useEffect, useState, Suspense, lazy } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useShallow } from "zustand/react/shallow";
-
-import { useRoles } from "@/hooks/useRoles";
-import { useForm } from "@/hooks/useForm";
-import { useUsers } from "@/hooks/useUsers";
-
-import { useRoleStore } from "@/store/roleStore";
-import { useUsersStore } from "@/store/users.store";
 import { User, UserForm } from "@/interfaces";
-
-import { FormUser } from "@/components/Users/FormUser";
-import { snackBarElement } from "@/utils/snackBarElement";
+import { useForm,useUsers,useRoles } from "@/hooks";
+import { useRoleStore ,useUsersStore} from "@/store";
+import { FormUser } from "@/components";
+import { snackBarElement } from "@/utils";
 
 export const UserEditPage = () => {
   const { id } = useParams();
@@ -54,7 +47,7 @@ export const UserEditPage = () => {
     email: user.user_details?.email || "",
     password: user.password || "",
     role_id: user.user_details?.role_id || 0,
-    id: user.user_details?.id  || 0,
+    id: user.user_details?.id || 0,
   });
 
   const handleSaveUser = async () => {
@@ -67,7 +60,7 @@ export const UserEditPage = () => {
       formData.append("user[user_details][name]", form.name!);
       formData.append("user[user_details][email]", form.email!);
       formData.append("user[user_details][role_id]", form.role_id!);
-      formData.append("user[user_details][id]", form.id !);
+      formData.append("user[user_details][id]", form.id!);
 
       await userUpdate(Number(id), formData);
       snackBarElement("success", "Usuario actualizado exitosamente");

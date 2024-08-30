@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { TextField, Box, Button, Typography, Grid } from "@mui/material";
-import { CardProductLayout } from "@/layouts/CardProductLayout";
+import { CardProductLayout } from "@/layouts";
 import { CategorySelect, ImageUploadButton, Breadcrumb } from "@/components";
 import { useSnackbar } from "notistack";
 import productService from "@/services/products.service";
-import { useCategories } from "@/hooks/useCategories";
+import { useCategories } from "@/hooks";
 
 export const ProductNew = () => {
   const [name, setName] = useState("");

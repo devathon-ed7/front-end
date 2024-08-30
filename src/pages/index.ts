@@ -1,10 +1,17 @@
-export { ProductNew } from "./ProductNew.page";
-export { ProductEdit } from "./ProductEdit.page";
-export { HomePage } from "./Home.page";
-export { UserPage } from "./User";
-export { RolePages } from "./Role.pages";
-export { PermissionPage } from "./Permission.page";
-export { ProductPage } from "./Product.page";
-export { CategoryPage } from "./Category.page";
-export { UserNewPage } from "./User/UserNew.page";
-export { LoginPage } from "./Login.page";
+//Categorias
+export *  from "./Category/Category.page";
+//Home
+export * from "./Home/Home.page";
+//Login
+export *  from "./Login/Login.page";
+//Productos  
+export * from "./Product/ProductNew.page";
+export * from "./Product/ProductEdit.page";
+export *  from "./Product/Product.page";
+//Usuarios
+export * from "./User/User.page";
+export * from "./User/UserEdit.page";
+export *  from "./User/UserNew.page";
+//Roles
+export *  from "./Role.pages";
+export *  from "./Permission.page";

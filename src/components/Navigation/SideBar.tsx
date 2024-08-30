@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import { NavLink } from "@/components/NavLink";
-import { NavSection } from "@/components/NavSection";
+import { NavLink } from "@/components/Navigation/NavLink";
+import { NavSection } from "@/components/Navigation/NavSection";
 import { useLocation } from "react-router-dom";
 import {
   Home as HomeIcon,

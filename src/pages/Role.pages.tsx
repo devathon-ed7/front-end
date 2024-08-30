@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Breadcrumb } from "../components/Breadcrumb";
+import { Breadcrumb } from "../components";
 
 export const RolePages = () => {
   return (

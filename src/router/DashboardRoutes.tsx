@@ -1,15 +1,17 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { DashboardLayout } from "@/layouts/DashboardLayout";
+import { DashboardLayout } from "@/layouts";
 import {
   HomePage,
   PermissionPage,
   ProductPage,
   ProductNew,
   ProductEdit,
+  CategoryPage,
+  UserNewPage,
+  UserEditPage,
+  UserPage,
+  RolePages,
 } from "@/pages";
-import { CategoryPage } from "@/pages/Category.page";
-import { RolePages } from "@/pages/Role.pages";
-import { UserNewPage, UserEditPage, UserPage } from "@/pages/User";
 
 export const DashboardRoutes = () => {
   return (
