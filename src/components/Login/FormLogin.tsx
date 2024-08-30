@@ -2,6 +2,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   Box,
   Button,
+  CircularProgress,
   IconButton,
   InputAdornment,
   TextField,
@@ -12,6 +13,7 @@ export const FormLogin = () => {
   const {
     form,
     showPassword,
+    loading,
     handleInputChange,
     handleClickShowPassword,
     handleMouseDownPassword,
@@ -70,8 +72,9 @@ export const FormLogin = () => {
         variant="contained"
         color="secondary"
         sx={{ fontSize: "18px" }}
+        disabled={loading}
       >
-        Acceder
+        {loading ? <CircularProgress size={24} /> : "Acceder"}
       </Button>
     </Box>
   );
