@@ -1,25 +1,26 @@
 import { Box, SelectChangeEvent, TextField } from "@mui/material";
-import { NewUserForm } from "@/interfaces/";
+import { UserForm } from "@/interfaces/";
 import { Roles } from "@/interfaces";
 import { RoleSelect } from "@/components/RoleSelect";
 import { ImageUpload } from "@/components/ImageUpload";
 import { ChangeEvent } from "react";
 
 interface Props {
-  form: NewUserForm;
+  form: UserForm;
   rolesList: Roles[];
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleSelectChange: (e: SelectChangeEvent) => void;
   setFile: (data: File) => void;
 }
 
-export const FormNewUser = ({
+export const FormUser = ({
   form,
   rolesList = [],
   handleInputChange,
   handleSelectChange,
   setFile,
 }: Props) => {
+
   return (
     <Box
       component="form"
@@ -31,24 +32,26 @@ export const FormNewUser = ({
       }}
     >
       <TextField
-        value={form.username}
+        value={form.username || ''}
         onChange={handleInputChange}
         name="username"
         size="small"
         label="Usuario..."
         required
+        autoComplete="off"
       />
       <TextField
-        value={form.password}
+        value={form.password || ''}
         onChange={handleInputChange}
         name="password"
         size="small"
         label="Contraseña..."
         type="password"
         required
+        autoComplete="off"
       />
       <TextField
-        value={form.name}
+        value={form.name || ''}
         onChange={handleInputChange}
         name="name"
         size="small"
@@ -56,7 +59,7 @@ export const FormNewUser = ({
         required
       />
       <TextField
-        value={form.email}
+        value={form.email || ''}
         onChange={handleInputChange}
         size="small"
         type="email"
@@ -64,7 +67,7 @@ export const FormNewUser = ({
         name="email"
         required
       />
-      <RoleSelect value={form.role_id || ""} onChange={handleSelectChange} roles={rolesList} />
+      <RoleSelect value={form.role_id || 0} onChange={handleSelectChange} roles={rolesList} />
       <ImageUpload onChange={setFile} />
     </Box>
   );
