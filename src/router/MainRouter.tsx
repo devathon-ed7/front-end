@@ -4,7 +4,7 @@ import { AuthRoutes } from "@/router/AuthRoutes";
 import { DashboardRoutes } from "@/router/DashboardRoutes";
 import { useAuthStore } from "@/store/authStore";
 
-export const MainRouter = () => {
+const MainRouter = () => {
   const status = useAuthStore((state) => state.status);
 
   return (
@@ -32,3 +32,5 @@ export const MainRouter = () => {
     </>
   );
 };
+
+export default MainRouter;
