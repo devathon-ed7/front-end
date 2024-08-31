@@ -7,7 +7,7 @@ interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
-export const AppTheme = ({ children }: Props) => {
+const AppTheme = ({ children }: Props) => {
   return (
     <ThemeProvider theme={Theme}>
       <CssBaseline />
@@ -15,3 +15,5 @@ export const AppTheme = ({ children }: Props) => {
     </ThemeProvider>
   );
 };
+
+export default AppTheme;

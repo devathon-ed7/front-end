@@ -1,13 +1,12 @@
 import { SxProps } from "@mui/material";
 import { Box } from "@mui/system";
 import BackGroundImage from "@/assets/BackGroundImage.png";
-
 interface Props {
   children: React.ReactNode;
   sxProps?: SxProps;
 }
 
-export const AuthLayout = ({ children, sxProps }: Props) => {
+const AuthLayout = ({ children, sxProps }: Props) => {
   return (
     <>
       <img
@@ -23,8 +22,11 @@ export const AuthLayout = ({ children, sxProps }: Props) => {
           zIndex: "-100000",
         }}
         src={BackGroundImage}
+        loading="lazy"
       />
       <Box sx={{ ...sxProps }}>{children}</Box>
     </>
   );
 };
+
+export default AuthLayout;
