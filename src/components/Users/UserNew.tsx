@@ -7,9 +7,8 @@ import { useRoleStore } from "@/store/roleStore";
 import { snackBarElement } from "@/utils/snackBarElement";
 import { useForm } from "@/hooks/useForm";
 
-
 export const UserNew = () => {
-//stores
+  //stores
   const roles = useRoleStore((state) => state.roles);
   //hooks
   const { userCreate } = useUsers();
@@ -22,32 +21,31 @@ export const UserNew = () => {
     );
   };
 
+  const {
+    initializeForm,
+    form,
+    handleInputChange,
+    handleSelectChange,
+    resetForm,
+  } = useForm();
 
-
-const {initializeForm, form, handleInputChange, handleSelectChange, resetForm } =
-useForm();
-
-const [file, setFile] = useState<File | null>(null);
-
-
+  const [file, setFile] = useState<File | null>(null);
 
   //call getRoles on mount
   useEffect(() => {
     getRoles();
     initializeForm({
-      username: '',
-      name: '',
-      email: '',
-      password: '',
+      username: "",
+      name: "",
+      email: "",
+      password: "",
       role_id: 0,
     });
-  },[]);
+  }, []);
 
   useEffect(() => {
     setIsDisabled(!areValuesValid({ form }));
   }, [form]);
-
-
 
   const handleSaveUser = async () => {
     try {
@@ -66,7 +64,13 @@ const [file, setFile] = useState<File | null>(null);
       snackBarElement("error", error as string);
     } finally {
       setFile(null);
-      resetForm(initialValues);
+      resetForm({
+        username: "",
+        name: "",
+        email: "",
+        password: "",
+        role_id: 0,
+      });
     }
   };
   return (
