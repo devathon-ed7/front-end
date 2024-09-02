@@ -1,0 +1,64 @@
+.container-user {
+  container-type: inline-size;
+  container-name: container-user;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2.25em;
+  margin-top: 1em;
+}
+
+.container-user-form {
+  display: flex;
+  flex-direction: column;
+  justify-items: start;
+  gap: 0.625em;
+}
+
+.form-user {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.625em;
+  order: 1;
+  width: 100%;
+}
+
+.preview-image {
+  width: 12.5em;
+  height: 12.5em;
+  order: 2;
+  object-fit: cover;
+  object-position: center;
+  justify-self: center;
+}
+
+@container container-user (min-width: 640px) {
+  .container-user {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container-user-form {
+    flex-direction: row;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .preview-image {
+    width: 25em;
+    height: auto;
+    order: 1;
+  }
+
+  .form-user {
+    width: 100%;
+    order: 2;
+  }
+}
+
+@container container-user (min-width: 768px) {
+  .container-user-form {
+    width: 75%;
+  }
+}
