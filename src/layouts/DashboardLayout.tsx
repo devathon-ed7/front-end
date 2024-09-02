@@ -2,18 +2,13 @@ import { Breadcrumb } from "@/components";
 import { Header } from "./Header";
 import { SideBar } from "@/components/Navigation/SideBar";
 import { Box } from "@mui/material";
+import "./DashboardLayout.css";
 
 import { Outlet } from "react-router-dom";
 export const DashboardLayout = () => {
   return (
-    <Box sx={{ height: "100vh" }}>
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "auto 1fr",
-          height: "100%",
-        }}
-      >
+    <Box className="container-darshboard-layout">
+      <Box className="container-dashboard-grid">
         <SideBar />
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Header />
