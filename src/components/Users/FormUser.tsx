@@ -1,9 +1,10 @@
-import { Box, SelectChangeEvent, TextField } from "@mui/material";
+import { Box, Button, SelectChangeEvent, TextField } from "@mui/material";
 import { UserForm } from "@/interfaces/";
 import { Roles } from "@/interfaces";
 import { RoleSelect } from "@/components/RoleSelect";
 import { ImageUpload } from "@/components/UI/ImageUpload";
 import { ChangeEvent } from "react";
+import "./Users.css";
 
 interface Props {
   form: UserForm;
@@ -11,6 +12,8 @@ interface Props {
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleSelectChange: (e: SelectChangeEvent) => void;
   setFile: (data: File) => void;
+  handleSave: () => void;
+  isDisabled: boolean;
 }
 
 export const FormUser = ({
@@ -19,39 +22,30 @@ export const FormUser = ({
   handleInputChange,
   handleSelectChange,
   setFile,
+  handleSave,
+  isDisabled,
 }: Props) => {
-
   return (
-    <Box
-      component="form"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        rowGap: "0.625em",
-        width: "15.625em",
-      }}
-    >
+    <Box component="form" className="form-user">
       <TextField
-        value={form.username || ''}
+        value={form.username || ""}
         onChange={handleInputChange}
         name="username"
         size="small"
         label="Usuario..."
         required
-        autoComplete="off"
       />
       <TextField
-        value={form.password || ''}
+        value={form.password || ""}
         onChange={handleInputChange}
         name="password"
         size="small"
         label="Contraseña..."
         type="password"
         required
-        autoComplete="off"
       />
       <TextField
-        value={form.name || ''}
+        value={form.name || ""}
         onChange={handleInputChange}
         name="name"
         size="small"
@@ -59,7 +53,7 @@ export const FormUser = ({
         required
       />
       <TextField
-        value={form.email || ''}
+        value={form.email || ""}
         onChange={handleInputChange}
         size="small"
         type="email"
@@ -67,8 +61,21 @@ export const FormUser = ({
         name="email"
         required
       />
-      <RoleSelect value={form.role_id || 0} onChange={handleSelectChange} roles={rolesList} />
+      <RoleSelect
+        value={form.role_id || 0}
+        onChange={handleSelectChange}
+        roles={rolesList}
+      />
       <ImageUpload onChange={setFile} />
+      <Button
+        onClick={handleSave}
+        disabled={isDisabled}
+        variant="outlined"
+        color="success"
+        sx={{ px: "2em" }}
+      >
+        Save
+      </Button>
     </Box>
   );
 };

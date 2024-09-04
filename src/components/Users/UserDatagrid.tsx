@@ -4,12 +4,10 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Box, Button } from "@mui/material";
 
 import { useUI } from "@/dashboard/hooks/UI/useUI";
-import { useUsers } from "@/hooks/useUsers";
 import { useAuth } from "@/hooks/useAuth";
 import { User } from "@/interfaces";
 
 import { DialogResult } from "@/components/UI/DialogResult";
-import { snackBarElement } from "@/utils/snackBarElement";
 
 const columns: GridColDef[] = [
   {
@@ -75,10 +73,6 @@ const columns: GridColDef[] = [
         >
           <Button
             onClick={() => {
-              snackBarElement(
-                "info",
-                "Característica editar usuario no implementada por el momento"
-              );
               navigate(`/usuarios/editar/${rowData.id}`);
             }}
             variant="contained"
@@ -141,7 +135,6 @@ export const UserDatagrid = ({ loading, data, deleteUserById }: Props) => {
   return (
     <Box width="100%" overflow="auto">
       <DataGrid
-   
         rows={loading ? [] : data}
         columns={columns}
         hideFooter
@@ -164,11 +157,10 @@ export const UserDatagrid = ({ loading, data, deleteUserById }: Props) => {
         loading={loading}
         slotProps={{
           loadingOverlay: {
-            variant: 'linear-progress',
-            noRowsVariant: 'skeleton',
+            variant: "linear-progress",
+            noRowsVariant: "skeleton",
           },
         }}
-
       />
       <DialogResult
         handleDialogResultConfirm={(idRegister) => deleteUserById(idRegister)}
