@@ -22,7 +22,6 @@ export * from "./Navigation/SideBar";
 
 // Users
 export * from "./Users/FormUser";
-export * from "./Users/UserNew";
 export * from "./Users/UserDatagrid";
 export * from "./Users/UserHeader";
 export * from "./Users/Users";
@@ -30,3 +29,4 @@ export * from "./Users/Users";
 // Miscellaneous
 export * from "./StyledBadge";
 export * from "./Login/FormLogin";
+export * from "./ImagePreview";
