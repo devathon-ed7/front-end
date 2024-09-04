@@ -74,7 +74,7 @@ export const FormUser = ({
         color="success"
         sx={{ px: "2em" }}
       >
-        Guardar
+        Save
       </Button>
     </Box>
   );
