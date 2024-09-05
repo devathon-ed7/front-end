@@ -70,7 +70,7 @@ export const FormUser = ({
       <Button
         onClick={handleSave}
         disabled={isDisabled}
-        variant="outlined"
+        variant="contained"
         color="success"
         sx={{ px: "2em" }}
       >

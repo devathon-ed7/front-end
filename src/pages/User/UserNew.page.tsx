@@ -1,9 +1,17 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { FormUser, ImagePreview } from "@/components";
 import { UserFormContainer } from "@/components/Users/UserFormContainer";
+import { useNavigate } from "react-router-dom";
 export const UserNewPage = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/usuarios");
+  };
   return (
     <Box>
+      <Button onClick={handleClick} variant="contained">
+        Atras
+      </Button>
       <UserFormContainer userId={null} isEdit={false}>
         {({
           setFile,
