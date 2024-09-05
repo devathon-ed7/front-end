@@ -1,7 +1,9 @@
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
+
 import { NavLink } from "@/components/Navigation/NavLink";
 import { NavSection } from "@/components/Navigation/NavSection";
-import { useLocation } from "react-router-dom";
 import {
   Home as HomeIcon,
   People as PeopleIcon,
@@ -10,50 +12,26 @@ import {
   AdminPanelSettings as AdminPanelSettingsIcon,
   Inventory as InventoryIcon,
 } from "@mui/icons-material";
+import "./SideBar.css";
 
 export const SideBar = () => {
   const location = useLocation();
 
   return (
-    <Box
-      sx={{
-        height: "100%",
-        width: "250px",
-        backgroundColor: "black",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          padding: "0.1875em",
-          backgroundColor: "#252627",
-          margin: "0",
-        }}
-      >
-        <img src="/favicon.svg" alt="Icon" />
+    <Box className="sidebar-container">
+      <Box className="sidebar-header">
+        {/* <img src="/favicon.svg" alt="Icon" /> */}
+        <svg className="white w-8 h-8">
+          <use href="/src/assets/icons.svg#logo-outline"></use>
+        </svg>
         <Typography sx={{ marginLeft: "0.5em", color: "white" }}>
           Sistema de Inventario
         </Typography>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "0.02em",
-          backgroundColor: "#252627",
-        }}
-      >
-        <Box
-          sx={{
-            width: "81%",
-            height: "0.125em",
-            backgroundColor: "#858586",
-          }}
-        />
+      <Box className="sidebar-divider">
+        <Box className="sidebar-divider-line" />
       </Box>
+
       <NavSection>
         <NavLink
           to="/"
