@@ -5,7 +5,6 @@ import { useUsers } from "@/hooks/useUsers";
 import { Box, Button } from "@mui/material";
 import { UserHeader } from "@/components/Users/UserHeader";
 import { BasicTable } from "@/components/Table/BasicTable";
-import { snackBarElement } from "@/utils/snackBarElement";
 import { useUI } from "@/dashboard/hooks/UI/useUI";
 
 export const Users = () => {
@@ -23,7 +22,7 @@ export const Users = () => {
     },
     email: {
       label: "Correo electrónico",
-      align: "right",
+      align: "left",
     },
     role: {
       label: "Rol",
@@ -31,7 +30,7 @@ export const Users = () => {
     },
     action: {
       label: "Acciones",
-      align: "center",
+      align: "right",
       render: (rowData: any) => (
         <Box
           sx={{
@@ -39,7 +38,7 @@ export const Users = () => {
             height: "100%",
             alignItems: "center",
             columnGap: "0.625em",
-            justifyContent: "center",
+            justifyContent: "flex-end",
           }}
         >
           <Button
