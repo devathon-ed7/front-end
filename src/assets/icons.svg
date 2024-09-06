@@ -12,4 +12,14 @@
       </g>
     </g>
   </symbol>
+
+  <symbol id="delete-user" fill="#000000" viewBox="0 0 24 24"  data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+    <g id="SVGRepo_iconCarrier">
+      <line id="secondary" x1="18" y1="16" x2="21" y2="19" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
+      <line id="secondary-2" data-name="secondary" x1="21" y1="16" x2="18" y2="19" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
+      <circle id="primary" cx="11" cy="7" r="4" style="fill: none; stroke: #ff0019; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle>
+      <path id="primary-2" data-name="primary" d="M14,15H8a5,5,0,0,0-5,5,1,1,0,0,0,1,1H14" style="fill: none; stroke: #ff0019; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g>
+  </symbol>
 </svg>

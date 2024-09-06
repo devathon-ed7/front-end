@@ -1,4 +1,3 @@
-import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
@@ -98,7 +97,7 @@ export const BasicTable: React.FC<BasicTableProps> = ({
 
   return (
     <TableContainer component={Paper} className={className}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <table aria-label="simple table">
         {/*<TableHead>
           <TableRow>
             {columns.map((column) => (
@@ -144,7 +143,7 @@ export const BasicTable: React.FC<BasicTableProps> = ({
           ))}
           {data.length === 0 && <SkeletonRow rowsNum={10} />}
         </TableBody>
-      </Table>
+      </table>
       <DialogResult
         handleDialogResultConfirm={(idRegister) => deleteUserById(idRegister)}
       />

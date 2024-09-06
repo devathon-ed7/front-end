@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useUsers } from "@/hooks/useUsers";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { UserHeader } from "@/components/Users/UserHeader";
 import { BasicTable } from "@/components/Table/BasicTable";
 import { useUI } from "@/dashboard/hooks/UI/useUI";
+
+import "./Users.css";
 
 export const Users = () => {
   const navigate = useNavigate();
@@ -32,26 +34,16 @@ export const Users = () => {
       label: "Acciones",
       align: "right",
       render: (rowData: any) => (
-        <Box
-          sx={{
-            display: "flex",
-            height: "100%",
-            alignItems: "center",
-            columnGap: "0.625em",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Button
+        <Box className="table-column-actions">
+          <button
             onClick={() => {
               navigate(`/usuarios/editar/${rowData.id}`);
             }}
-            variant="contained"
-            size="small"
-            color="warning"
+            className="btn-action-edit"
           >
             Editar
-          </Button>
-          <Button
+          </button>
+          <button
             onClick={() =>
               setDialogResultState({
                 isOpen: true,
@@ -60,12 +52,10 @@ export const Users = () => {
                 idRegister: rowData.id,
               })
             }
-            variant="contained"
-            size="small"
-            color="error"
+            className="btn-action-delete"
           >
             Eliminar
-          </Button>
+          </button>
         </Box>
       ),
     },
@@ -76,7 +66,7 @@ export const Users = () => {
   }, []);
 
   return (
-    <Box sx={{ display: "grid", rowGap: "0.625em" }}>
+    <Box className="container-user-table">
       <UserHeader />
       <BasicTable
         data={UsersDataGrid}
