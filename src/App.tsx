@@ -1,7 +1,8 @@
 import { SnackbarProvider } from "notistack";
 import { BrowserRouter } from "react-router-dom";
-import { MainRouter } from "./router/MainRouter";
-import { AppTheme } from "./theme/AppTheme";
+import { lazy } from "react";
+const MainRouter = lazy(() => import("./router/MainRouter"));
+const AppTheme = lazy(() => import("./theme/AppTheme"));
 
 function App() {
   return (

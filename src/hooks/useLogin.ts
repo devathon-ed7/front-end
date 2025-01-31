@@ -9,9 +9,11 @@ const formData: UserLogin = {
   username: "",
   password: "",
 };
+
 export const useLogin = () => {
   const { form, handleInputChange } = useForm(formData);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const checking = useAuthStore((state) => state.checking);
   const errorMessage = useAuthStore((state) => state.errorMessage);
@@ -20,9 +22,16 @@ export const useLogin = () => {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    Login(form);
+    setLoading(true);
+    try {
+      await Login(form);
+    } catch (error) {
+      // Manejo de errores
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -40,6 +49,7 @@ export const useLogin = () => {
   return {
     form,
     showPassword,
+    loading,
     checking,
     handleInputChange,
     handleSubmit,

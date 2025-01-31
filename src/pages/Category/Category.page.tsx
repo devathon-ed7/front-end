@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import { Breadcrumb } from "../components/Breadcrumb";
-import { CardProductLayout } from "../layouts/CardProductLayout";
+import { Breadcrumb } from "@/components";
+import { CardProductLayout } from "@/layouts";
 
 export const CategoryPage = () => {
   return (

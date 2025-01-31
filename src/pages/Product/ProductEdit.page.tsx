@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useProductStore } from "@/store/product.store";
 import { CardProductLayout } from "@/layouts/CardProductLayout";
 import { ImageUploadButton, CategorySelect, Breadcrumb } from "@/components";
-import { Product } from "../interfaces";
+import { Product } from "@/interfaces";
 interface ChangeEvent {
   target: {
     name: string;

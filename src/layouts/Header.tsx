@@ -3,7 +3,7 @@ import { Avatar, Box, Stack, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { useMenu } from "@/dashboard/hooks/useMenu";
 import { stringAvatar } from "@/utils/stringAvatar";
-import BasicMenu from "@/components/BasicMenu";
+import BasicMenu from "@/components/Menu/BasicMenu";
 import { StyledBadge } from "@/components/StyledBadge";
 import { useAuthStore } from "@/store/authStore";
 

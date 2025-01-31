@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Box, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { routeNames } from "../utils/routeName";
+import { routeNames } from "../../utils/routeName";
 export const Breadcrumb = () => {
   const location = useLocation();
   const path = location.pathname;

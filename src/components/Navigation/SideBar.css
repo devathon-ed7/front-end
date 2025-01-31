@@ -1,0 +1,31 @@
+.sidebar-container {
+  container-type: inline-size;
+  container-name: sidebar-container;
+  height: 100%;
+  width: 250px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  background-color: #252627;
+  margin: 0;
+}
+
+.sidebar-divider {
+  display: flex;
+  justify-content: center;
+  padding: 0.02em;
+  background-color: #252627;
+}
+
+.sidebar-divider-line {
+  width: 81%;
+  height: 0.125em;
+  background-color: #858586;
+}

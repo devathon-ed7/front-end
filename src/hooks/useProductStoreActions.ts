@@ -1,4 +1,4 @@
-import { useProductStore } from "@/store/dashboard/useProductStore";
+import { useProductStore } from "@/store";
 
 export const useProductStoreActions = () => {
   const products = useProductStore((state) => state.products);
