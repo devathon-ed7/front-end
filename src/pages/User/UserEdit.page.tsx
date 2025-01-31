@@ -118,7 +118,7 @@ export const UserEditPage = () => {
       <Box sx={{ width: "12.5em", height: "12.5em" }}>
         {file || image ? (
           <img
-            src={file ? URL.createObjectURL(file) : image} // Usa file si está disponible, de lo contrario, usa profile_filename
+            src={file ? URL.createObjectURL(file) : image} 
             alt="imgProfile"
             style={{
               width: "100%",
