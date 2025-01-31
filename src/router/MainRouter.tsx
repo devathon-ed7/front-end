@@ -1,5 +1,5 @@
 import { Backdrop, CircularProgress } from "@mui/material";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { AuthRoutes } from "@/router/AuthRoutes";
 import { DashboardRoutes } from "@/router/DashboardRoutes";
 import { useAuthStore } from "@/store/authStore";
