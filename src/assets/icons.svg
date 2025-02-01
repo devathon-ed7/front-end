@@ -22,4 +22,6 @@
       <circle id="primary" cx="11" cy="7" r="4" style="fill: none; stroke: #ff0019; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle>
       <path id="primary-2" data-name="primary" d="M14,15H8a5,5,0,0,0-5,5,1,1,0,0,0,1,1H14" style="fill: none; stroke: #ff0019; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g>
   </symbol>
+
+  
 </svg>

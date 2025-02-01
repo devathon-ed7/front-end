@@ -1,18 +1,17 @@
 import { SnackbarProvider } from "notistack";
-import { BrowserRouter } from "react-router-dom";
 import { lazy } from "react";
-const MainRouter = lazy(() => import("./router/MainRouter"));
+import AppRouter from "@/router/app-router";
 const AppTheme = lazy(() => import("./theme/AppTheme"));
 
 function App() {
   return (
-    <BrowserRouter>
+    <AppRouter>
       <AppTheme>
         <SnackbarProvider maxSnack={3}>
-          <MainRouter />
+          
         </SnackbarProvider>
       </AppTheme>
-    </BrowserRouter>
+    </AppRouter>
   );
 }
 

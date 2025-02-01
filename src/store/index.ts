@@ -1,4 +1,4 @@
-export * from "./authStore";
+export * from "./auth-store";
 export * from "./categoties.store";
 export * from "./product.store";
 export * from "./roleStore";

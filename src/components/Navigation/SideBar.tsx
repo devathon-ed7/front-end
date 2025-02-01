@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 
@@ -12,6 +11,7 @@ import {
   AdminPanelSettings as AdminPanelSettingsIcon,
   Inventory as InventoryIcon,
 } from "@mui/icons-material";
+
 import "./SideBar.css";
 
 export const SideBar = () => {
@@ -20,10 +20,7 @@ export const SideBar = () => {
   return (
     <Box className="sidebar-container">
       <Box className="sidebar-header">
-        {/* <img src="/favicon.svg" alt="Icon" /> */}
-        <svg className="white w-8 h-8">
-          <use href="/src/assets/icons.svg#logo-outline"></use>
-        </svg>
+        <img src="/favicon-32x32.png" alt="Icon" />
         <Typography sx={{ marginLeft: "0.5em", color: "white" }}>
           Sistema de Inventario
         </Typography>
@@ -34,7 +31,7 @@ export const SideBar = () => {
 
       <NavSection>
         <NavLink
-          to="/"
+          to="/home"
           displayText="Inicio"
           isActive={location.pathname === "/home" || location.pathname === ""}
           icon={HomeIcon}
