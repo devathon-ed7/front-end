@@ -3,7 +3,7 @@ import PrivateGuard from "./private-guard";
 import { BrowserRouter, Navigate, Route } from "react-router-dom";
 import PrivateRoutes from "./private-routes";
 import RoutesWithNotFound from "./routes-with-not-found";
-import { LoginPage } from "@/pages";
+import LoginPage  from "@/pages/Login/Login-page";
 
 interface AppRouterProps {
   children: ReactNode;

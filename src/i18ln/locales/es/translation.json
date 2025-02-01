@@ -1,3 +1,13 @@
 {
-  
+  "login": {
+    "title": "Track inventory",
+    "subtitle": "Optimiza, controla, crece",
+    "email": "Email",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "login": "Iniciar sesión",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "register": "Registrarse",
+    "submit": "Enviar"
+  }
 }

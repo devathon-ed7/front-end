@@ -1,4 +1,4 @@
-import { loginService } from "@/services/auth.service";
+import { loginService } from "@/services/auth-service";
 import { snackBarElement } from "@/utils/snackBarElement";
 import { UserLogin } from "@/interfaces";
 import { useAuthStore } from "@/store/auth-store";

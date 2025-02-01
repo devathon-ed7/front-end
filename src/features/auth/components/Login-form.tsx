@@ -7,9 +7,10 @@ import {
   InputAdornment,
   TextField,
 } from "@mui/material";
-import { useLogin } from "@/hooks/useLogin";
+import { useLogin } from "@/features/auth/hooks/useLogin";
+import { t } from "i18next";
 
-export const FormLogin = () => {
+export const LoginForm = () => {
   const {
     form,
     showPassword,
@@ -34,7 +35,7 @@ export const FormLogin = () => {
       <TextField
         id="username"
         name="username"
-        label="Usuario..."
+        label={t("login.username")} 
         type="text"
         required
         value={form.username}
@@ -45,7 +46,7 @@ export const FormLogin = () => {
       <TextField
         id="password"
         name="password"
-        label="Contraseña..."
+        label={t("login.password")}
         required
         type={showPassword ? "text" : "password"}
         value={form.password}
@@ -70,11 +71,11 @@ export const FormLogin = () => {
         type="submit"
         size="large"
         variant="contained"
-        color="secondary"
-        sx={{ fontSize: "18px" }}
+        
+        sx={{ fontSize: "14px" }}
         disabled={loading}
       >
-        {loading ? <CircularProgress size={24} /> : "Acceder"}
+        {loading ? <CircularProgress size={24} /> : t("login.submit")}
       </Button>
     </Box>
   );
