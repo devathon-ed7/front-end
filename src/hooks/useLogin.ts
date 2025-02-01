@@ -3,15 +3,10 @@ import { snackBarElement } from "../utils/snackBarElement";
 import { useAuth } from "./useAuth";
 import { useForm } from "./useForm";
 import { UserLogin } from "../interfaces";
-import { useAuthStore } from "@/store/authStore";
-
-const formData: UserLogin = {
-  username: "",
-  password: "",
-};
+import { useAuthStore } from "@/store/auth-store";
 
 export const useLogin = () => {
-  const { form, handleInputChange } = useForm(formData);
+  const { form, handleInputChange } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
