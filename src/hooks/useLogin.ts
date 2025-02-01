@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { snackBarElement } from "../utils/snackBarElement";
 import { useAuth } from "./useAuth";
 import { useForm } from "./useForm";
-import { UserLogin } from "../interfaces";
 import { useAuthStore } from "@/store/auth-store";
+import { useNavigate } from "react-router-dom";
 
 export const useLogin = () => {
   const { form, handleInputChange } = useForm();
@@ -14,6 +14,7 @@ export const useLogin = () => {
   const errorMessage = useAuthStore((state) => state.errorMessage);
 
   const { Login } = useAuth();
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -22,6 +23,7 @@ export const useLogin = () => {
     setLoading(true);
     try {
       await Login(form);
+      navigate("/home");
     } catch (error) {
       // Manejo de errores
     } finally {

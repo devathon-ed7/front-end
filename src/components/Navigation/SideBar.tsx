@@ -34,7 +34,7 @@ export const SideBar = () => {
 
       <NavSection>
         <NavLink
-          to="/"
+          to="/home"
           displayText="Inicio"
           isActive={location.pathname === "/home" || location.pathname === ""}
           icon={HomeIcon}

@@ -1,5 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { DashboardLayout } from "@/layouts";
+import { Navigate, Route } from "react-router-dom";
 import {
   HomePage,
   PermissionPage,
@@ -12,12 +11,14 @@ import {
   UserPage,
   RolePages,
 } from "@/pages";
+import RoutesWithNotFound from "@/router/routes-with-not-found";
+import { DashboardLayout } from "@/layouts";
 
-export const DashboardRoutes = () => {
+export const PrivateRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<DashboardLayout />}>
-        <Route index element={<Navigate to="home" />} />
+    <RoutesWithNotFound>
+      <Route path="/" element={<DashboardLayout />} >
+        <Route index element={<Navigate to="/home" />} />
         <Route path="home" element={<HomePage />} />
         <Route path="usuarios" element={<UserPage />} />
         <Route path="usuarios/nuevo" element={<UserNewPage />} />
@@ -28,10 +29,9 @@ export const DashboardRoutes = () => {
         <Route path="productos/nuevo" element={<ProductNew />} />
         <Route path="productos/editar/:id" element={<ProductEdit />} />
         <Route path="categorias" element={<CategoryPage />} />
-        <Route path="*" element={<Navigate to="home" />} />
       </Route>
-    </Routes>
+    </RoutesWithNotFound>
   );
 };
 
-export default DashboardRoutes;
+export default PrivateRoutes;
