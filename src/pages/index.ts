@@ -3,7 +3,7 @@ export *  from "./Category/Category.page";
 //Home
 export * from "./Home/Home.page";
 //Login
-export *  from "./Login/Login.page";
+export *  from "./Login/Login-page";
 //Productos  
 export * from "./Product/ProductNew.page";
 export * from "./Product/ProductEdit.page";

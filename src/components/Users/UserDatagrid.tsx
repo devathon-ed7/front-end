@@ -4,7 +4,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Box, Button } from "@mui/material";
 
 import { useUI } from "@/dashboard/hooks/UI/useUI";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 import { User } from "@/interfaces";
 
 import { DialogResult } from "@/components/UI/DialogResult";

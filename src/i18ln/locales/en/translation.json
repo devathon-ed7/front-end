@@ -1,3 +1,14 @@
 {
-  
-}
+  "login": {
+    "title": "Track inventory",
+    "subtitle": "Optimze, control, grow",
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "forgotPassword": "Forgot password?",
+    "register": "Register",
+    "submit": "Submit"
+    
+  }
+} 

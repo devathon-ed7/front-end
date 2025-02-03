@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
-import { snackBarElement } from "../utils/snackBarElement";
+import { snackBarElement } from "../../../utils/snackBarElement";
 import { useAuth } from "./useAuth";
-import { useForm } from "./useForm";
+
 import { useAuthStore } from "@/store/auth-store";
 import { useNavigate } from "react-router-dom";
 
+interface LoginForm {
+  username: string;
+  password: string;
+}
+
 export const useLogin = () => {
-  const { form, handleInputChange } = useForm();
+  const [form, setForm] = useState<LoginForm>({ username: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -16,7 +21,10 @@ export const useLogin = () => {
   const { Login } = useAuth();
   const navigate = useNavigate();
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
@@ -31,11 +39,15 @@ export const useLogin = () => {
     }
   };
 
+  
+    
   useEffect(() => {
     if (errorMessage) {
       snackBarElement("error", errorMessage);
     }
   }, [errorMessage]);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
