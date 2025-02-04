@@ -1,20 +1,13 @@
-import { Box, Typography } from "@mui/material";
-
 export const MonthlyMovements = () => {
   return (
-    <Box >
-      <Typography>Movimientos del mes</Typography>
-      <Box
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-       
-      >
-        <Box sx={{ border: "1px solid purple" }}>
-          <Typography># Entradas: </Typography>
-          <Typography># Salidas: </Typography>
-        </Box>
-      </Box>
-    </Box>
+    <div className="p-4">
+      <h2 className="text-lg font-semibold">Movimientos del mes</h2>
+      <div className="flex justify-between">
+        <div className="border border-purple-500 p-2">
+          <p># Entradas:</p>
+          <p># Salidas:</p>
+        </div>
+      </div>
+    </div>
   );
 };

@@ -1,4 +1,4 @@
-import { Box } from "@mui/system";
+/*import { Box } from "@mui/system";
 import { useNavigate, useParams } from "react-router-dom";
 import { FormUser, ImagePreview } from "@/components";
 import { UserFormContainer } from "@/components/Users/UserFormContainer";
@@ -38,7 +38,7 @@ export const UserEditPage = () => {
                 handleSave={handleSaveUser}
                 isDisabled={false}
               />
-              {/* PreviewImageLoaded */}
+              {/* PreviewImageLoaded *//*}
               <ImagePreview file={file} image={image} />
             </Box>
           </Box>
@@ -47,3 +47,4 @@ export const UserEditPage = () => {
     </Box>
   );
 };
+*/

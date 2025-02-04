@@ -1,46 +1,60 @@
-import Box from "@mui/material/Box";
-import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
-import "./FloatingMenu.css";
-import { ListItemIcon, Menu, MenuItem } from "@mui/material";
+import { PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const FloatingMenu = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = () => {
+    setIsOpen((prev) => !prev);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setIsOpen(false);
   };
+
   return (
-    <Box>
-      <Fab
-        size="small"
-        color="secondary"
-        aria-label="add"
-        className="floating-menu"
+    <div className="relative">
+      <button
+        className="fixed bottom-4 right-4 bg-blue-500 text-white rounded-full p-2 shadow-lg hover:bg-blue-600 transition duration-300"
         onClick={handleClick}
       >
-        <AddIcon />
-      </Fab>
-      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem onClick={handleClose} component={Link} to="/home">
-          Inicio
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/usuarios">
-          Usuarios
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/productos">
-          Productos
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/categorias">
-          Categorías
-        </MenuItem>
-      </Menu>
-    </Box>
+        <PlusIcon />
+      </button>
+      {isOpen && (
+        <div className="absolute bottom-16 right-4 bg-white shadow-lg rounded-md">
+          <div className="flex flex-col">
+            <Link
+              to="/home"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              onClick={handleClose}
+            >
+              Inicio
+            </Link>
+            <Link
+              to="/usuarios"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              onClick={handleClose}
+            >
+              Usuarios
+            </Link>
+            <Link
+              to="/productos"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              onClick={handleClose}
+            >
+              Productos
+            </Link>
+            <Link
+              to="/categorias"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              onClick={handleClose}
+            >
+              Categorías
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };

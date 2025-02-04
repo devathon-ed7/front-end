@@ -1,4 +1,4 @@
-import { HeadCell, Order, TableData } from "@/interfaces";
+/*import { HeadCell, Order, TableData } from "@/interfaces";
 import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 
@@ -54,3 +54,4 @@ export const EnhancedTableHead = (props: EnhancedTableProps) => {
     </TableHead>
   );
 }
+  */

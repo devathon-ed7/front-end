@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+/*import { useState, useEffect } from "react";
 import { TextField, Box, Button, Typography, Grid } from "@mui/material";
 import { CardProductLayout } from "@/layouts";
 import { CategorySelect, ImageUploadButton, Breadcrumb } from "@/components";
@@ -112,3 +112,4 @@ export const ProductNew = () => {
     </Box>
   );
 };
+*/

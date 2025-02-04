@@ -1,33 +1,21 @@
-import { SxProps } from "@mui/material";
-import { Box } from "@mui/system";
+import { Fragment, ReactNode } from "react";
 import BackGroundImage from "@/assets/BackGroundImage.webp";
 
-interface Props {
-  children: React.ReactNode;
-  sxProps?: SxProps;
+interface AuthLayoutProps {
+  children: ReactNode;
 }
 
-const AuthLayout = ({ children, sxProps }: Props) => {
+const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <>
+    <Fragment>
       <img
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          objectFit: "cover",
-          width: "100vw",
-          height: "100vh",
-          zIndex: "-100000",
-        }}
+        className="fixed top-0 left-0 object-cover w-full h-full z-[-100000] bg-center bg-no-repeat"
         src={BackGroundImage}
         loading="lazy"
         alt="background"
       />
-      <Box sx={{ ...sxProps }}>{children}</Box>
-    </>
+      <div  className="flex flex-col items-center pt-12 h-screen w-screen gap-4 lg:gap-8 text-[0.6875em] lg:text-base">{children}</div>
+    </Fragment>
   );
 };
 

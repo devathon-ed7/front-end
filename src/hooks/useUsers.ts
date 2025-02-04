@@ -1,10 +1,10 @@
 import { UsersContext } from "@/dashboard/contexts/Users";
 import usersService from "@/services/users.service";
-import { snackBarElement } from "@/utils/snackBarElement";
 import { User, UserDatagrid } from "@/interfaces";
 import { useContext, useState } from "react";
 import { useUI } from "../dashboard/hooks/UI/useUI";
 import { useUsersStore } from "@/store/users.store";
+import { toast } from "sonner";
 
 export const useUsers = () => {
   const { resetDialogResultState } = useUI();
@@ -18,7 +18,7 @@ export const useUsers = () => {
       setUsers(resp.users);
       setDatagrid(formatUsers(resp.users));
     } catch (error) {
-      snackBarElement("error", error as string);
+      toast("error" + error as string);
     }
   };
 

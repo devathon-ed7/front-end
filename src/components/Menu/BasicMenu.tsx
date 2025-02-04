@@ -1,4 +1,4 @@
-import LogoutIcon from "@mui/icons-material/Logout";
+/*import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 import { Divider, ListItemIcon, ListItemText } from "@mui/material";
 import Menu from "@mui/material/Menu";
@@ -54,3 +54,4 @@ export default function BasicMenu({ anchorEl, open, handleClose }: Props) {
     </Menu>
   );
 }
+*/

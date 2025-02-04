@@ -1,36 +1,25 @@
-import { Link, SvgIconTypeMap } from "@mui/material";
+import { FC, SVGProps } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 interface Props {
   to: string;
   displayText: string;
   isActive: boolean;
-  icon: OverridableComponent<SvgIconTypeMap<object, "svg">>;
+  icon: FC<SVGProps<SVGSVGElement>>; 
 }
 
 export const NavLink = ({ to, displayText, isActive, icon: Icon }: Props) => {
   return (
-    <Link
+    <RouterLink
       to={to}
-      component={RouterLink}
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        fontWeight: "semibold",
-        color: "white",
-        backgroundColor: isActive ? "secondary.dark" : "transparent",
-        paddingX: isActive ? "1em" : "0",
-        paddingY: "5px",
-        fontSize: "1.375em",
-        textAlign: "left",
-        width: "100%",
-        transition: "padding 0.3s ease", 
-        textDecoration: isActive? 'underline':'none'
-      }}
+      className={`flex items-center font-semibold text-white ${
+        isActive ? "bg-secondary-dark px-4" : "px-0"
+      } py-1.5 text-lg transition-all duration-300 ease-in-out ${
+        isActive ? "underline" : "no-underline"
+      } w-full`}
     >
-      <Icon sx={{ marginRight: "0.5em" }} />
+      <Icon className="mr-2" />
       {displayText}
-    </Link>
+    </RouterLink>
   );
 };

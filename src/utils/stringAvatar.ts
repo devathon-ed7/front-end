@@ -15,8 +15,11 @@ export function stringToColor(string: string) {
   
     return color;
   }
-  
-  export function stringAvatar(name: string) {
+interface StringAvatarProps {
+    name: string;
+  }
+ 
+export const stringAvatar = ({name}: StringAvatarProps) => {
     const nameParts = name.split(' ');
     let initials;
   
@@ -26,12 +29,11 @@ export function stringToColor(string: string) {
       initials = `${nameParts[0][0]}${nameParts[1][0]}`;
     }
   
+    const bgColor = stringToColor(name); // Asegúrate de que esta función devuelva un color en formato válido para Tailwind
+  
     return {
-      sx: {
-        bgcolor: stringToColor(name),
-        mt: 1,
-        border: '3px solid #000',
-      },
+      className: `flex items-center justify-center w-10 h-10 rounded-full border-3 border-black mt-1`
+        + ` bg-[${bgColor}] text-white`, // Utiliza Tailwind para el color de fondo
       children: initials,
     };
   }

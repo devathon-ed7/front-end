@@ -3,11 +3,11 @@ import { useUsers } from "@/hooks/useUsers";
 import { useRoles } from "@/hooks/useRoles";
 import { useForm } from "@/hooks/useForm";
 import { useRoleStore } from "@/store/roleStore";
-import { snackBarElement } from "@/utils/snackBarElement";
 import { UserNew } from "@/components/Users/UserNew";
 import { User, UserForm } from "@/interfaces";
 import { useShallow } from "zustand/react/shallow";
 import { useUsersStore } from "@/store";
+import { toast } from "sonner";
 
 interface UserFormContainerProps {
   userId: number | null;
@@ -93,9 +93,9 @@ export const UserFormContainer: React.FC<UserFormContainerProps> = ({
         await userCreate(formData);
       }
 
-      snackBarElement("success", "Usuario creado exitosamente");
+      toast("success", "Usuario creado exitosamente");
     } catch (error) {
-      snackBarElement("error", error as string);
+      toast("error" + error as string);
     } finally {
       setFile(null);
       initializeForm({

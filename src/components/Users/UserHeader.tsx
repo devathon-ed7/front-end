@@ -1,24 +1,19 @@
-import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export const UserHeader = () => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center", gap: "0.625em" }}>
-      <Typography
-        sx={{ fontSize: "1.125em", fontWeight: "bold", color: "primary.dark" }}
-      >
+    <div className="flex items-center gap-2.5">
+      <h1 className="text-xl font-bold text-primary-dark">
         Listado de usuarios
-      </Typography>
-      <Button
+      </h1>
+      <button
         onClick={() => navigate("/usuarios/nuevo")}
-        variant="contained"
-        size="small"
-        sx={{ px: "2em" }}
+        className="px-8 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300"
       >
         Nuevo
-      </Button>
-    </Box>
+      </button>
+    </div>
   );
 };

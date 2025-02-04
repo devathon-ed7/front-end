@@ -1,24 +1,28 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { nanoid } from "nanoid";
 
 export const RoleSelect = ({ value, onChange, roles }) => {
   return (
-    <FormControl fullWidth size="small" required>
-      <InputLabel id="role-select-label">Seleccione Rol...</InputLabel>
-      <Select
-        labelId="role-select-label"
+    <div className="relative w-full">
+      <label htmlFor="role-select" className="block text-sm font-medium text-gray-700 mb-1">
+        Seleccione Rol...
+      </label>
+      <select
         id="role-select"
         value={value || ""}
-        label="Rol"
         name="role_id"
         onChange={onChange}
+        className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+        required
       >
+        <option value="" disabled>
+          Seleccione un rol
+        </option>
         {(roles || []).map(({ id, name }) => (
-          <MenuItem key={nanoid()} value={id}>
+          <option key={nanoid()} value={id}>
             {name}
-          </MenuItem>
+          </option>
         ))}
-      </Select>
-    </FormControl>
+      </select>
+    </div>
   );
 };

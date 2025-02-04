@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+/*import { Box, Button } from "@mui/material";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { ChangeEvent } from "react";
 
@@ -25,3 +25,4 @@ export const ImageUploadButton = ({ onChangeUrl }: Props) => {
         </Box>
     );
 };
+*/

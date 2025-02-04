@@ -1,4 +1,4 @@
-import TableBody from "@mui/material/TableBody";
+/*import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
@@ -106,7 +106,7 @@ export const BasicTable: React.FC<BasicTableProps> = ({
               </TableCell>
             ))}
           </TableRow>
-        </TableHead>*/}
+        </TableHead>*//*}
 
         <EnhancedTableHead
           numSelected={selected.length}
@@ -172,3 +172,4 @@ const SkeletonRow = ({ rowsNum }: { rowsNum: number }) => {
     </TableRow>
   ));
 };
+*/

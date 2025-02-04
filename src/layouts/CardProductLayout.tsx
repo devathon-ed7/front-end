@@ -1,4 +1,3 @@
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { Label } from "@/components";
 
 interface Props {
@@ -16,69 +15,38 @@ export const CardProductLayout = ({
   imageUrl,
   price = "0.00",
 }: Props) => {
-  const imageContainerStyles = {
-    width: "264px",
-    height: "250px",
-    maxHeight: "250px",
-  };
-
   return (
-    <Card elevation={0}>
-      <CardContent>
-        <Box sx={{ position: "relative", color: "white" }}>
-          <Box display="flex" gap="8.35rem">
-            {stock == 0 ? (
-              <Label sx={{ backgroundColor: "red", padding: "4px" }}>
-                Stock: 0
-              </Label>
-            ) : (
-              <Label sx={{ backgroundColor: "#388E3C", padding: "4px" }}>
-                Stock: {stock}
-              </Label>
-            )}
-
-            <Label sx={{ backgroundColor: "black", padding: "4px" }}>
-              {category || "--"}
-            </Label>
-          </Box>
-          <Box sx={imageContainerStyles}>
-            {imageUrl ? (
-              <CardMedia
-                component="img"
-                image={imageUrl}
-                alt={name}
-                sx={{ width: "100%", height: "100%" }}
-              />
-            ) : (
-              <Box
-                sx={{
-                  backgroundColor: "grey",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  color: "white",
-                  fontWeight: "bold",
-                  height: "100%",
-                  width: "100%",
-                }}
-              >
-                Sin imagen
-              </Box>
-            )}
-          </Box>
-        </Box>
-        <Box display="flex" gap="10.5rem">
-          <Typography variant="body1" fontWeight="500">
-            Precio:
-          </Typography>
-          <Typography variant="body1" fontWeight="bold">
-            {isNaN(Number(price)) ? "$0.00" : `$${Number(price).toFixed(2)}`}
-          </Typography>
-        </Box>
-        <Typography variant="body1" fontWeight="500">
-          {name}
-        </Typography>
-      </CardContent>
-    </Card>
+    <div className="border rounded-md shadow-md overflow-hidden">
+      <div className="relative text-white">
+        <div className="flex gap-16">
+          {stock === 0 ? (
+            <Label className="bg-red-600 p-1">Stock: 0</Label>
+          ) : (
+            <Label className="bg-green-600 p-1">Stock: {stock}</Label>
+          )}
+          <Label className="bg-black p-1">{category || "--"}</Label>
+        </div>
+        <div className="w-[264px] h-[250px] max-h-[250px]">
+          {imageUrl ? (
+            <img
+              src={imageUrl}
+              alt={name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="bg-gray-500 flex justify-center items-center text-white font-bold h-full w-full">
+              Sin imagen
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="flex gap-40">
+        <span className="font-medium">Precio:</span>
+        <span className="font-bold">
+          {isNaN(Number(price)) ? "$0.00" : `$${Number(price).toFixed(2)}`}
+        </span>
+      </div>
+      <p className="font-medium">{name}</p>
+    </div>
   );
 };

@@ -1,4 +1,3 @@
-import { Breadcrumb } from "@/components";
 import { Header } from "./Header";
 import { SideBar } from "@/components/Navigation/SideBar";
 import { Box } from "@mui/material";
@@ -11,18 +10,18 @@ export const DashboardLayout = () => {
   const isVisible = useSidebarStore((state) => state.isVisible);
 
   return (
-    <Box className="container-darshboard-layout">
-      <Box className="container-dashboard-grid">
+    <div className="container-darshboard-layout">
+      <div className="container-dashboard-grid">
         {isVisible && <SideBar />}
         <FloatingMenu />
-        <Box className="dashboard-content">
+        <div className="dashboard-content">
           <Header />
-          <Box sx={{ flex: 1, padding: 2 }}>
-            <Breadcrumb />
+          <div className="flex p-2">
+            BreadCumb
             <Outlet />
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };

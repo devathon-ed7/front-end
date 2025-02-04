@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { snackBarElement } from "../../../utils/snackBarElement";
 import { useAuth } from "./useAuth";
-
 import { useAuthStore } from "@/store/auth-store";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 interface LoginForm {
   username: string;
@@ -43,7 +42,7 @@ export const useLogin = () => {
     
   useEffect(() => {
     if (errorMessage) {
-      snackBarElement("error", errorMessage);
+      toast("error: " +  errorMessage);
     }
   }, [errorMessage]);
 

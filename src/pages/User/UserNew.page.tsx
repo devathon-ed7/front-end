@@ -1,17 +1,21 @@
-import { Box, Button } from "@mui/material";
 import { FormUser, ImagePreview } from "@/components";
 import { UserFormContainer } from "@/components/Users/UserFormContainer";
 import { useNavigate } from "react-router-dom";
+
 export const UserNewPage = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/usuarios");
   };
+
   return (
-    <Box>
-      <Button onClick={handleClick} variant="contained">
+    <div className="p-4">
+      <button
+        onClick={handleClick}
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+      >
         Atras
-      </Button>
+      </button>
       <UserFormContainer userId={null} isEdit={false}>
         {({
           setFile,
@@ -23,8 +27,8 @@ export const UserNewPage = () => {
           handleSaveUser,
           isDisabled,
         }) => (
-          <Box className="container-user">
-            <Box className="container-user-form paper">
+          <div className="container-user">
+            <div className="container-user-form bg-white p-6 rounded shadow-md">
               <FormUser
                 setFile={setFile}
                 form={form}
@@ -36,10 +40,10 @@ export const UserNewPage = () => {
               />
               {/* PreviewImageLoaded */}
               <ImagePreview file={file} />
-            </Box>
-          </Box>
+            </div>
+          </div>
         )}
       </UserFormContainer>
-    </Box>
+    </div>
   );
 };

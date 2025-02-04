@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+/*import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useUsers } from "@/hooks/useUsers";
@@ -76,3 +76,4 @@ export const Users = () => {
     </Box>
   );
 };
+*/
