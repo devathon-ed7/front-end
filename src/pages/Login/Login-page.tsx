@@ -1,76 +1,34 @@
 import { useRef } from "react";
-import { Box, CardMedia, Container, Paper, Typography } from "@mui/material";
 import { LoginForm } from "@/components";
 import { t } from "i18next";
 import AuthLayout from "@/layouts/Auth-layout";
 
-
 const LoginPage = () => {
-
   const imageUrlRef = useRef('/android-chrome-512x512.png');
   const imageNameRef = useRef('logo');
 
   return (
-    
-      <AuthLayout
-        sxProps={{
-          fontSize: { xs: "0.6875em", lg: "1em" },
-          height: "100vh",
-          width: "100vw",
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          rowGap: { xs: "1em", lg: "2em" },
-          pt: "3em",
-        }}
-      >
-        <Box sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          rowGap: "0.25em",
-          textAlign: "center",
-          textShadow: "0 3px 6px #00000035",
-        }}>
-          <CardMedia
-                component="img"
-                image={imageUrlRef.current}
-                alt={imageNameRef.current}
-                sx={{ width: "6em", height: "6em" }}
-              />
-          <Typography
-            sx={{
-              color: "white",
-              textDecoration: "none",
-              
-              fontSize: "2.5em",
-              fontWeight: "bold",
-            }}
-          >
-            {t("login.title")}
-          </Typography>
+    <AuthLayout>
+      <div className="flex flex-col items-center space-y-1 text-center text-shadow">
+        <img
+          src={imageUrlRef.current}
+          alt={imageNameRef.current}
+          className="w-24 h-24"
+        />
+        <h1 className="text-white text-4xl font-bold">
+          {t("login.title")}
+        </h1>
+        <h2 className="text-white text-2xl font-bold">
+          {t("login.subtitle")}
+        </h2>
+      </div>
 
-          <Typography
-            sx={{
-              color: "white",
-              textDecoration: "none",
-           
-              fontSize: "1.5em",
-              fontWeight: "bold",
-            }}
-          >
-            {t("login.subtitle")}
-          </Typography>
-        </Box>
-
-        <Container maxWidth="xs"
-        > 
-          <Paper elevation={10} sx={{ p: "2em", borderRadius: "0.25em" }}>
-            <LoginForm />
-          </Paper>
-        </Container>
-      </AuthLayout>
-  
+      <div className="max-w-xs mx-auto">
+        <div className="p-8 bg-white rounded-lg shadow-lg">
+          <LoginForm />
+        </div>
+      </div>
+    </AuthLayout>
   );
 };
 

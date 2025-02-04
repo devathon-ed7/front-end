@@ -6,14 +6,14 @@ export * from "./Home/MonthlyMovements";
 export * from "./Menu/BasicMenu";
 
 // UI Components
-export * from "./UI/Breadcrumb";
+//export * from "./UI/Breadcrumb";
 export * from "./UI/Label";
 export * from "./UI/DialogResult";
 
 // Products
 export * from "./Products/CardProduct";
 export * from "./Products/CategorySelect";
-export * from "./Products/ImageUploadButton";
+//export * from "./Products/ImageUploadButton";
 
 // Navigation
 export * from "./Navigation/NavLink";

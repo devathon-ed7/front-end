@@ -1,11 +1,9 @@
-import { Box } from "@mui/material";
-import { Breadcrumb } from "@/components";
 import { CardProductLayout } from "@/layouts";
 
 export const CategoryPage = () => {
   return (
-    <Box>
-      <Breadcrumb />
+    <div>
+      BreadCumb
       <CardProductLayout
         name="Nombre"
         stock={200}
@@ -13,6 +11,6 @@ export const CategoryPage = () => {
         imageUrl=""
         price={"20"}
       />
-    </Box>
+    </div>
   );
 };

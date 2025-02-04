@@ -1,5 +1,3 @@
-import { Box, Typography } from "@mui/material";
-
 interface Props {
   totalProducts: number;
   activeProducts: number;
@@ -12,20 +10,15 @@ export const GeneralProducts = ({
   inactiveProducts,
 }: Props) => {
   return (
-    <Box >
-      <Typography>Generales</Typography>
-      <Box
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        sx={{ border: "1px solid green",padding:'10px', borderRadius:'0px' }}
-      >
-        <Box >
-          <Typography>Productos Registrados: {totalProducts}</Typography>
-          <Typography>Productos Activos: {activeProducts}</Typography>
-          <Typography>Productos Inactivos: {inactiveProducts}</Typography>
-        </Box>
-      </Box>
-    </Box>
+    <div className="p-4">
+      <h2 className="text-lg font-semibold">Generales</h2>
+      <div className="flex justify-between border border-green-500 p-2">
+        <div>
+          <p>Productos Registrados: {totalProducts}</p>
+          <p>Productos Activos: {activeProducts}</p>
+          <p>Productos Inactivos: {inactiveProducts}</p>
+        </div>
+      </div>
+    </div>
   );
 };

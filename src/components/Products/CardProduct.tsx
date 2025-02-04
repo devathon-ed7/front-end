@@ -1,13 +1,4 @@
-import {
-  Box,
-  Typography,
-  CardContent,
-  Card,
-  Button,
-  CardMedia,
-} from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import styles from "../../dashboard/styles/CardProductStyles";
 import { Label } from "../UI/Label";
 
 interface Product {
@@ -18,26 +9,13 @@ interface Product {
   category_id: number;
   imageUrl: string;
 }
+
 interface Props {
   product: Product;
   onDelete: (id: number) => void;
 }
-const handleEdit = () => {
-  navigate(`/productos/editar/${product.id}`);
-};
 
 export const CardProduct = ({ product, onDelete }: Props) => {
-  const {
-    card,
-    headerContainer,
-    stockLabel,
-    techLabel,
-    image,
-    imageContainer,
-    hoverOverlay,
-    button,
-    priceContainer,
-  } = styles;
   const navigate = useNavigate();
 
   const handleEdit = () => {
@@ -45,50 +23,39 @@ export const CardProduct = ({ product, onDelete }: Props) => {
   };
 
   return (
-    <Card sx={card} elevation={0}>
-      <CardContent>
-        <Box sx={headerContainer}>
-          <Label sx={stockLabel}>Stock: {product.stock}</Label>
-          <Label sx={techLabel}>{product.category_id}</Label>
-        </Box>
-        <Box sx={imageContainer}>
-          <CardMedia
-            component="img"
-            image={product.imageUrl}
+    <div className="bg-white shadow-none rounded-lg overflow-hidden">
+      <div className="p-4">
+        <div className="flex justify-between mb-2">
+          <Label className="text-gray-700">Stock: {product.stock}</Label>
+          <Label className="text-gray-700">{product.category_id}</Label>
+        </div>
+        <div className="relative">
+          <img
+            src={product.imageUrl}
             alt={product.name}
-            sx={image}
+            className="w-full h-48 object-cover"
           />
-          <Box className="hoverOverlay" sx={hoverOverlay}>
-            <Button
-              variant="outlined"
-              color="warning"
-              sx={button}
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
+            <button
+              className="bg-yellow-500 text-white border border-yellow-600 px-4 py-2 rounded hover:bg-yellow-600"
               onClick={handleEdit}
             >
               Editar
-            </Button>
-            <Button
-              variant="outlined"
-              color="error"
-              sx={button}
+            </button>
+            <button
+              className="bg-red-500 text-white border border-red-600 px-4 py-2 rounded hover:bg-red-600 ml-2"
               onClick={() => onDelete(product.id)}
             >
               Eliminar
-            </Button>
-          </Box>
-        </Box>
-        <Box sx={priceContainer}>
-          <Typography variant="body1" fontWeight="500">
-            Precio:
-          </Typography>
-          <Typography variant="body1" fontWeight="bold">
-            ${product.price}
-          </Typography>
-        </Box>
-        <Typography variant="body1" fontWeight="500">
-          {product.name}
-        </Typography>
-      </CardContent>
-    </Card>
+            </button>
+          </div>
+        </div>
+        <div className="flex justify-between mt-4">
+          <span className="font-medium">Precio:</span>
+          <span className="font-bold">${product.price}</span>
+        </div>
+        <p className="font-medium mt-1">{product.name}</p>
+      </div>
+    </div>
   );
 };

@@ -1,7 +1,8 @@
 import { loginService } from "@/services/auth-service";
-import { snackBarElement } from "@/utils/snackBarElement";
 import { UserLogin } from "@/interfaces";
 import { useAuthStore } from "@/store/auth-store";
+import { toast } from "sonner";
+
 
 export const useAuth = () => {
   const setOnChecking = useAuthStore((state) => state.setChecking);
@@ -17,7 +18,7 @@ export const useAuth = () => {
       setUser(result.user);
       setToken(result.token);
     } catch (error) {
-      snackBarElement("error", error as string);
+      toast("error", error as string);
     } finally {
       setOnChecking(false);
     }

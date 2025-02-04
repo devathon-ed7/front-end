@@ -1,4 +1,4 @@
-import { useUI } from "@/dashboard/hooks/UI/useUI";
+/*import { useUI } from "@/dashboard/hooks/UI/useUI";
 import { snackBarElement } from "@/utils/snackBarElement";
 import {
   Box,
@@ -77,3 +77,4 @@ export const DialogResult = ({ handleDialogResultConfirm }: Props) => {
     </div>
   );
 };
+*/

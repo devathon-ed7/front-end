@@ -1,5 +1,3 @@
-import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
-
 interface Category {
   id: number;
   name: string;
@@ -18,20 +16,25 @@ export const CategorySelect = ({
   categories,
 }: CategorySelectProps) => {
   return (
-    <FormControl fullWidth>
-      <InputLabel id="category-label">Categoría</InputLabel>
-      <Select
-        labelId="category-label"
+    <div className="relative w-full">
+      <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-700">
+        Categoría
+      </label>
+      <select
+        id="category"
         value={category}
-        onChange={(e) => setCategory(e.target.value as string)}
-        label="Categoría"
+        onChange={(e) => setCategory(e.target.value)}
+        className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500 focus:border-blue-500"
       >
+        <option value="" disabled>
+          Selecciona una categoría
+        </option>
         {categories.map((cat) => (
-          <MenuItem key={cat.id} value={cat.name}>
+          <option key={cat.id} value={cat.name}>
             {cat.name}
-          </MenuItem>
+          </option>
         ))}
-      </Select>
-    </FormControl>
+      </select>
+    </div>
   );
 };

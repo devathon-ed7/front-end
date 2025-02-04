@@ -1,20 +1,11 @@
-import { Box } from '@mui/material';
+import { ReactNode } from "react";
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
-export const NavSection = ({ children }:Props) => (
-    <Box
-      sx={{
-        display: "flex",
-        gap: "3px",
-        flexDirection: "column",
-        padding: "1em",
-        backgroundColor: "#252627",
-        flexGrow: 1,
-        overflowY: "auto",
-      }}
-    >
-      {children}
-    </Box>
-  );
+
+export const NavSection = ({ children }: Props) => (
+  <div className="flex flex-col gap-0.5 p-4 bg-gray-800 flex-grow overflow-y-auto">
+    {children}
+  </div>
+);

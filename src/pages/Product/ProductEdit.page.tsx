@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography, Grid } from "@mui/material";
+/*import { Box, Button, TextField, Typography, Grid } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useProductStore } from "@/store/product.store";
@@ -100,8 +100,9 @@ export const ProductEdit = () => {
           stock={product.stock}
           category={category}
           imageUrl={imageUrl}
-        />*/}
+        />*//*}
       </Box>
     </Box>
   );
 };
+*/

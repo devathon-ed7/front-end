@@ -1,4 +1,4 @@
-import { VariantType, enqueueSnackbar } from "notistack";
+/*import { VariantType, enqueueSnackbar } from "notistack";
 
 export const snackBarElement = (variant: VariantType, msg: string) => {
   enqueueSnackbar(msg, {
@@ -6,4 +6,4 @@ export const snackBarElement = (variant: VariantType, msg: string) => {
     style: { fontWeight: "bold", userSelect: "none" },
     anchorOrigin: { vertical: "top", horizontal: "right" },
   });
-};
+}; */

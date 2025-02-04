@@ -1,6 +1,5 @@
 import { useProducts } from "@/hooks/useProducts";
-import { Box, Typography } from "@mui/material";
-import { GeneralProducts,MonthlyMovements } from "@/components";
+import { GeneralProducts, MonthlyMovements } from "@/components";
 
 export const HomePage = () => {
   const { products } = useProducts();
@@ -9,26 +8,18 @@ export const HomePage = () => {
   const inactiveProducts = products.filter(({ stock }) => stock < 0).length;
 
   return (
-    <Box >
-      <Typography
-        align="center"
-        variant="h4"
-        sx={{ color: "#1F3A5F", fontWeight: "bold" }}
-      >
+    <div className="p-4">
+      <h1 className="text-2xl font-bold text-blue-800 text-center">
         Bienvenido al sistema de inventario
-      </Typography>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-       
-      >
+      </h1>
+      <div className="flex justify-between mt-4">
         <GeneralProducts
           totalProducts={totalProducts}
           activeProducts={activeProducts}
           inactiveProducts={inactiveProducts}
         />
         <MonthlyMovements />
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
-};
+}

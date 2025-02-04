@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+/*import { useNavigate } from "react-router-dom";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 import { Box, Button } from "@mui/material";
@@ -168,3 +168,4 @@ export const UserDatagrid = ({ loading, data, deleteUserById }: Props) => {
     </Box>
   );
 };
+*/

@@ -1,49 +1,60 @@
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import { Avatar, Box, Stack, Typography } from "@mui/material";
-import dayjs from "dayjs";
+import {format} from "date-fns";
 import { useMenu } from "@/dashboard/hooks/useMenu";
 import { stringAvatar } from "@/utils/stringAvatar";
-import BasicMenu from "@/components/Menu/BasicMenu";
-import { StyledBadge } from "@/components/StyledBadge";
+//import BasicMenu from "@/components/Menu/BasicMenu";
 import { useAuthStore } from "@/store/auth-store";
+import { Clock } from "lucide-react";
+
+const Avatar = ({ src, alt, username, size = '40', onClick }) => {
+  const { className, children } = username ? stringAvatar(username) : {};
+
+  return (
+    <div
+      className={`relative inline-block overflow-hidden rounded-full border-2 border-gray-300`}
+      style={{ width: `${size}px`, height: `${size}px` }}
+      onClick={onClick}
+    >
+      {src ? (
+        <img
+          src={src}
+          alt={alt}
+          className="object-cover w-full h-full"
+        />
+      ) : (
+        <div className={`flex items-center justify-center w-full h-full ${className}`}>
+          {children || alt.charAt(0).toUpperCase()}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const Header = () => {
   const user = useAuthStore((state) => state.user);
-  const currentTime = dayjs().format("hh:mm A");
+  const currentTime = format(new Date(), "hh:mm A");
   const { anchorEl, open, handleClick, handleClose } = useMenu();
+
   return (
-    <Box paddingX={3} py={1} sx={{ borderBottom: "0.25rem solid black" }}>
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
-        <Box display="flex" alignItems="center">
-          <AccessTimeIcon />
-          <Typography
-            marginLeft={1}
-            sx={{ fontSize: "extra", fontWeight: 600 }}
-          >
+    <div className="px-3 py-1 border-b-2 border-black">
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <Clock />
+          <span className="ml-1 text-xl font-semibold">
             {currentTime}
-          </Typography>
-        </Box>
-        <StyledBadge
-          overlap="circular"
-          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          variant="dot"
-          sx={{ cursor: "pointer" }}
-        >
-          {user?.profile_filename ? (
-            <Avatar
-              src={`${user?.profile_filename}`}
-              sx={{ border: "2px solid", borderColor: "info.dark" }}
-              onClick={handleClick}
-            />
-          ) : (
-            <Avatar
-              {...stringAvatar(`${user?.username}`)}
-              onClick={handleClick}
-            />
-          )}
-        </StyledBadge>
-        <BasicMenu anchorEl={anchorEl} open={open} handleClose={handleClose} />
-      </Stack>
-    </Box>
+          </span>
+        </div>
+        <div className="relative cursor-pointer">
+          <span className="absolute right-0 bottom-0 w-3 h-3 bg-green-500 rounded-full"></span>
+          <Avatar 
+            src={user?.profile_filename} 
+            alt={user?.username} 
+            username={user?.username} 
+            size="40" 
+            onClick={handleClick} 
+          />
+        </div>
+       {/* <BasicMenu anchorEl={anchorEl} open={open} handleClose={handleClose} /> */}
+      </div>
+    </div>
   );
 };

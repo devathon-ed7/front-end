@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
-import { Typography } from "@mui/material";
-import styles from "../../dashboard/styles/CardProductStyles";
+
 interface Props {
   children: ReactNode;
-  sx?: object;
+  className?: string; 
 }
-export const Label = ({ children, sx }: Props) => (
-  <Typography variant="caption" sx={{ ...styles.label, ...sx }}>
+
+export const Label = ({ children, className }: Props) => (
+  <span className={`text-sm text-gray-500 ${className}`}>
     {children}
-  </Typography>
+  </span>
 );
