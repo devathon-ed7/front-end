@@ -1,25 +1,22 @@
 import { useEffect } from "react";
 import { Fragment } from "react/jsx-runtime";
-import { useAuthStore } from "./store";
 import { useNavigate } from "react-router-dom";
+import { useGithubOauth } from "./features/auth/hooks/use-github-oauth";
+
 
 
 
 const App = () => {
-  const setStatus = useAuthStore((state) => state.setStatus);
-  //const setUser = useAuthStore((state) => state.setUser);
-  const setToken = useAuthStore((state) => state.setToken);
+  const { GithubCallback } = useGithubOauth();
   const navigate = useNavigate();
   const tokenFromURL = new URLSearchParams(window.location.search).get('access_token');
   
   useEffect(() => {
     if (tokenFromURL) {
-      console.log("Token from URL:", tokenFromURL);
-      setStatus("authenticated");
-      setToken(tokenFromURL);
+      GithubCallback(tokenFromURL);
       navigate("/home");   
     }
-  }, [tokenFromURL, setStatus, setToken,navigate]);
+  }, [tokenFromURL, navigate, GithubCallback]);
 
 
 

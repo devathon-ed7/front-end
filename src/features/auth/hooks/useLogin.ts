@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 interface LoginForm {
-  username: string;
+  email: string;
   password: string;
 }
 
 export const useLogin = () => {
-  const [form, setForm] = useState<LoginForm>({ username: "", password: "" });
+  const [form, setForm] = useState<LoginForm>({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -32,7 +32,7 @@ export const useLogin = () => {
       await Login(form);
       navigate("/home");
     } catch (error) {
-      // Manejo de errores
+      throw error;
     } finally {
       setLoading(false);
     }
