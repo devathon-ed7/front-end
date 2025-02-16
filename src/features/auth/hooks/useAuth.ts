@@ -9,6 +9,7 @@ export const useAuth = () => {
   const setStatus = useAuthStore((state) => state.setStatus);
   const setUser = useAuthStore((state) => state.setUser);
   const setToken = useAuthStore((state) => state.setToken);
+  
 
   const Login = async (user: UserLogin) => {
     try {
@@ -18,7 +19,7 @@ export const useAuth = () => {
       setUser(result.user);
       setToken(result.token);
     } catch (error) {
-      toast("error", error as string);
+      toast("error: " + error as string);
     } finally {
       setOnChecking(false);
     }
@@ -29,6 +30,8 @@ export const useAuth = () => {
     setUser(null);
     setToken("");
   };
+
+ 
 
   return {
     Login,

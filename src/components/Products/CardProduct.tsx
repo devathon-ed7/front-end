@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Label } from "../UI/Label";
+import { Label } from "../ui/Label____.tsx";
 
 interface Product {
   id: number;

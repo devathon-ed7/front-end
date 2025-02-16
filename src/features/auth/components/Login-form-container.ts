@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "./useAuth";
+import { useAuth } from "../hooks/useAuth";
 import { useAuthStore } from "@/store/auth-store";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 interface LoginForm {
-  username: string;
+  email: string;
   password: string;
 }
 
-export const useLogin = () => {
-  const [form, setForm] = useState<LoginForm>({ username: "", password: "" });
+export const LoginFormContainer = () => {
+  const [form, setForm] = useState<LoginForm>({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -32,17 +32,15 @@ export const useLogin = () => {
       await Login(form);
       navigate("/home");
     } catch (error) {
-      // Manejo de errores
+      throw error;
     } finally {
       setLoading(false);
     }
   };
 
-  
-    
   useEffect(() => {
     if (errorMessage) {
-      toast("error: " +  errorMessage);
+      toast("error: " + errorMessage);
     }
   }, [errorMessage]);
 

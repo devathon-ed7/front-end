@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { UserForm } from "@/interfaces/";
 import { Roles } from "@/interfaces";
 import { RoleSelect } from "@/components/RoleSelect";
-import { ImageUpload } from "@/components/UI/ImageUpload";
+import { ImageUpload } from "@/components/ui/ImageUpload___";
 
 interface Props {
   form: UserForm;

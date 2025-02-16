@@ -7,8 +7,8 @@ export * from "./Menu/BasicMenu";
 
 // UI Components
 //export * from "./UI/Breadcrumb";
-export * from "./UI/Label";
-export * from "./UI/DialogResult";
+export * from "./ui/Label____.tsx";
+export * from "./ui/DialogResult____";
 
 // Products
 export * from "./Products/CardProduct";
@@ -18,7 +18,7 @@ export * from "./Products/CategorySelect";
 // Navigation
 export * from "./Navigation/NavLink";
 export * from "./Navigation/NavSection";
-export * from "./Navigation/SideBar";
+export * from "../features/dashboard/components/nav-menu.tsx";
 
 // Users
 export * from "./Users/FormUser";

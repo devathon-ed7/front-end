@@ -1,4 +1,4 @@
-import { useLogin } from "@/features/auth/hooks/useLogin";
+import { LoginFormContainer } from "@/features/auth/components/Login-form-container";
 import { t } from "i18next";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
 
@@ -11,7 +11,7 @@ export const LoginForm = () => {
     handleClickShowPassword,
     handleMouseDownPassword,
     handleSubmit,
-  } = useLogin();
+  } = LoginFormContainer();
 
   return (
     <form
@@ -19,15 +19,15 @@ export const LoginForm = () => {
       className="flex flex-col gap-4 w-full"
     >
       <div>
-        <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-          {t("login.username")}
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          {t("login.email")}
         </label>
         <input
-          id="username"
-          name="username"
+          id="email"
+          name="email"
           type="text"
           required
-          value={form.username}
+          value={form.email}
           onChange={handleInputChange}
           autoComplete="off"
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:border-blue-500 p-2"

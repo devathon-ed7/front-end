@@ -2,7 +2,7 @@ import { useAuthStore } from "@/store";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateGuard = () => {
-	 const status = useAuthStore((state) => state.status);
+	const status = useAuthStore((state) => state.status);
 	return status === "authenticated" ? <Outlet /> : <Navigate to="/auth/login" replace />
 }
 
