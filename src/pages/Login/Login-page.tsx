@@ -4,15 +4,15 @@ import { LoginForm } from "@/components";
 import { t } from "i18next";
 import AuthLayout from "@/layouts/Auth-layout";
 import { GithubClientId } from "@/constants/API";
-import { Button } from "@/components/UI/button";
-import { Separator } from "@/components/UI/separator";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/UI/card";
+} from "@/components/ui/card";
 import { TriangleAlertIcon } from "lucide-react";
 
 const LoginPage = () => {

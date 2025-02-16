@@ -1,18 +1,18 @@
 import { Roles } from "./roles.interface";
 
 export interface UserLogin {
-  username: string;
+  email: string;
   password: string;
 }
 export interface User {
   id?: number;
-  username?: string;
+  email?: string;
   password?: string;
   user_details?: UserDetails;
 }
 export interface UserDetails {
   name?: string;
-  email?: string;
+  username?: string;
   role_id?: number;
   profile_filename?: string | null;
   role?: Roles;

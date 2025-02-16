@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "./useAuth";
+import { useAuth } from "../hooks/useAuth";
 import { useAuthStore } from "@/store/auth-store";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -9,7 +9,7 @@ interface LoginForm {
   password: string;
 }
 
-export const useLogin = () => {
+export const LoginFormContainer = () => {
   const [form, setForm] = useState<LoginForm>({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -38,11 +38,9 @@ export const useLogin = () => {
     }
   };
 
-  
-    
   useEffect(() => {
     if (errorMessage) {
-      toast("error: " +  errorMessage);
+      toast("error: " + errorMessage);
     }
   }, [errorMessage]);
 

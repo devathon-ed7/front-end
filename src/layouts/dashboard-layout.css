@@ -7,12 +7,11 @@
   right: 0;
   position: absolute;
   height: 100vh;
-  background-color: #e0e0e0;
+
 
   & .container-dashboard-grid {
     display: flex;
     height: 100%;
-    width: 100%;
     border-right: 1px solid #e0e0e0;
     background-color: #ffffff;
     flex-grow: 1;

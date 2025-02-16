@@ -1,4 +1,4 @@
-import { useLogin } from "@/features/auth/hooks/useLogin";
+import { LoginFormContainer } from "@/features/auth/components/Login-form-container";
 import { t } from "i18next";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
 
@@ -11,7 +11,7 @@ export const LoginForm = () => {
     handleClickShowPassword,
     handleMouseDownPassword,
     handleSubmit,
-  } = useLogin();
+  } = LoginFormContainer();
 
   return (
     <form

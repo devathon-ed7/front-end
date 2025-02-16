@@ -1,13 +1,16 @@
 import AppRouter from "@/router/app-router";
-import { Container } from "lucide-react";
-import { ReactNode } from "react";
 import App from "./App";
+import { ThemeProvider } from "./components/theme-provider";
 
 function AppHookContainer() {
   return (
+    <ThemeProvider>
     <AppRouter>
-      <App />
+      
+        <App />
+      
     </AppRouter>
+    </ThemeProvider>
   );
 }
 
