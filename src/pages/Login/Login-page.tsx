@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { LoginForm } from "@/components";
 import { t } from "i18next";
 import AuthLayout from "@/layouts/Auth-layout";
-import { GithubClientId } from "@/constants/API";
+import { GithubClientId, GoogleClientId, GoogleRedirectUri, GoogleScope } from "@/constants/API";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -20,11 +20,19 @@ const LoginPage = () => {
   const imageNameRef = useRef("logo");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  
 
   const loginWithGitHub = () => {
     setPending(true);
     window.location.assign(
       `https://github.com/login/oauth/authorize?client_id=${GithubClientId}`
+    );
+  };
+
+  const loginWithGoogle = () => {
+    setPending(true);
+    window.location.assign(
+      `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GoogleClientId}&redirect_uri=${GoogleRedirectUri}&response_type=code&scope=${GoogleScope}`
     );
   };
 
@@ -67,6 +75,15 @@ const LoginPage = () => {
               >
                 <FaGithub className="size-5 absolute top-2.5 left-2.5" />
                 Continue with Github
+              </Button>
+              <Button
+                disabled={pending}
+                variant="outline"
+                className="w-full relative"
+                onClick={() => loginWithGoogle()}
+              >
+                <FaGoogle className="size-5 absolute top-2.5 left-2.5" />
+                Continue with Google
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
