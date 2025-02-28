@@ -6,15 +6,17 @@ import { AppMenu } from "./app-menu";
 import { NavigationSheet } from "./navigation-sheet";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ThemeToggle } from "./theme-toggle";
+import { useAuth } from "@/hooks";
 
 
 export const NavMenu = () => {
   const imageUrlRef = useRef("/android-chrome-512x512.png");
   const imageNameRef = useRef("logo");
+  const { Logout } = useAuth();
   const navigate = useNavigate();
   const user = { name: "John Doe" };
   const handleLogOut = async () => {
-   
+    await Logout();
     navigate("/auth/login");
   }
 
