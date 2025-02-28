@@ -27,7 +27,7 @@ export const SignInForm = () => {
         <input
           id="email"
           name="email"
-          type="text"
+          type="email"
           required
           value={form.email}
           onChange={handleInputChange}

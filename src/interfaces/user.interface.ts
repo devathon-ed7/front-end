@@ -4,15 +4,21 @@ export interface UserLogin {
   email: string;
   password: string;
 }
+
+export interface UserRegister {
+  email: string;
+  password: string;
+  fullName: string;
+}
+
 export interface User {
   id?: number;
   email?: string;
   password?: string;
+  fullName?: string;
   user_details?: UserDetails;
 }
 export interface UserDetails {
-  name?: string;
-  username?: string;
   role_id?: number;
   profile_filename?: string | null;
   role?: Roles;

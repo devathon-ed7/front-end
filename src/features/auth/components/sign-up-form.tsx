@@ -1,4 +1,4 @@
-import { SignInFormContainer } from "@/features/auth/components/sign-in-form-container";
+import { SignUpFormContainer } from "@/features/auth/components/sign-up-form-container";
 import { t } from "i18next";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
 
@@ -11,15 +11,17 @@ export const SignUpForm = () => {
       handleClickShowPassword,
       handleMouseDownPassword,
       handleSubmit,
-    } = SignInFormContainer();
+    } = SignUpFormContainer();
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 w-full"
+      className="flex flex-col  w-full space-y-2.5"
     >
       <div>
-        <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">{t("login.fullName")}</label>
+        <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
+          {t("login.fullName")}
+        </label>
         <input
           id="fullName"
           name="fullName"
@@ -39,7 +41,7 @@ export const SignUpForm = () => {
         <input
           id="email"
           name="email"
-          type="text"
+          type="email"
           required
           value={form.email}
           onChange={handleInputChange}

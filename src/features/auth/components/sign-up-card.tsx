@@ -40,10 +40,11 @@ export const SignUpCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignU
           <p>{error}</p>
         </div>
       )}
-      <CardContent className="space-y-5 px-0 pb-0">
+      <CardContent className="space-y-2.5 px-0 pb-0">
         <SignUpForm />
-        <div className="flex flex-col justify-center ">
+        
           <Separator className="mb-4" />
+          <div className="flex flex-col gap-y-3">
           <Button
             variant="outline"
             className="w-full relative"
@@ -60,7 +61,8 @@ export const SignUpCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignU
             <FaGoogle className="size-5 absolute top-2.5 left-2.5" />
             Continue with Google
           </Button>
-        </div>
+          </div>
+       
         <p className="text-sm text-muted-foreground">
           Already have an account?
           <span

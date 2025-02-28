@@ -40,8 +40,9 @@ export const SignInCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignI
       )}
       <CardContent className="space-y-5 px-0 pb-0">
         <SignInForm />
-        <div className="flex flex-col justify-center ">
+       
           <Separator className="mb-4" />
+          <div className="flex flex-col gap-y-3">
           <Button
             variant="outline"
             className="w-full relative"
