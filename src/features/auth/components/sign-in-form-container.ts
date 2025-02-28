@@ -4,13 +4,14 @@ import { useAuthStore } from "@/store/auth-store";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-interface LoginForm {
+interface SignUpForm {
+  fullName: string;
   email: string;
   password: string;
 }
 
-export const LoginFormContainer = () => {
-  const [form, setForm] = useState<LoginForm>({ email: "", password: "" });
+export const SignInFormContainer = () => {
+  const [form, setForm] = useState<SignUpForm>({ fullName: "", email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 

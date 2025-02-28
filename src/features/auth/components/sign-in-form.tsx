@@ -1,8 +1,8 @@
-import { LoginFormContainer } from "@/features/auth/components/Login-form-container";
+import { SignInFormContainer } from "@/features/auth/components/sign-in-form-container";
 import { t } from "i18next";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
 
-export const LoginForm = () => {
+export const SignInForm = () => {
   const {
     form,
     showPassword,
@@ -11,13 +11,15 @@ export const LoginForm = () => {
     handleClickShowPassword,
     handleMouseDownPassword,
     handleSubmit,
-  } = LoginFormContainer();
+  } = SignInFormContainer();
 
   return (
     <form
       onSubmit={handleSubmit}
       className="flex flex-col gap-4 w-full"
     >
+      
+
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           {t("login.email")}

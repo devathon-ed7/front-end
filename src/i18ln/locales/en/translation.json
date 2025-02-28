@@ -8,7 +8,9 @@
     "login": "Login",
     "forgotPassword": "Forgot password?",
     "register": "Register",
-    "submit": "Submit"
+    "submit": "Submit",
+    "fullName": "Full name",
+    "confirmPassword": "Confirm password"
     
   }
 } 
