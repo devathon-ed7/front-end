@@ -8,6 +8,8 @@
     "login": "Iniciar sesión",
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "register": "Registrarse",
-    "submit": "Enviar"
+    "submit": "Enviar",
+    "fullName": "Nombre completo",
+    "confirmPassword": "Confirmar contraseña"
   }
 }

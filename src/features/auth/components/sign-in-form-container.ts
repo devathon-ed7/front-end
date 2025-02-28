@@ -4,13 +4,13 @@ import { useAuthStore } from "@/store/auth-store";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-interface LoginForm {
+interface SignInForm {
   email: string;
   password: string;
 }
 
-export const LoginFormContainer = () => {
-  const [form, setForm] = useState<LoginForm>({ email: "", password: "" });
+export const SignInFormContainer = () => {
+  const [form, setForm] = useState<SignInForm>({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -28,14 +28,13 @@ export const LoginFormContainer = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
     setLoading(true);
-    try {
-      await Login(form);
-      navigate("/home");
-    } catch (error) {
-      throw error;
-    } finally {
-      setLoading(false);
-    }
+
+    await Login(form);
+    
+    setLoading(false);
+    navigate("/home");
+    
+   
   };
 
   useEffect(() => {

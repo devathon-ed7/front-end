@@ -1,23 +1,39 @@
-import { LoginFormContainer } from "@/features/auth/components/Login-form-container";
+import { SignUpFormContainer } from "@/features/auth/components/sign-up-form-container";
 import { t } from "i18next";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
 
-export const LoginForm = () => {
+export const SignUpForm = () => {
   const {
-    form,
-    showPassword,
-    loading,
-    handleInputChange,
-    handleClickShowPassword,
-    handleMouseDownPassword,
-    handleSubmit,
-  } = LoginFormContainer();
+      form,
+      showPassword,
+      loading,
+      handleInputChange,
+      handleClickShowPassword,
+      handleMouseDownPassword,
+      handleSubmit,
+    } = SignUpFormContainer();
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 w-full"
+      className="flex flex-col  w-full space-y-2.5"
     >
+      <div>
+        <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
+          {t("login.fullName")}
+        </label>
+        <input
+          id="fullName"
+          name="fullName"
+          type="text"
+          required
+          value={form.fullName}
+          onChange={handleInputChange}
+          autoComplete="off"
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:border-blue-500 p-2"
+        />
+      </div>
+
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           {t("login.email")}
@@ -25,7 +41,7 @@ export const LoginForm = () => {
         <input
           id="email"
           name="email"
-          type="text"
+          type="email"
           required
           value={form.email}
           onChange={handleInputChange}
@@ -78,4 +94,4 @@ export const LoginForm = () => {
       </button>
     </form>
   );
-};
+}

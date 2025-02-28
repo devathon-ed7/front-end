@@ -28,5 +28,5 @@ export * from "./Users/Users";
 
 // Miscellaneous
 export * from "./StyledBadge";
-export * from "../features/auth/components/Login-form";
+export * from "../features/auth/components/sign-in-form.tsx";
 export * from "./ImagePreview";
