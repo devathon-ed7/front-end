@@ -13,6 +13,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { SignInFlow } from "../types";
 import { useState } from "react";
 import { SignUpForm } from "./sign-up-form";
+import { t } from "i18next";
 
 interface SignUpCardProps {
   setState: (state: SignInFlow) => void;
@@ -31,9 +32,9 @@ export const SignUpCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignU
   return (
     <Card className="w-full h-full p-8">
       <CardHeader className="px-0 pt-0">
-        <CardTitle className="text-lg font-medium">Sign up to continue</CardTitle>
+        <CardTitle className="text-lg font-medium">{t("auth.signUpToContinue")}</CardTitle>
       </CardHeader>
-      <CardDescription>Use your email and password to sign in.</CardDescription>
+      <CardDescription>{t("auth.useEmailPassword")}</CardDescription>
       {!!error && (
         <div className="bg-destructive/15 text-sm p-3 rounded-md flex items-center gap-x-2 text-destructive mb-6">
           <TriangleAlertIcon className="size-4" />
@@ -51,7 +52,7 @@ export const SignUpCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignU
             onClick={() => loginWithGitHub()}
           >
             <FaGithub className="size-5 absolute top-2.5 left-2.5" />
-            Continue with Github
+            {t("auth.continueWithGithub")}
           </Button>
           <Button
             variant="outline"
@@ -59,17 +60,17 @@ export const SignUpCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignU
             onClick={() => loginWithGoogle()}
           >
             <FaGoogle className="size-5 absolute top-2.5 left-2.5" />
-            Continue with Google
+            {t("auth.continueWithGoogle")}
           </Button>
           </div>
        
         <p className="text-sm text-muted-foreground">
-          Already have an account?
+          {t("auth.alreadyHaveAccount")}
           <span
             className="text-blue-500 hover:underline cursor-pointer"
             onClick={() => setState("signIn")}
           >
-            Sign in
+            {t("auth.signIn")}
           </span>
         </p>
       </CardContent>

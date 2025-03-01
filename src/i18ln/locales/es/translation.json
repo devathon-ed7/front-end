@@ -1,5 +1,16 @@
 {
-  "login": {
+  "common": {
+    "loading": "Cargando...",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "save": "Guardar"
+  },
+  "auth": {
     "title": "Track inventory",
     "subtitle": "Optimiza, controla, crece",
     "email": "Email",
@@ -10,6 +21,21 @@
     "register": "Registrarse",
     "submit": "Enviar",
     "fullName": "Nombre completo",
-    "confirmPassword": "Confirmar contraseña"
+    "confirmPassword": "Confirmar contraseña",
+    "signUp": "Regístrate",
+    "signIn ": "Iniciar sesión",
+    "dontHaveAccount": "¿No tienes una cuenta?",
+    "continueWithGithub": "Continúa con Github",
+    "continueWithGoogle": "Continúa con Google",
+    "useEmailPassword": "Utiliza tu correo electrónico y contraseña para iniciar sesión.",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "signUpToContinue": "Regístrate para continuar",
+    "loginToContinue": "Iniciar sesión para continuar"
+  },
+  "exception": {
+    "emailOrPasswordInvalid": "El correo electrónico o la contraseña son inválidos.",
+    "invalidRequest": "La solicitud es inválida.",
+    "unknownError": "Ocurrió un error desconocido.",
+    "invalidServerResponse": "Respuesta inválida del servidor."
   }
 }
