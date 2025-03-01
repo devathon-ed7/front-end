@@ -13,6 +13,7 @@ import {
 import { TriangleAlertIcon } from "lucide-react";
 import { useState } from "react";
 import { SignInFlow } from "../types";
+import { t } from "i18next";
 
 interface SignInCardProps {
   setState: (state: SignInFlow) => void;
@@ -29,9 +30,9 @@ export const SignInCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignI
   return (
     <Card className="w-full h-full p-8">
       <CardHeader className="px-0 pt-0">
-        <CardTitle className="text-lg font-medium">Login to continue</CardTitle>
+        <CardTitle className="text-lg font-medium">{t("auth.loginToContinue")}</CardTitle>
       </CardHeader>
-      <CardDescription>Use your email and password to sign in.</CardDescription>
+      <CardDescription>{t("auth.useEmailPassword")}</CardDescription>
       {!!error && (
         <div className="bg-destructive/15 text-sm p-3 rounded-md flex items-center gap-x-2 text-destructive mb-6">
           <TriangleAlertIcon className="size-4" />
@@ -49,7 +50,7 @@ export const SignInCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignI
             onClick={() => loginWithGitHub()}
           >
             <FaGithub className="size-5 absolute top-2.5 left-2.5" />
-            Continue with Github
+            {t("auth.continueWithGithub")}
           </Button>
           <Button
             variant="outline"
@@ -57,16 +58,16 @@ export const SignInCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignI
             onClick={() => loginWithGoogle()}
           >
             <FaGoogle className="size-5 absolute top-2.5 left-2.5" />
-            Continue with Google
+            {t("auth.continueWithGoogle")}
           </Button>
         </div>
         <p className="text-sm text-muted-foreground">
-          Don&apos;t have an account?
+          {t("auth.dontHaveAccount")}
           <span
             className="text-blue-500 hover:underline cursor-pointer"
             onClick={() => setState("signUp")}
           >
-            Sign up
+            {t("auth.signUp")}
           </span>
         </p>
       </CardContent>

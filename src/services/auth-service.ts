@@ -1,5 +1,7 @@
 import { API, baseUrl } from "@/constants/API";
 import { UserLogin, UserRegister } from "@/interfaces";
+import { t } from "i18next";
+
 
 const apiRequest = async (url: string, options: RequestInit) => {
   try {
@@ -10,13 +12,13 @@ const apiRequest = async (url: string, options: RequestInit) => {
       switch (resp.status) {
         case 401:
         case 404:
-          errorMessage = "Usuario o contraseña incorrectos.";
+          errorMessage = t("exception.emailOrPasswordInvalid");
           break;
         case 400:
-          errorMessage = "La solicitud es inválida.";
+          errorMessage = t("exception.invalidRequest");
           break;
         default:
-          errorMessage = "Ocurrió un error desconocido.";
+          errorMessage = t("exception.unknownError");
       }
 
       throw new Error(errorMessage);
@@ -25,12 +27,12 @@ const apiRequest = async (url: string, options: RequestInit) => {
     const result = await resp.json();
 
     if (!result.user || !result.token) {
-      throw new Error("Respuesta inválida del servidor.");
+      throw new Error(t("exception.invalidServerResponse"));
     }
     
     return result;
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Error desconocido.";
+    const message = error instanceof Error ? error.message : t("exception.unknownError");
     throw new Error(message);
   }
 };

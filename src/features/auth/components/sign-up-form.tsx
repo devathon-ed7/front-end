@@ -20,7 +20,7 @@ export const SignUpForm = () => {
     >
       <div>
         <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-          {t("login.fullName")}
+          {t("auth.fullName")}
         </label>
         <input
           id="fullName"
@@ -36,7 +36,7 @@ export const SignUpForm = () => {
 
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-          {t("login.email")}
+          {t("auth.email")}
         </label>
         <input
           id="email"
@@ -52,7 +52,7 @@ export const SignUpForm = () => {
 
       <div>
         <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-          {t("login.password")}
+          {t("auth.password")}
         </label>
         <div className="relative">
           <input
@@ -89,7 +89,7 @@ export const SignUpForm = () => {
             <div className="animate-spin h-5 w-5 border-4 border-white border-t-transparent rounded-full"></div>
           </div>
         ) : (
-          t("login.submit")
+          t("auth.submit")
         )}
       </button>
     </form>

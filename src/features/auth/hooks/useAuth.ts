@@ -2,6 +2,7 @@ import { loginService, registerService } from "@/services/auth-service";
 import { UserLogin, UserRegister } from "@/interfaces";
 import { useAuthStore } from "@/store/auth-store";
 import { toast } from "sonner";
+import { t } from "i18next";
 
 
 export const useAuth = () => {
@@ -24,7 +25,7 @@ export const useAuth = () => {
       } else if (error instanceof Error) {
         toast(error.message); 
       } else {
-        toast("Ocurrió un error desconocido."); 
+        toast(t("exception.unknown_error"));
       }
     } finally {
       setOnChecking(false);
@@ -50,7 +51,7 @@ export const useAuth = () => {
       } else if (error instanceof Error) {
         toast(error.message); 
       } else {
-        toast("Ocurrió un error desconocido."); 
+        toast(t("exception.unknown_error"));
       }
     } finally {
       setOnChecking(false);
