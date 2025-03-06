@@ -13,11 +13,11 @@ const AppRouter = ({ children }: AppRouterProps) => {
   return (
     <BrowserRouter>
       <RoutesWithNotFound>
-        <Route path="/" element={<Navigate to="/auth/login" />} />
-        <Route path="auth/login" element={<AuthPage />} />
-        <Route element={<PrivateGuard />}>
+        {/* <Route path="/" element={<Navigate to="/auth/login" />} /> */}
+        {/* <Route path="auth/login" element={<AuthPage />} /> */}
+        {/* <Route element={<PrivateGuard />}> */}
           <Route path="/*" element={<PrivateRoutes />} />
-        </Route>
+        {/* </Route> */}
       </RoutesWithNotFound>
       {children}
     </BrowserRouter>

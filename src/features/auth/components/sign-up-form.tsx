@@ -30,7 +30,7 @@ export const SignUpForm = () => {
           value={form.fullName}
           onChange={handleInputChange}
           autoComplete="off"
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:border-blue-500 p-2"
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-xs focus:ring-3 focus:ring-blue-300 focus:border-blue-500 p-2"
         />
       </div>
 
@@ -46,7 +46,7 @@ export const SignUpForm = () => {
           value={form.email}
           onChange={handleInputChange}
           autoComplete="off"
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:border-blue-500 p-2"
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-xs focus:ring-3 focus:ring-blue-300 focus:border-blue-500 p-2"
         />
       </div>
 
@@ -62,7 +62,7 @@ export const SignUpForm = () => {
             type={showPassword ? "text" : "password"}
             value={form.password}
             onChange={handleInputChange}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:border-blue-500 p-2"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-xs focus:ring-3 focus:ring-blue-300 focus:border-blue-500 p-2"
           />
           <button
             type="button"
@@ -81,7 +81,7 @@ export const SignUpForm = () => {
 
       <button
         type="submit"
-        className={`w-full py-2 mt-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`w-full py-2 mt-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-hidden focus:ring-3 focus:ring-blue-300 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         disabled={loading}
       >
         {loading ? (

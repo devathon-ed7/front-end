@@ -11,7 +11,7 @@ export const RoleSelect = ({ value, onChange, roles }) => {
         value={value || ""}
         name="role_id"
         onChange={onChange}
-        className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+        className="block w-full border-gray-300 rounded-md shadow-xs focus:ring-blue-500 focus:border-blue-500"
         required
       >
         <option value="" disabled>

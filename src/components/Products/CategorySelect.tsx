@@ -24,7 +24,7 @@ export const CategorySelect = ({
         id="category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500 focus:border-blue-500"
+        className="block w-full p-2 border border-gray-300 rounded-md focus:ring-3 focus:ring-blue-500 focus:border-blue-500"
       >
         <option value="" disabled>
           Selecciona una categoría

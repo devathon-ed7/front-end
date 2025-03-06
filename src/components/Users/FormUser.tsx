@@ -32,7 +32,7 @@ export const FormUser = ({
         onChange={handleInputChange}
         placeholder="Usuario..."
         required
-        className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        className="block w-full p-2 border border-gray-300 rounded-md focus:outline-hidden focus:border-blue-500"
       />
       <input
         type="password"
@@ -41,7 +41,7 @@ export const FormUser = ({
         onChange={handleInputChange}
         placeholder="Contraseña..."
         required
-        className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        className="block w-full p-2 border border-gray-300 rounded-md focus:outline-hidden focus:border-blue-500"
       />
       <input
         type="text"
@@ -50,7 +50,7 @@ export const FormUser = ({
         onChange={handleInputChange}
         placeholder="Nombre..."
         required
-        className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        className="block w-full p-2 border border-gray-300 rounded-md focus:outline-hidden focus:border-blue-500"
       />
       <input
         type="email"
@@ -59,7 +59,7 @@ export const FormUser = ({
         onChange={handleInputChange}
         placeholder="E-mail..."
         required
-        className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        className="block w-full p-2 border border-gray-300 rounded-md focus:outline-hidden focus:border-blue-500"
       />
       <RoleSelect
         value={form.role_id || 0}
