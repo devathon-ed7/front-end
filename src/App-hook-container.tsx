@@ -1,18 +1,18 @@
-import AppRouter from "@/router/app-router";
 import App from "./App";
-import { ThemeProvider } from "./components/theme-provider";
-import { Toaster } from "./components/UI/sonner";
+import AppRouter from "./core/router/app-router";
+import { ThemeProvider } from "./shared/components/theme-provider";
+import { Toaster } from "./shared/components/UI/sonner";
 
 
 function AppHookContainer() {
   return (
     <ThemeProvider>
       <AppRouter>
-        
-          <App />
-        <Toaster /> 
+
+        <App />
+        <Toaster />
       </AppRouter>
-      
+
     </ThemeProvider>
   );
 }
