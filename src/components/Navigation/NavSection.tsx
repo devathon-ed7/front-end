@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const NavSection = ({ children }: Props) => (
-  <div className="flex flex-col gap-0.5 p-4 bg-gray-800 flex-grow overflow-y-auto">
+  <div className="flex flex-col gap-0.5 p-4 bg-gray-800 grow overflow-y-auto">
     {children}
   </div>
 );
