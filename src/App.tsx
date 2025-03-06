@@ -1,17 +1,25 @@
-import { SnackbarProvider } from "notistack";
-import { BrowserRouter } from "react-router-dom";
-import { MainRouter } from "./router/MainRouter";
-import { AppTheme } from "./theme/AppTheme";
+import { useEffect } from "react";
+import { Fragment } from "react/jsx-runtime";
+import { useNavigate } from "react-router-dom";
+import { useGithubOauth } from "./modules/auth/hooks/use-github-oauth";
 
-function App() {
+
+const App = () => {
+  const { GithubCallback } = useGithubOauth();
+  const navigate = useNavigate();
+  const tokenFromURL = new URLSearchParams(window.location.search).get('access_token');
+
+  useEffect(() => {
+    if (tokenFromURL) {
+      GithubCallback(tokenFromURL);
+      navigate("/home");
+    }
+  }, [tokenFromURL, navigate, GithubCallback]);
+
   return (
-    <BrowserRouter>
-      <AppTheme>
-        <SnackbarProvider maxSnack={3}>
-          <MainRouter />
-        </SnackbarProvider>
-      </AppTheme>
-    </BrowserRouter>
+    <Fragment>
+
+    </Fragment>
   );
 }
 
