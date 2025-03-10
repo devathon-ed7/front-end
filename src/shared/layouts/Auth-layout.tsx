@@ -14,7 +14,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
         loading="lazy"
         alt="background"
       />
-      <div  className="flex flex-col items-center pt-12 h-screen w-screen gap-4 lg:gap-8 text-[0.6875em] lg:text-base">{children}</div>
+      <div  className="flex flex-col items-center h-screen w-screen">{children}</div>
     </Fragment>
   );
 };

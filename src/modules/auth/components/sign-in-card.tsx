@@ -6,9 +6,10 @@ import { useState } from "react";
 import { SignInFlow } from "../types/types";
 import { t } from "i18next";
 import { Button } from "@/shared/components/UI/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/components/UI/card";
+
 import { SignInForm } from "./sign-in-form";
 import { Separator } from "@/shared/components/UI/separator";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/UI/card";
 
 interface SignInCardProps {
   setState: (state: SignInFlow) => void;
