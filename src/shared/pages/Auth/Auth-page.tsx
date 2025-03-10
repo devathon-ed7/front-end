@@ -1,11 +1,12 @@
 import { useRef, useState } from "react";
 
-import { t } from "i18next";
+
 import AuthLayout from "@/shared/layouts/Auth-layout";
 import { GithubClientId, GoogleClientId, GoogleRedirectUri, GoogleScope } from "@/core/constants/API";
 import { SignInCard } from "@/modules/auth/components/sign-in-card";
 import { SignUpCard } from "@/modules/auth/components/sign-up-card";
 import { SignInFlow } from "@/modules/auth/types/types";
+import { t } from "i18next";
 
 
 
@@ -43,6 +44,7 @@ const AuthPage = () => {
         <h1 className="text-white text-4xl font-bold">{t("auth.title")}</h1>
         <h2 className="text-white text-2xl font-bold">{t("auth.subtitle")}</h2>
       </div>
+      
       <div className="md:h-auto md:w-[420px]">
         {
           state === "signIn" ? <SignInCard setState={setState} loginWithGitHub={loginWithGitHub} loginWithGoogle={loginWithGoogle} />
@@ -50,6 +52,7 @@ const AuthPage = () => {
             <SignUpCard setState={setState} loginWithGitHub={loginWithGitHub} loginWithGoogle={loginWithGoogle}
             />}
       </div>
+      
     </AuthLayout>
   );
 };

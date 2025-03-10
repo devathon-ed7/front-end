@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Route } from "react-router-dom";
 import PrivateRoutes from "./private-routes";
 import RoutesWithNotFound from "./routes-with-not-found";
+import PrivateGuard from "./private-guard";
+import AuthPage from "@/shared/pages/Auth/Auth-page";
 
 interface AppRouterProps {
   children: ReactNode;
@@ -11,11 +13,11 @@ const AppRouter = ({ children }: AppRouterProps) => {
   return (
     <BrowserRouter>
       <RoutesWithNotFound>
-        {/* <Route path="/" element={<Navigate to="/auth/login" />} /> */}
-        {/* <Route path="auth/login" element={<AuthPage />} /> */}
-        {/* <Route element={<PrivateGuard />}> */}
+        <Route path="/" element={<Navigate to="/auth/login" />} /> 
+         <Route path="auth/login" element={<AuthPage />} /> 
+         <Route element={<PrivateGuard />}> 
           <Route path="/*" element={<PrivateRoutes />} />
-        {/* </Route> */}
+        </Route> 
       </RoutesWithNotFound>
       {children}
     </BrowserRouter>
