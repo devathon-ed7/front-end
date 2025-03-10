@@ -35,7 +35,7 @@ const AuthPage = () => {
 
   return (
     <AuthLayout>
-      <div className="flex flex-col items-center space-y-1 text-center text-shadow">
+      <div className="flex flex-col items-center p-8 text-center text-shadow">
         <img
           src={imageUrlRef.current}
           alt={imageNameRef.current}
