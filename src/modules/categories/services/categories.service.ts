@@ -1,34 +1,16 @@
-import { API, baseUrl } from "@/core/constants/API";
-import { getTokenFromSessionStorage } from "@/core/utils";
+import { apiGet } from "@/core/config/axiosConfig";
 import { ResponseCategories } from "../interfaces/categories.interface";
 
 
-const getCategories = async (): Promise<ResponseCategories> => {
+const getCategories = async () => {
   try {
-    const token = getTokenFromSessionStorage();
-
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-
-    const resp = await fetch(`${API + baseUrl}/categories`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const respJson = await resp.json();
-    if (!resp.ok) {
-      throw new Error(respJson.error);
-    }
-
-    return respJson;
+    await apiGet<ResponseCategories>("/categories")
   } catch (error) {
-    throw (error as Error).message;
+    if (error instanceof Error) {
+      throw error.message
+    }
+    throw String(error)
   }
-};
+}
 
 export default { getCategories };
