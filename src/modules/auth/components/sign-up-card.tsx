@@ -5,7 +5,13 @@ import { useState } from "react";
 import { SignUpForm } from "./sign-up-form";
 import { t } from "i18next";
 import { Button } from "@/shared/components/UI/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/components/UI/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/shared/components/UI/card";
 import { Separator } from "@/shared/components/UI/separator";
 
 interface SignUpCardProps {
@@ -13,19 +19,19 @@ interface SignUpCardProps {
   loginWithGitHub: () => void;
   loginWithGoogle: () => void;
 }
-export const SignUpCard = ({ setState, loginWithGitHub, loginWithGoogle }: SignUpCardProps) => {
-
-
+export const SignUpCard = ({
+  setState,
+  loginWithGitHub,
+  loginWithGoogle,
+}: SignUpCardProps) => {
   const [error] = useState("");
-
-
-
-
 
   return (
     <Card className="w-full h-full p-8">
       <CardHeader className="px-0 pt-0">
-        <CardTitle className="text-lg font-medium">{t("auth.signUpToContinue")}</CardTitle>
+        <CardTitle className="text-lg font-medium">
+          {t("auth.signUpToContinue")}
+        </CardTitle>
       </CardHeader>
       <CardDescription>{t("auth.useEmailPassword")}</CardDescription>
       {!!error && (

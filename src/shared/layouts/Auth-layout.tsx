@@ -14,7 +14,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
         loading="lazy"
         alt="background"
       />
-      <div  className="flex flex-col items-center h-screen w-screen">{children}</div>
+      {children}
     </Fragment>
   );
 };
