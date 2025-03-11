@@ -1,11 +1,11 @@
 import { Roles } from "../../roles/interfaces/roles.interface";
 
-export interface UserLogin {
+export interface UserLogin extends Record<string, unknown> {
   email: string;
   password: string;
 }
 
-export interface UserRegister {
+export interface UserRegister extends Record<string, unknown> {
   email: string;
   password: string;
   fullName: string;

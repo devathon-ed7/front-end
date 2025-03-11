@@ -1,122 +1,72 @@
-import { API, baseUrl } from "@/core/constants/API";
-import { getTokenFromSessionStorage } from "@/core/utils";
+import { apiGet, apiPostFormData, apiPutFormData, apiDelete } from '@/core/config/axiosConfig';
+import { User } from '../interfaces/user.interface';
 
 
-const getUsers = async () => {
+const getUsers = async (): Promise<User[]> => {
   try {
-    const token = getTokenFromSessionStorage();
-
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-
-    const resp = await fetch(`${API + baseUrl}/users`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const respJson = await resp.json();
-    if (!resp.ok) {
-      throw new Error(respJson.error);
-    }
-
-    return respJson;
+    return await apiGet<User[]>('/users');
   } catch (error) {
-    throw (error as Error).message;
-
+    if (error instanceof Error) {
+      throw error.message;
+    }
+    throw String(error);
   }
 };
 
-const userCreate = async (formData: FormData) => {
+
+const userCreate = async (formData: FormData): Promise<User> => {
   try {
-    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
-
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-    const resp = await fetch(`${API + baseUrl}/users`, {
-      method: "POST",
-      body: formData,
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const respJson = await resp.json();
-    if (!resp.ok) {
-      throw new Error(respJson.error);
-    }
-
-    return respJson;
+    return await apiPostFormData<User>('/users', formData);
   } catch (error) {
-    throw (error as Error).message;
-
+    if (error instanceof Error) {
+      throw error.message;
+    }
+    throw String(error);
   }
 };
 
-const deleteUser = async (id: string) => {
+
+const deleteUser = async (id: string): Promise<boolean> => {
   try {
-    const token = getTokenFromSessionStorage(); // Llamada a la función de extracción
-
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-    const resp = await fetch(`${API + baseUrl}/users/${id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    if (!resp.ok) {
-      const respJson = await resp.json();
-      throw new Error(respJson.error);
-    }
-
-    return resp.ok;
+    await apiDelete(`/users/${id}`);
+    return true;
   } catch (error) {
-    throw (error as Error).message;
-
+    if (error instanceof Error) {
+      throw error.message;
+    }
+    throw String(error);
   }
 };
 
-const userUpdate = async (id: number, formData: FormData) => {
+
+const userUpdate = async (id: number, formData: FormData): Promise<User> => {
   try {
-    const token = getTokenFromSessionStorage();
-
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-    const resp = await fetch(`${API + baseUrl}/users/${id}`, {
-      method: "PUT",
-      body: formData,
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const respJson = await resp.json();
-    if (!resp.ok) {
-      throw new Error(respJson.error);
-    }
-
-    return respJson;
+    return await apiPutFormData<User>(`/users/${id}`, formData);
   } catch (error) {
-    throw (error as Error).message;
-
+    if (error instanceof Error) {
+      throw error.message;
+    }
+    throw String(error);
   }
 };
+
+
+const getUserById = async (id: number | string): Promise<User> => {
+  try {
+    return await apiGet<User>(`/users/${id}`);
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error.message;
+    }
+    throw String(error);
+  }
+};
+
 
 export default {
   getUsers,
   userCreate,
   deleteUser,
   userUpdate,
+  getUserById
 };

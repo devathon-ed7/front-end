@@ -1,67 +1,38 @@
+import { apiPost } from '@/core/config/axiosConfig';
+import { User, UserLogin, UserRegister } from '@/modules/users/interfaces/user.interface';
+import { t } from 'i18next';
+interface AuthResponse {
+  user: User;
+  token: string;
+}
 
-import { API, baseUrl } from "@/core/constants/API";
-import { UserLogin, UserRegister } from "@/modules/users/interfaces/user.interface";
-import { t } from "i18next";
 
-
-const apiRequest = async (url: string, options: RequestInit) => {
+export const loginService = async (user: UserLogin): Promise<AuthResponse> => {
   try {
-    const resp = await fetch(url, options);
-    if (!resp.ok) {
-      let errorMessage;
+    return await apiPost<AuthResponse, UserLogin>('/auth/login', user);
+  } catch (error) {
+    if (error instanceof Error) {
+      const message = error.message;
 
-      switch (resp.status) {
-        case 401:
-        case 404:
-          errorMessage = t("exception.emailOrPasswordInvalid");
-          break;
-        case 400:
-          errorMessage = t("exception.invalidRequest");
-          break;
-        default:
-          errorMessage = t("exception.unknownError");
+      if (message.includes('401') || message.includes('404')) {
+        throw new Error(t('exception.emailOrPasswordInvalid'));
+      } else if (message.includes('400')) {
+        throw new Error(t('exception.invalidRequest'));
       }
 
-      throw new Error(errorMessage);
+      throw new Error(message);
     }
-
-    const result = await resp.json();
-
-    if (!result.user || !result.token) {
-      throw new Error(t("exception.invalidServerResponse"));
-    }
-    
-    return result;
-  } catch (error) {
-    const message = error instanceof Error ? error.message : t("exception.unknownError");
-    throw new Error(message);
+    throw new Error(t('exception.unknownError'));
   }
 };
 
-export const loginService = async (user: UserLogin) => {
-  const url = `${API + baseUrl}/auth/login`;
-  const options: RequestInit = {
-    method: "POST",
-    body: JSON.stringify(user),
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  };
-
-  return await apiRequest(url, options);
-};
-
-export const registerService = async (user: UserRegister) => {
-  const url = `${API + baseUrl}/auth/register`;
-  const options: RequestInit = {
-    method: "POST",
-    body: JSON.stringify(user),
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  };
-
-  return await apiRequest(url, options);
+export const registerService = async (user: UserRegister): Promise<AuthResponse> => {
+  try {
+    return await apiPost<AuthResponse, UserRegister>('/auth/register', user);
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error(t('exception.unknownError'));
+  }
 };
