@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/shared/components/theme-toggle";
 import {
   Sidebar,
   SidebarContent,
@@ -9,9 +10,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/shared/components/UI/sidebar";
-import { BlendIcon, HomeIcon } from "lucide-react";
+import { BlendIcon, BoxIcon, CirclePlusIcon, HomeIcon } from "lucide-react";
 
-const links = [
+const main = [
   {
     name: "Home",
     uri: "home",
@@ -24,6 +25,19 @@ const links = [
   },
 ];
 
+const products = [
+  {
+    name: "Add product",
+    uri: "add-product", //this change in the future
+    icon: <CirclePlusIcon />,
+  },
+  {
+    name: "Product list",
+    uri: "list-product", //this change in the future
+    icon: <BoxIcon />,
+  },
+];
+
 export const AppSidebar = () => {
   return (
     <Sidebar>
@@ -33,7 +47,7 @@ export const AppSidebar = () => {
           <SidebarGroupLabel>MAIN MENU</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {links.map((link) => (
+              {main.map((link) => (
                 <SidebarMenuItem key={link.name}>
                   <SidebarMenuButton asChild>
                     <a href={link.uri}>
@@ -43,6 +57,32 @@ export const AppSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>PRODUCTS</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {products.map((link) => (
+                <SidebarMenuItem key={link.name}>
+                  <SidebarMenuButton asChild>
+                    <a href={link.uri}>
+                      {link.icon}
+                      <span>{link.name}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Settings</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <ThemeToggle />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

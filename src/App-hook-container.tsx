@@ -4,16 +4,11 @@ import { I18nextProvider } from "react-i18next";
 import App from "./App";
 import AppRouter from "./core/router/app-router";
 import { ThemeProvider } from "./shared/components/theme-provider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import { Toaster } from "@/shared/components/UI/sonner";
-import i18n from "@/core/i18n";
-import { I18nextProvider } from "react-i18next";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
+
 function AppHookContainer() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -28,7 +23,6 @@ function AppHookContainer() {
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
-
 }
 
 export default AppHookContainer;

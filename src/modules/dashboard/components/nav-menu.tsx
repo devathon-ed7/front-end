@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppMenu } from "./app-menu";
 import { NavigationSheet } from "./navigation-sheet";
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "@/shared/components/theme-toggle";
 
 export const NavMenu = () => {
   const imageUrlRef = useRef("/android-chrome-512x512.png");

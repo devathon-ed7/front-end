@@ -88,17 +88,17 @@ const AuthPage = () => {
             </button>
           )}
 
-          {theme === "light" ? (
+          {theme === "dark" ? (
             <button
               className="text-white text-center gap-x-1.5 flex"
-              onClick={() => setTheme("dark")}
+              onClick={() => setTheme("light")}
             >
               <MoonIcon /> {t("common.dark")}
             </button>
           ) : (
             <button
               className="text-white text-center flex gap-x-1.5"
-              onClick={() => setTheme("light")}
+              onClick={() => setTheme("dark")}
             >
               <SunIcon /> {t("common.light")}
             </button>
