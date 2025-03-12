@@ -2,14 +2,13 @@ import { NavMenu } from "@/modules/dashboard/components/nav-menu";
 import { FloatingMenu } from "../components/Menu/FloatingMenu";
 
 export const DashboardLayout = () => {
+	return (
+		<div className="container-darshboard-layout ">
+			<div className="container-dashboard-grid">
+				<NavMenu />
 
-  return (
-    <div className="container-darshboard-layout ">
-      <div className="container-dashboard-grid">
-        <NavMenu />
-        
-        <FloatingMenu />
-        {/*
+				<FloatingMenu />
+				{/*
         <div className="dashboard-content">
           <Header />
           <div className="flex p-2">
@@ -18,7 +17,7 @@ export const DashboardLayout = () => {
           </div>
         </div>
         */}
-      </div>
-    </div>
-  );
+			</div>
+		</div>
+	);
 };

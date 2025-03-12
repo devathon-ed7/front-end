@@ -1,7 +1,3 @@
 export const RolePages = () => {
-  return (
-    <div>
-      RolePage
-    </div>
-  );
+	return <div>RolePage</div>;
 };
