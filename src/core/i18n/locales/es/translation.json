@@ -44,6 +44,9 @@
     "home": "Inicio",
     "categories": "Categorias",
     "addProduct": "Agregar producto",
-    "listProduct": "Lista de productos"
+    "listProduct": "Lista de productos",
+    "mainMenu": "MENU PRINCIPAL",
+    "productsMenu": "PRODUCTOS",
+    "settingsMenu": "CONFIGURACIONES"
   }
 }

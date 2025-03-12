@@ -45,6 +45,9 @@
     "home": "Home",
     "categories": "Categories",
     "addProduct": "Add product",
-    "listProduct": "Product's list"
+    "listProduct": "Product's list",
+    "mainMenu": "MAIN MENU",
+    "productsMenu": "PRODUCTS",
+    "settingsMenu": "SETTINGS"
   }
 }

@@ -51,7 +51,7 @@ export const AppSidebar = () => {
       <SidebarHeader />
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>MAIN MENU</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("sidebar.mainMenu")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {getMainLinks().map((link) => (
@@ -68,7 +68,7 @@ export const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>PRODUCTS</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("sidebar.productsMenu")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {getProductLinks().map((link) => (
@@ -86,7 +86,7 @@ export const AppSidebar = () => {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Settings</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("sidebar.settingsMenu")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <ThemeToggle />
