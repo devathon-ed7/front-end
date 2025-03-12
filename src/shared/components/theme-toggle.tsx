@@ -6,6 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/components/UI/dropdown-menu";
 import { useTheme } from "@/shared/components/theme-provider";
+import { t } from "i18next";
 import { Moon, Sun } from "lucide-react";
 
 export function ThemeToggle() {
@@ -22,10 +23,10 @@ export function ThemeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
+          {t("common.light")}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
+          {t("common.dark")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
