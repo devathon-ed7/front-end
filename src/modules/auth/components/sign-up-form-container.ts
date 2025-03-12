@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/use-auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { useAuth } from "../hooks/useAuth";
 import { useAuthStore } from "../store/auth-store";
 
 interface SignUpForm {
