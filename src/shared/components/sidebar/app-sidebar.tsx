@@ -10,35 +10,42 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/shared/components/UI/sidebar";
+import { t } from "i18next";
 import { BlendIcon, BoxIcon, CirclePlusIcon, HomeIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const main = [
+const getMainLinks = () => [
   {
-    name: "Home",
+    name: t("sidebar.home"),
     uri: "home",
     icon: <HomeIcon />,
   },
   {
-    name: "Categories",
+    name: t("sidebar.categories"),
     uri: "categories",
     icon: <BlendIcon />,
   },
 ];
 
-const products = [
+const getProductLinks = () => [
   {
-    name: "Add product",
+    name: t("sidebar.addProduct"),
     uri: "add-product", //this change in the future
     icon: <CirclePlusIcon />,
   },
   {
-    name: "Product list",
+    name: t("sidebar.listProduct"),
     uri: "list-product", //this change in the future
     icon: <BoxIcon />,
   },
 ];
 
 export const AppSidebar = () => {
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
   return (
     <Sidebar>
       <SidebarHeader />
@@ -47,7 +54,7 @@ export const AppSidebar = () => {
           <SidebarGroupLabel>MAIN MENU</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {main.map((link) => (
+              {getMainLinks().map((link) => (
                 <SidebarMenuItem key={link.name}>
                   <SidebarMenuButton asChild>
                     <a href={link.uri}>
@@ -64,7 +71,7 @@ export const AppSidebar = () => {
           <SidebarGroupLabel>PRODUCTS</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {products.map((link) => (
+              {getProductLinks().map((link) => (
                 <SidebarMenuItem key={link.name}>
                   <SidebarMenuButton asChild>
                     <a href={link.uri}>
@@ -83,6 +90,24 @@ export const AppSidebar = () => {
           <SidebarGroupContent>
             <SidebarMenu>
               <ThemeToggle />
+
+              {currentLanguage === "en" ? (
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                    <button onClick={() => changeLanguage("es")}>
+                      English
+                    </button>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ) : (
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                    <button onClick={() => changeLanguage("en")}>
+                      Español
+                    </button>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              )}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

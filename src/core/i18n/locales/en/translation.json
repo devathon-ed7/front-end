@@ -1,44 +1,50 @@
 {
-	"common": {
-		"loading": "Loading...",
-		"submit": "Submit",
-		"cancel": "Cancel",
-		"delete": "Delete",
-		"edit": "Edit",
-		"create": "Create",
-		"close": "Close",
-		"back": "Back",
-		"save": "Save",
-		"light": "Light",
-		"dark": "Dark"
-	},
-	"auth": {
-		"title": "Track inventory",
-		"subtitle": "Optimze, control, grow",
-		"email": "Email",
-		"username": "Username",
-		"password": "Password",
-		"login": "Login",
-		"forgotPassword": "Forgot password?",
-		"register": "Register",
-		"submit": "Submit",
-		"fullName": "Full name",
-		"confirmPassword": "Confirm password",
-		"signUp": "Sign up",
-		"signIn": "Sign in",
-		"dontHaveAccount": "Don't have an account?",
-		"continueWithGithub": "Continue with Github",
-		"continueWithGoogle": "Continue with Google",
-		"useEmailPassword": "Use your email and password to sign in.",
-		"alreadyHaveAccount": "Already have an account?",
-		"signUpToContinue": "Sign up to continue",
-		"loginToContinue": "Login to continue"
-	},
+  "common": {
+    "loading": "Loading...",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "close": "Close",
+    "back": "Back",
+    "save": "Save",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "auth": {
+    "title": "Track inventory",
+    "subtitle": "Optimze, control, grow",
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "forgotPassword": "Forgot password?",
+    "register": "Register",
+    "submit": "Submit",
+    "fullName": "Full name",
+    "confirmPassword": "Confirm password",
+    "signUp": "Sign up",
+    "signIn": "Sign in",
+    "dontHaveAccount": "Don't have an account?",
+    "continueWithGithub": "Continue with Github",
+    "continueWithGoogle": "Continue with Google",
+    "useEmailPassword": "Use your email and password to sign in.",
+    "alreadyHaveAccount": "Already have an account?",
+    "signUpToContinue": "Sign up to continue",
+    "loginToContinue": "Login to continue"
+  },
 
-	"exception": {
-		"emailOrPasswordInvalid": "email or password invalid",
-		"invalidRequest": "The request is invalid.",
-		"unknownError": " An unknown error occurred.",
-		"invalidServerResponse": "Invalid server response."
-	}
+  "exception": {
+    "emailOrPasswordInvalid": "email or password invalid",
+    "invalidRequest": "The request is invalid.",
+    "unknownError": " An unknown error occurred.",
+    "invalidServerResponse": "Invalid server response."
+  },
+  "sidebar": {
+    "home": "Home",
+    "categories": "Categories",
+    "addProduct": "Add product",
+    "listProduct": "Product's list"
+  }
 }

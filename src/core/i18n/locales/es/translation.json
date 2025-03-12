@@ -1,43 +1,49 @@
 {
-	"common": {
-		"loading": "Cargando...",
-		"submit": "Enviar",
-		"cancel": "Cancelar",
-		"delete": "Eliminar",
-		"edit": "Editar",
-		"create": "Crear",
-		"close": "Cerrar",
-		"back": "Atrás",
-		"save": "Guardar",
-		"light": "Claro",
-		"dark": "Oscuro"
-	},
-	"auth": {
-		"title": "Track inventory",
-		"subtitle": "Optimiza, controla, crece",
-		"email": "Email",
-		"username": "Nombre de usuario",
-		"password": "Contraseña",
-		"login": "Iniciar sesión",
-		"forgotPassword": "¿Olvidaste tu contraseña?",
-		"register": "Registrarse",
-		"submit": "Enviar",
-		"fullName": "Nombre completo",
-		"confirmPassword": "Confirmar contraseña",
-		"signUp": "Regístrate",
-		"signIn": "Iniciar sesión",
-		"dontHaveAccount": "¿No tienes una cuenta?",
-		"continueWithGithub": "Continúa con Github",
-		"continueWithGoogle": "Continúa con Google",
-		"useEmailPassword": "Utiliza tu correo electrónico y contraseña para iniciar sesión.",
-		"alreadyHaveAccount": "¿Ya tienes una cuenta?",
-		"signUpToContinue": "Regístrate para continuar",
-		"loginToContinue": "Iniciar sesión para continuar"
-	},
-	"exception": {
-		"emailOrPasswordInvalid": "El correo electrónico o la contraseña son inválidos.",
-		"invalidRequest": "La solicitud es inválida.",
-		"unknownError": "Ocurrió un error desconocido.",
-		"invalidServerResponse": "Respuesta inválida del servidor."
-	}
+  "common": {
+    "loading": "Cargando...",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "save": "Guardar",
+    "light": "Claro",
+    "dark": "Oscuro"
+  },
+  "auth": {
+    "title": "Track inventory",
+    "subtitle": "Optimiza, controla, crece",
+    "email": "Email",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "login": "Iniciar sesión",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "register": "Registrarse",
+    "submit": "Enviar",
+    "fullName": "Nombre completo",
+    "confirmPassword": "Confirmar contraseña",
+    "signUp": "Regístrate",
+    "signIn": "Iniciar sesión",
+    "dontHaveAccount": "¿No tienes una cuenta?",
+    "continueWithGithub": "Continúa con Github",
+    "continueWithGoogle": "Continúa con Google",
+    "useEmailPassword": "Utiliza tu correo electrónico y contraseña para iniciar sesión.",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "signUpToContinue": "Regístrate para continuar",
+    "loginToContinue": "Iniciar sesión para continuar"
+  },
+  "exception": {
+    "emailOrPasswordInvalid": "El correo electrónico o la contraseña son inválidos.",
+    "invalidRequest": "La solicitud es inválida.",
+    "unknownError": "Ocurrió un error desconocido.",
+    "invalidServerResponse": "Respuesta inválida del servidor."
+  },
+  "sidebar": {
+    "home": "Inicio",
+    "categories": "Categorias",
+    "addProduct": "Agregar producto",
+    "listProduct": "Lista de productos"
+  }
 }
