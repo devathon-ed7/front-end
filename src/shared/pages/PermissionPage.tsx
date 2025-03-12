@@ -1,8 +1,3 @@
-
 export const PermissionPage = () => {
-  return (
-    <div>
-      PermissionPage
-    </div>
-  );
+	return <div>PermissionPage</div>;
 };

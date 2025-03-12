@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 
-import AuthLayout from "@/shared/layouts/Auth-layout";
 import {
   GithubClientId,
   GoogleClientId,
@@ -10,10 +9,11 @@ import {
 import { SignInCard } from "@/modules/auth/components/sign-in-card";
 import { SignUpCard } from "@/modules/auth/components/sign-up-card";
 import { SignInFlow } from "@/modules/auth/types/types";
-import { t } from "i18next";
-import { useTranslation } from "react-i18next";
-import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "@/shared/components/theme-provider";
+import AuthLayout from "@/shared/layouts/Auth-layout";
+import { t } from "i18next";
+import { MoonIcon, SunIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const AuthPage = () => {
   const imageUrlRef = useRef("/android-chrome-512x512.png");

@@ -1,14 +1,14 @@
 //Categorias
-export *  from "./Category/Category.page";
+export * from "./Category/Category.page";
 //Home
 export * from "./Home/Home.page";
 //Login
-export *  from "./Auth/Auth-page";
-//Productos  
-export *  from "./Product/Product.page";
+export * from "./Auth/Auth-page";
+//Productos
+export * from "./Product/Product.page";
 //Usuarios
 export * from "./User/User.page";
-export *  from "./User/UserNew.page";
+export * from "./User/UserNew.page";
 //Roles
-export *  from "./RolesPage";
-export *  from "./PermissionPage";
+export * from "./RolesPage";
+export * from "./PermissionPage";

@@ -1,5 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/modules/auth/hooks/useAuth";
+import { Avatar, AvatarFallback } from "@/shared/components/UI/avatar";
+import { Button } from "@/shared/components/UI/button";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppMenu } from "./app-menu";
 import { NavigationSheet } from "./navigation-sheet";
 import { ThemeToggle } from "./theme-toggle";

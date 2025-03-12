@@ -1,10 +1,9 @@
 import { useProductStore } from "../store/product.store";
 
-
 export const useProductStoreActions = () => {
-  const products = useProductStore((state) => state.products);
+	const products = useProductStore((state) => state.products);
 
-  return { products };
+	return { products };
 };
 
 // export const useProductStoreActions = () => {
