@@ -3,28 +3,28 @@ import { API, baseUrl } from "../constants/API";
 import { getTokenFromSessionStorage } from "../utils";
 
 export type QueryParams = Record<
-	string,
-	string | number | boolean | null | undefined
+  string,
+  string | number | boolean | null | undefined
 >;
 export type RequestData = Record<string, unknown> | FormData;
 
 const axiosInstance = axios.create({
-	baseURL: API + baseUrl,
-	headers: {
-		Accept: "application/json",
-		"Content-Type": "application/json",
-	},
+  baseURL: API + baseUrl,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json; charset=utf-8",
+  },
 });
 
 axiosInstance.interceptors.request.use(
-	(config) => {
-		const token = getTokenFromSessionStorage();
-		if (token) {
-			config.headers.authorization = `Bearer ${token}`;
-		}
-		return config;
-	},
-	(error) => Promise.reject(error),
+  (config) => {
+    const token = getTokenFromSessionStorage();
+    if (token) {
+      config.headers.authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
 );
 
 /**
@@ -34,22 +34,22 @@ axiosInstance.interceptors.request.use(
  * @returns Promise con los datos de la respuesta
  */
 export const apiRequest = async <T>(config: AxiosRequestConfig): Promise<T> => {
-	try {
-		const token = getTokenFromSessionStorage();
-		if (!token) {
-			throw new Error(
-				"No se encontró el token. El usuario puede no estar autenticado.",
-			);
-		}
+  try {
+    const token = getTokenFromSessionStorage();
+    /* if (!token) {
+      throw new Error(
+        "No se encontró el token. El usuario puede no estar autenticado."
+      );
+    }*/
 
-		const response: AxiosResponse<T> = await axiosInstance(config);
-		return response.data;
-	} catch (error) {
-		if (error instanceof Error) {
-			throw error.message;
-		}
-		throw String(error);
-	}
+    const response: AxiosResponse<T> = await axiosInstance(config);
+    return response.data;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error.message;
+    }
+    throw String(error);
+  }
 };
 
 /**
@@ -60,7 +60,7 @@ export const apiRequest = async <T>(config: AxiosRequestConfig): Promise<T> => {
  * @returns Promise con los datos de la respuesta
  */
 export const apiGet = <T>(url: string, params?: QueryParams): Promise<T> => {
-	return apiRequest<T>({ method: "GET", url, params });
+  return apiRequest<T>({ method: "GET", url, params });
 };
 
 /**
@@ -72,13 +72,13 @@ export const apiGet = <T>(url: string, params?: QueryParams): Promise<T> => {
  * @returns Promise con los datos de la respuesta
  */
 export const apiPost = <
-	T,
-	D extends Record<string, unknown> = Record<string, unknown>,
+  T,
+  D extends Record<string, unknown> = Record<string, unknown>
 >(
-	url: string,
-	data: D,
+  url: string,
+  data: D
 ): Promise<T> => {
-	return apiRequest<T>({ method: "POST", url, data });
+  return apiRequest<T>({ method: "POST", url, data });
 };
 
 /**
@@ -90,13 +90,13 @@ export const apiPost = <
  * @returns Promise con los datos de la respuesta
  */
 export const apiPut = <
-	T,
-	D extends Record<string, unknown> = Record<string, unknown>,
+  T,
+  D extends Record<string, unknown> = Record<string, unknown>
 >(
-	url: string,
-	data: D,
+  url: string,
+  data: D
 ): Promise<T> => {
-	return apiRequest<T>({ method: "PUT", url, data });
+  return apiRequest<T>({ method: "PUT", url, data });
 };
 
 /**
@@ -106,7 +106,7 @@ export const apiPut = <
  * @returns Promise con los datos de la respuesta
  */
 export const apiDelete = <T>(url: string): Promise<T> => {
-	return apiRequest<T>({ method: "DELETE", url });
+  return apiRequest<T>({ method: "DELETE", url });
 };
 
 /**
@@ -117,17 +117,17 @@ export const apiDelete = <T>(url: string): Promise<T> => {
  * @returns Promise con los datos de la respuesta
  */
 export const apiPostFormData = <T>(
-	url: string,
-	formData: FormData,
+  url: string,
+  formData: FormData
 ): Promise<T> => {
-	return apiRequest<T>({
-		method: "POST",
-		url,
-		data: formData,
-		headers: {
-			"Content-Type": "multipart/form-data",
-		},
-	});
+  return apiRequest<T>({
+    method: "POST",
+    url,
+    data: formData,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
 /**
@@ -138,25 +138,25 @@ export const apiPostFormData = <T>(
  * @returns Promise con los datos de la respuesta
  */
 export const apiPutFormData = <T>(
-	url: string,
-	formData: FormData,
+  url: string,
+  formData: FormData
 ): Promise<T> => {
-	return apiRequest<T>({
-		method: "PUT",
-		url,
-		data: formData,
-		headers: {
-			"Content-Type": "multipart/form-data",
-		},
-	});
+  return apiRequest<T>({
+    method: "PUT",
+    url,
+    data: formData,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
 export default {
-	apiGet,
-	apiPost,
-	apiPut,
-	apiDelete,
-	apiPostFormData,
-	apiPutFormData,
-	apiRequest,
+  apiGet,
+  apiPost,
+  apiPut,
+  apiDelete,
+  apiPostFormData,
+  apiPutFormData,
+  apiRequest,
 };
