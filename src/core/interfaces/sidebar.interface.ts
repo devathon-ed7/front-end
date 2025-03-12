@@ -1,4 +1,4 @@
 export interface SidebarStore {
-  isVisible: boolean;
-  toggleNavSection: () => void;
+	isVisible: boolean;
+	toggleNavSection: () => void;
 }
