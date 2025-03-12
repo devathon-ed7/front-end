@@ -1,24 +1,19 @@
-import { NavMenu } from "@/modules/dashboard/components/nav-menu";
-import { FloatingMenu } from "../components/Menu/FloatingMenu";
+import { Outlet } from "react-router-dom";
+import { AppSidebar } from "@/shared/components/sidebar/app-sidebar";
+import { SidebarProvider, SidebarTrigger } from "../components/UI/sidebar";
 
 export const DashboardLayout = () => {
-
   return (
-    <div className="container-darshboard-layout ">
-      <div className="container-dashboard-grid">
-        <NavMenu />
-        
-        <FloatingMenu />
-        {/*
-        <div className="dashboard-content">
-          <Header />
-          <div className="flex p-2">
-            Breadcumb
-            <Outlet />
-          </div>
+    <SidebarProvider>
+      <AppSidebar />
+
+      <div className="flex flex-col grow w-full h-full">
+        <SidebarTrigger />
+        <div className="flex p-2">
+          Breadcumb
+          <Outlet />
         </div>
-        */}
       </div>
-    </div>
+    </SidebarProvider>
   );
 };

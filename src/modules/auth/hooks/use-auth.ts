@@ -1,16 +1,20 @@
 import { toast } from "sonner";
 import { t } from "i18next";
-import { UserLogin, UserRegister } from "@/modules/users/interfaces/user.interface";
-import { loginService, registerService } from "../services/auth-service";
-import { useAuthStore } from "../store/auth-store";
-
+import {
+  UserLogin,
+  UserRegister,
+} from "@/modules/users/interfaces/user.interface";
+import { useAuthStore } from "@/modules/auth/store/auth-store";
+import {
+  loginService,
+  registerService,
+} from "@/modules/auth/services/auth-service";
 
 export const useAuth = () => {
   const setOnChecking = useAuthStore((state) => state.setChecking);
   const setStatus = useAuthStore((state) => state.setStatus);
   const setUser = useAuthStore((state) => state.setUser);
   const setToken = useAuthStore((state) => state.setToken);
-
 
   const Login = async (user: UserLogin) => {
     try {
@@ -20,7 +24,7 @@ export const useAuth = () => {
       setUser(result.user);
       setToken(result.token);
     } catch (error: unknown) {
-      if (typeof error === 'string') {
+      if (typeof error === "string") {
         toast(error);
       } else if (error instanceof Error) {
         toast(error.message);
@@ -46,7 +50,7 @@ export const useAuth = () => {
       setUser(result.user);
       setToken(result.token);
     } catch (error: unknown) {
-      if (typeof error === 'string') {
+      if (typeof error === "string") {
         toast(error);
       } else if (error instanceof Error) {
         toast(error.message);
@@ -57,8 +61,6 @@ export const useAuth = () => {
       setOnChecking(false);
     }
   };
-
-
 
   return {
     Login,

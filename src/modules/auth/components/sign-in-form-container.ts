@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
-import { useAuthStore } from "../store/auth-store";
 
-interface SignInForm {
-  email: string;
-  password: string;
-}
+import { toast } from "sonner";
+
+import { useAuth } from "@/modules/auth/hooks/use-auth";
+import { useAuthStore } from "@/modules/auth/store/auth-store";
+import { UserLogin } from "@/modules/users/interfaces/user.interface";
 
 export const SignInFormContainer = () => {
-  const [form, setForm] = useState<SignInForm>({ email: "", password: "" });
+  const [form, setForm] = useState<UserLogin>({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -33,8 +31,6 @@ export const SignInFormContainer = () => {
 
     setLoading(false);
     navigate("/home");
-
-
   };
 
   useEffect(() => {
