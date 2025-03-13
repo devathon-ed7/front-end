@@ -1,21 +1,32 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Fragment } from "react/jsx-runtime";
-import { useGithubOauth } from "./modules/auth/hooks/use-github-oauth";
+import { useOauth } from "./modules/auth/hooks/use-oauth";
 
 const App = () => {
-	const { GithubCallback } = useGithubOauth();
+	const { setOauthUser } = useOauth();
 	const navigate = useNavigate();
 	const tokenFromURL = new URLSearchParams(window.location.search).get(
 		"access_token",
 	);
+	const userNameFromURL = new URLSearchParams(window.location.search).get("name");
+	const userEmailFromURL = new URLSearchParams(window.location.search).get("email");
+	const userAvatarFromURL = new URLSearchParams(window.location.search).get("picture");
+
+	const userData = {
+		fullName: userNameFromURL || undefined,
+		email: userEmailFromURL || undefined,
+		user_details: {
+			profile_filename: userAvatarFromURL || null, 
+		},
+	};
 
 	useEffect(() => {
 		if (tokenFromURL) {
-			GithubCallback(tokenFromURL);
+			setOauthUser(tokenFromURL, userData);
 			navigate("/home");
 		}
-	}, [tokenFromURL, navigate, GithubCallback]);
+	}, [tokenFromURL, userData,navigate, setOauthUser]);
 
 	return <Fragment></Fragment>;
 };
