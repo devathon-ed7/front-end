@@ -5,10 +5,8 @@ import {
   UserRegister,
 } from "@/modules/users/interfaces/user.interface";
 import { useAuthStore } from "@/modules/auth/store/auth-store";
-import {
-  loginService,
-  registerService,
-} from "@/modules/auth/services/auth-service";
+import { authService } from "@/modules/auth/services/auth-service";
+import { useMutation } from "@tanstack/react-query";
 
 export const useAuth = () => {
   const setOnChecking = useAuthStore((state) => state.setChecking);
@@ -16,14 +14,18 @@ export const useAuth = () => {
   const setUser = useAuthStore((state) => state.setUser);
   const setToken = useAuthStore((state) => state.setToken);
 
-  const Login = async (user: UserLogin) => {
-    try {
+  const loginMutation = useMutation({
+    mutationFn: async (user: UserLogin) => {
       setOnChecking(true);
-      const result = await loginService(user);
+      const result = await authService.login(user);
+      return result;
+    },
+    onSuccess: (result) => {
       setStatus("authenticated");
       setUser(result.user);
       setToken(result.token);
-    } catch (error: unknown) {
+    },
+    onError: (error: unknown) => {
       if (typeof error === "string") {
         toast(error);
       } else if (error instanceof Error) {
@@ -31,9 +33,39 @@ export const useAuth = () => {
       } else {
         toast(t("exception.unknown_error"));
       }
-    } finally {
+    },
+    onSettled: () => {
       setOnChecking(false);
-    }
+    },
+  }); //loginMutation
+
+  const registerMutation = useMutation({
+    mutationFn: async (user: UserRegister) => {
+      setOnChecking(true);
+      const result = await authService.register(user);
+      return result;
+    },
+    onSuccess: (result) => {
+      setStatus("authenticated");
+      setUser(result.user);
+      setToken(result.token);
+    },
+    onError: (error: unknown) => {
+      if (typeof error === "string") {
+        toast(error);
+      } else if (error instanceof Error) {
+        toast(error.message);
+      } else {
+        toast(t("exception.unknown_error"));
+      }
+    },
+    onSettled: () => {
+      setOnChecking(false);
+    },
+  }); //registerMutation
+
+  const Login = (user: UserLogin) => {
+    loginMutation.mutate(user);
   };
 
   const Logout = async () => {
@@ -42,29 +74,15 @@ export const useAuth = () => {
     setToken("");
   };
 
-  const Register = async (user: UserRegister) => {
-    try {
-      setOnChecking(true);
-      const result = await registerService(user);
-      setStatus("authenticated");
-      setUser(result.user);
-      setToken(result.token);
-    } catch (error: unknown) {
-      if (typeof error === "string") {
-        toast(error);
-      } else if (error instanceof Error) {
-        toast(error.message);
-      } else {
-        toast(t("exception.unknown_error"));
-      }
-    } finally {
-      setOnChecking(false);
-    }
+  const Register = (user: UserRegister) => {
+    registerMutation.mutate(user);
   };
 
   return {
     Login,
     Logout,
     Register,
+    isPending: loginMutation.isPending || registerMutation.isPending,
+    error: loginMutation.error || registerMutation.error,
   };
 };
