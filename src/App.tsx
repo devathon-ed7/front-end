@@ -14,7 +14,7 @@ const App = () => {
 	const userAvatarFromURL = new URLSearchParams(window.location.search).get("picture");
 
 	const userData = {
-		fullName: userNameFromURL || undefined,
+		full_name: userNameFromURL || undefined,
 		email: userEmailFromURL || undefined,
 		user_details: {
 			profile_filename: userAvatarFromURL || null, 

@@ -15,7 +15,7 @@ export interface User {
 	id?: number;
 	email?: string;
 	password?: string;
-	fullName?: string;
+	full_name?: string;
 	user_details?: UserDetails;
 }
 export interface UserDetails {

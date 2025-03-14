@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 import { toast } from "sonner";
 
 import { useAuth } from "@/modules/auth/hooks/use-auth";
@@ -16,21 +14,17 @@ export const SignInFormContainer = () => {
   const errorMessage = useAuthStore((state) => state.errorMessage);
 
   const { Login } = useAuth();
-  const navigate = useNavigate();
+  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
+  const handleSubmit =  (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
     setLoading(true);
-
-    await Login(form);
-
-    setLoading(false);
-    navigate("/home");
+    Login(form);
   };
 
   useEffect(() => {

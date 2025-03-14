@@ -1,3 +1,5 @@
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { t } from "i18next";
 import { toast } from "sonner";
 import {
@@ -6,13 +8,15 @@ import {
 } from "@/modules/users/interfaces/user.interface";
 import { useAuthStore } from "@/modules/auth/store/auth-store";
 import { authService } from "@/modules/auth/services/auth-service";
-import { useMutation } from "@tanstack/react-query";
+
 
 export const useAuth = () => {
+  const navigate = useNavigate();
   const setOnChecking = useAuthStore((state) => state.setChecking);
   const setStatus = useAuthStore((state) => state.setStatus);
   const setUser = useAuthStore((state) => state.setUser);
   const setToken = useAuthStore((state) => state.setToken);
+
 
   const loginMutation = useMutation({
     mutationFn: async (user: UserLogin) => {
@@ -24,6 +28,7 @@ export const useAuth = () => {
       setStatus("authenticated");
       setUser(result.user);
       setToken(result.token);
+      navigate("/home");
     },
     onError: (error: unknown) => {
       if (typeof error === "string") {
@@ -42,8 +47,8 @@ export const useAuth = () => {
   const registerMutation = useMutation({
     mutationFn: async (user: UserRegister) => {
       setOnChecking(true);
-      const result = await authService.register(user);
-      return result;
+      return await authService.register(user);
+      
     },
     onSuccess: (result) => {
       setStatus("authenticated");
@@ -83,6 +88,7 @@ export const useAuth = () => {
     Logout,
     Register,
     isPending: loginMutation.isPending || registerMutation.isPending,
+    isSuccess: loginMutation.isSuccess || registerMutation.isSuccess,
     error: loginMutation.error || registerMutation.error,
   };
 };
