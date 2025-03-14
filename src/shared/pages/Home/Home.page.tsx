@@ -12,7 +12,8 @@ export const HomePage = () => {
 	).length;
 
 	return (
-		<div className="p-4">
+		<div className="p-0 m-0">
+			
 			<h1 className="text-2xl font-bold text-blue-800 text-center">
 				Bienvenido al sistema de inventario
 			</h1>
