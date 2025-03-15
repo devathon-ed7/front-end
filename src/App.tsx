@@ -1,34 +1,31 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Fragment } from "react/jsx-runtime";
 import { useOauth } from "./modules/auth/hooks/use-oauth";
 
 const App = () => {
-	const { setOauthUser } = useOauth();
-	const navigate = useNavigate();
-	const tokenFromURL = new URLSearchParams(window.location.search).get(
-		"access_token",
-	);
-	const userNameFromURL = new URLSearchParams(window.location.search).get("name");
-	const userEmailFromURL = new URLSearchParams(window.location.search).get("email");
-	const userAvatarFromURL = new URLSearchParams(window.location.search).get("picture");
+  const { setOauthUser } = useOauth();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    // Extract parameters only if they exist
+    const params = new URLSearchParams(window.location.search);
+    const tokenFromURL = params.get("access_token");
+    
+    if (tokenFromURL) {
+      const userData = {
+        full_name: params.get("name") || undefined,
+        email: params.get("email") || undefined,
+        user_details: {
+          profile_filename: params.get("picture") || null, 
+        },
+      };
+      
+      setOauthUser(tokenFromURL, userData);
+      navigate("/home");
+    }
+  }, [navigate, setOauthUser]);
 
-	const userData = {
-		full_name: userNameFromURL || undefined,
-		email: userEmailFromURL || undefined,
-		user_details: {
-			profile_filename: userAvatarFromURL || null, 
-		},
-	};
-
-	useEffect(() => {
-		if (tokenFromURL) {
-			setOauthUser(tokenFromURL, userData);
-			navigate("/home");
-		}
-	}, [tokenFromURL, userData,navigate, setOauthUser]);
-
-	return <Fragment></Fragment>;
+  return null; // More efficient than empty Fragment
 };
 
 export default App;
