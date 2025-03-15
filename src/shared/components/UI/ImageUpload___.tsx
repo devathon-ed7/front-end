@@ -1,7 +1,11 @@
 import { CameraIcon } from "lucide-react";
 
-export const ImageUpload = ({ onChange }) => {
-	const handleCaptureImageByCamera = async (event) => {
+export const ImageUpload = ({ onChange }: { onChange: (file: File) => void }) => {
+	interface FileInputEvent extends React.ChangeEvent<HTMLInputElement> {
+		target: HTMLInputElement & EventTarget;
+	}
+
+	const handleCaptureImageByCamera = async (event: FileInputEvent): Promise<void> => {
 		const files = event.target.files;
 		if (!files || files.length <= 0) {
 			event.target.value = "";

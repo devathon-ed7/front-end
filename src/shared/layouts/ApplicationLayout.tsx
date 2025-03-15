@@ -3,7 +3,7 @@ import { Breadcrumb, BreadcrumbList } from "@/shared/components/UI/breadcrumb";
 import { Separator } from "@/shared/components/UI/separator";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/shared/components/UI/sidebar";
 import { Outlet, useLocation } from "react-router-dom";
-import { Globe, Menu, Moon, SearchIcon, Sun, XIcon } from "lucide-react";
+import { Globe, Moon, SearchIcon, Sun, XIcon } from "lucide-react";
 import { Button } from "../components/UI/button";
 import { useTheme } from "../hooks/useTheme";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/UI/avatar";

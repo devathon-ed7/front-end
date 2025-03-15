@@ -16,7 +16,7 @@ export const useForm = () => {
 		}));
 	};
 
-	const handleSelectChange = ({ target }) => {
+	const handleSelectChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
 		const { name, value } = target;
 
 		setForm((prevForm) => ({

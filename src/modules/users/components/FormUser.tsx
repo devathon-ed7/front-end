@@ -1,7 +1,7 @@
 import { Roles } from "@/modules/roles/interfaces/roles.interface";
 import { UserForm } from "@/modules/users/interfaces/user.interface";
 import { ChangeEvent } from "react";
-import { RoleSelect } from "../../../shared/components/RoleSelect";
+// import { RoleSelect } from "../../../shared/components/RoleSelect";
 import { ImageUpload } from "../../../shared/components/UI/ImageUpload___";
 
 interface Props {
@@ -16,9 +16,9 @@ interface Props {
 
 export const FormUser = ({
 	form,
-	rolesList = [],
+	// rolesList = [],
 	handleInputChange,
-	handleSelectChange,
+	// handleSelectChange,
 	setFile,
 	handleSave,
 	isDisabled,
@@ -61,11 +61,11 @@ export const FormUser = ({
 				required
 				className="block w-full p-2 border border-gray-300 rounded-md focus:outline-hidden focus:border-blue-500"
 			/>
-			<RoleSelect
+			{/* <RoleSelect
 				value={form.role_id || 0}
 				onChange={handleSelectChange}
 				roles={rolesList}
-			/>
+			/> */}
 			<ImageUpload onChange={setFile} />
 			<button
 				onClick={handleSave}

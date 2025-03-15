@@ -35,7 +35,7 @@ axiosInstance.interceptors.request.use(
  */
 export const apiRequest = async <T>(config: AxiosRequestConfig): Promise<T> => {
   try {
-    const token = getTokenFromSessionStorage();
+    // const token = getTokenFromSessionStorage();
     /* if (!token) {
       throw new Error(
         "No se encontró el token. El usuario puede no estar autenticado."

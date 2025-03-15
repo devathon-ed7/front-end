@@ -1,3 +1,4 @@
+import { Label } from "@/shared/components/UI/label";
 import { useNavigate } from "react-router-dom";
 
 interface Product {
