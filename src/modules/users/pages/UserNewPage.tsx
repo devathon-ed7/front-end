@@ -1,5 +1,5 @@
 import { FormUser, ImagePreview } from "@/shared/components";
-import { UserFormContainer } from "@/shared/components/Users/UserFormContainer";
+import { UserFormContainer } from "@/modules/users/components/UserFormContainer";
 import { useNavigate } from "react-router-dom";
 
 export const UserNewPage = () => {

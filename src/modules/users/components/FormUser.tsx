@@ -1,8 +1,8 @@
 import { Roles } from "@/modules/roles/interfaces/roles.interface";
 import { UserForm } from "@/modules/users/interfaces/user.interface";
 import { ChangeEvent } from "react";
-import { RoleSelect } from "../RoleSelect";
-import { ImageUpload } from "../UI/ImageUpload___";
+import { RoleSelect } from "../../../shared/components/RoleSelect";
+import { ImageUpload } from "../../../shared/components/UI/ImageUpload___";
 
 interface Props {
 	form: UserForm;
@@ -70,9 +70,8 @@ export const FormUser = ({
 			<button
 				onClick={handleSave}
 				disabled={isDisabled}
-				className={`px-8 py-2 text-white rounded-md ${
-					isDisabled ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
-				} transition duration-300`}
+				className={`px-8 py-2 text-white rounded-md ${isDisabled ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
+					} transition duration-300`}
 			>
 				Save
 			</button>

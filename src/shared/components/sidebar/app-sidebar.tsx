@@ -1,117 +1,65 @@
-import { ThemeToggle } from "@/shared/components/theme-toggle";
+"use client"
+import * as React from "react"
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/shared/components/UI/sidebar";
-import { t } from "i18next";
-import { BlendIcon, BoxIcon, CirclePlusIcon, HomeIcon } from "lucide-react";
-import { useTranslation } from "react-i18next";
+  Boxes,
+  FileText,
+  House,
+  MonitorCog,
+  ShoppingCart,
+  Users,
+} from "lucide-react"
+import { Sidebar, SidebarContent, SidebarHeader, SidebarRail } from "../UI/sidebar"
+import { TeamSwitcher } from "../TeamSwitcher"
+import { NavMain } from "../NavMain"
 
-const getMainLinks = () => [
-  {
-    name: t("sidebar.home"),
-    uri: "home",
-    icon: <HomeIcon />,
-  },
-  {
-    name: t("sidebar.categories"),
-    uri: "categories",
-    icon: <BlendIcon />,
-  },
-];
+const data = {
+  navMain: [
+    {
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: House,
+      isActive: true,
+    },
+    {
+      title: "Transacciones",
+      url: "/transaccions",
+      icon: ShoppingCart,
 
-const getProductLinks = () => [
-  {
-    name: t("sidebar.addProduct"),
-    uri: "add-product", //this change in the future
-    icon: <CirclePlusIcon />,
-  },
-  {
-    name: t("sidebar.listProduct"),
-    uri: "list-product", //this change in the future
-    icon: <BoxIcon />,
-  },
-];
+    },
+    {
+      title: "Proveedores",
+      url: "/suppliers",
+      icon: FileText,
 
-export const AppSidebar = () => {
-  const { i18n } = useTranslation();
-  const currentLanguage = i18n.language;
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+    },
+    {
+      title: "Usuarios",
+      url: "/users",
+      icon: Users,
+    },
+    {
+      title: "Productos",
+      url: "/products",
+      icon: Boxes,
+    },
+    {
+      title: "Configuracion",
+      url: "/configuration",
+      icon: MonitorCog,
+    },
+  ]
+}
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar>
-      <SidebarHeader />
+    <Sidebar collapsible="icon" {...props}>
+      <SidebarHeader>
+        <TeamSwitcher />
+      </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>{t("sidebar.mainMenu")}</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {getMainLinks().map((link) => (
-                <SidebarMenuItem key={link.name}>
-                  <SidebarMenuButton asChild>
-                    <a href={link.uri}>
-                      {link.icon}
-                      <span>{link.name}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel>{t("sidebar.productsMenu")}</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {getProductLinks().map((link) => (
-                <SidebarMenuItem key={link.name}>
-                  <SidebarMenuButton asChild>
-                    <a href={link.uri}>
-                      {link.icon}
-                      <span>{link.name}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>{t("sidebar.settingsMenu")}</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <ThemeToggle />
-
-              {currentLanguage === "en" ? (
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
-                    <button onClick={() => changeLanguage("es")}>
-                      English
-                    </button>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ) : (
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
-                    <button onClick={() => changeLanguage("en")}>
-                      Español
-                    </button>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              )}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <NavMain items={data.navMain} />
       </SidebarContent>
+      {/* <SidebarRail /> */}
     </Sidebar>
-  );
-};
+  )
+}

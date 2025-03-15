@@ -1,4 +1,4 @@
-import AuthPage from "@/shared/pages/Auth/Auth-page";
+import AuthPage from "@/modules/auth/pages/AuthPage";
 import { ReactNode } from "react";
 import { BrowserRouter, Navigate, Route } from "react-router-dom";
 import PrivateGuard from "./private-guard";
