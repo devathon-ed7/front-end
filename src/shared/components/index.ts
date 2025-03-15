@@ -3,16 +3,16 @@ export * from "./Home/GeneralProducts";
 export * from "./Home/MonthlyMovements";
 
 // Products
-export * from "./Products/CardProduct";
-export * from "./Products/CategorySelect";
+export * from "../../modules/products/components/CardProduct";
+export * from "../../modules/products/components/CategorySelect";
 
 // Navigation
 export * from "./Navigation/NavLink";
 export * from "./Navigation/NavSection";
 
 // Users
-export * from "./Users/FormUser";
-export * from "./Users/UserHeader";
+export * from "../../modules/users/components/FormUser";
+export * from "../../modules/users/components/UserHeader";
 
 // Miscellaneous
 
