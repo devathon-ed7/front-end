@@ -1,10 +1,10 @@
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import AppHookContainer from './App-hook-container.tsx';
-import { StrictMode } from 'react';
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { StrictMode } from "react";
+import AppHookContainer from "./App-hook-container.tsx";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <AppHookContainer />
-  </StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")!).render(
+	<StrictMode>
+		<AppHookContainer />
+	</StrictMode>,
+);

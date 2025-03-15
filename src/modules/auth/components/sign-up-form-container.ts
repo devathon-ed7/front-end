@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../hooks/use-auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useAuthStore } from "../store/auth-store";
+import { UserRegister } from "@/modules/users/interfaces/user.interface";
 
 interface SignUpForm {
   fullName: string;
@@ -11,7 +12,11 @@ interface SignUpForm {
 }
 
 export const SignUpFormContainer = () => {
-  const [form, setForm] = useState<SignUpForm>({ fullName: "", email: "", password: "" });
+  const [form, setForm] = useState<SignUpForm>({
+    fullName: "",
+    email: "",
+    password: "",
+  });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -30,13 +35,10 @@ export const SignUpFormContainer = () => {
     e.preventDefault();
     setLoading(true);
 
-    await Register(form);
+    await Register(form as UserRegister);
 
     setLoading(false);
     navigate("/home");
-
-
-
   };
 
   useEffect(() => {

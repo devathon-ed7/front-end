@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { useAuthStore } from "../store/auth-store";
 
-interface SignInForm {
-  email: string;
-  password: string;
-}
+import { useAuth } from "@/modules/auth/hooks/use-auth";
+import { useAuthStore } from "@/modules/auth/store/auth-store";
+import { UserLogin } from "@/modules/users/interfaces/user.interface";
 
 export const SignInFormContainer = () => {
-  const [form, setForm] = useState<SignInForm>({ email: "", password: "" });
+  const [form, setForm] = useState<UserLogin>({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -18,23 +14,17 @@ export const SignInFormContainer = () => {
   const errorMessage = useAuthStore((state) => state.errorMessage);
 
   const { Login } = useAuth();
-  const navigate = useNavigate();
+  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
+  const handleSubmit =  (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
     setLoading(true);
-
-    await Login(form);
-
-    setLoading(false);
-    navigate("/home");
-
-
+    Login(form);
   };
 
   useEffect(() => {

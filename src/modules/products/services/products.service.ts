@@ -1,123 +1,44 @@
-import { API, baseUrl } from "@/core/constants/API";
-import { getTokenFromSessionStorage } from "@/core/utils";
-
+import { apiDelete, apiGet, apiPostFormData } from "@/core/config/axiosConfig";
+import { Product } from "../interfaces/product.interface";
 
 const getProducts = async () => {
-  try {
-    const token = getTokenFromSessionStorage();
-
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-
-    const resp = await fetch(`${API + baseUrl}/products`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const respJson = await resp.json();
-    if (!resp.ok) {
-      throw new Error(respJson.error);
-    }
-
-    return respJson;
-  } catch (error) {
-    throw (error as Error).message;
-    //Error de Backend en base a conexion
-  }
-};
-
-const getCategories = async () => {
-  try {
-    const token = getTokenFromSessionStorage();
-
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-
-    const resp = await fetch(`${API + baseUrl}/categories`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const respJson = await resp.json();
-    if (!resp.ok) {
-      throw new Error(respJson.error);
-    }
-
-    return respJson;
-  } catch (error) {
-    throw (error as Error).message;
-  }
+	try {
+		return await apiGet<Product[]>("/products");
+	} catch (error) {
+		if (error instanceof Error) {
+			throw error.message;
+		}
+		throw String(error);
+	}
 };
 
 const newProduct = async (formData: FormData) => {
-  try {
-    const token = getTokenFromSessionStorage();
-
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-    const resp = await fetch(`${API + baseUrl}/products`, {
-      method: "POST",
-      body: formData,
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const respJson = await resp.json();
-    if (!resp.ok) {
-      throw new Error(respJson.error);
-    }
-
-    return respJson;
-  } catch (error) {
-    throw (error as Error).message;
-    //Error de Backend en base a conexion
-  }
+	try {
+		return await apiPostFormData<Product>("/products", formData);
+	} catch (error) {
+		if (error instanceof Error) {
+			throw error.message;
+		}
+		throw String(error);
+	}
 };
 
 const deleteProduct = async (id: string) => {
-  try {
-    const token = getTokenFromSessionStorage();
-    if (!token) {
-      throw new Error(
-        "No se encontró el token. El usuario puede no estar autenticado."
-      );
-    }
-    const resp = await fetch(`${API + baseUrl}/products/${id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    if (!resp.ok) {
-      const respJson = await resp.json();
-      throw new Error(respJson.error);
-    }
-
-    return resp.ok;
-  } catch (error) {
-    throw (error as Error).message;
-    //Error de Backend en base a conexion
-  }
+	try {
+		await apiDelete(`/products/${id}`);
+	} catch (error) {
+		if (error instanceof Error) {
+			throw error.message;
+		}
+		throw String(error);
+	}
 };
 
 const productService = {
-  getProducts,
-  newProduct,
-  deleteProduct,
-  getCategories,
+	getProducts,
+	newProduct,
+	deleteProduct,
+	// getCategories,
 };
 
 export default productService;

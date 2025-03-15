@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
-import { AppMenu } from "./app-menu";
-import { NavigationSheet } from "./navigation-sheet";
-import { ThemeToggle } from "./theme-toggle";
+import { useAuth } from "@/modules/auth/hooks/use-auth";
 import { Avatar, AvatarFallback } from "@/shared/components/UI/avatar";
 import { Button } from "@/shared/components/UI/button";
-import { useAuth } from "@/modules/auth/hooks/useAuth";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppMenu } from "./app-menu";
+import { NavigationSheet } from "./navigation-sheet";
+import { ThemeToggle } from "@/shared/components/theme-toggle";
 
 export const NavMenu = () => {
   const imageUrlRef = useRef("/android-chrome-512x512.png");
@@ -16,7 +16,7 @@ export const NavMenu = () => {
   const handleLogOut = async () => {
     await Logout();
     navigate("/auth/login");
-  }
+  };
 
   return (
     <div className="w-full bg-muted">
@@ -35,18 +35,21 @@ export const NavMenu = () => {
             <Avatar>
               <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
             </Avatar>
-            
+
             <ThemeToggle />
 
-            <Button onClick={handleLogOut} variant="outline" className="hidden sm:inline-flex">
+            <Button
+              onClick={handleLogOut}
+              variant="outline"
+              className="hidden sm:inline-flex"
+            >
               Log out
             </Button>
-                       
+
             {/* Mobile Menu */}
             <div className="md:hidden">
               <NavigationSheet />
             </div>
-
           </div>
         </div>
       </nav>

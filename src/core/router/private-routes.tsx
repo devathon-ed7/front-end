@@ -1,26 +1,27 @@
-import { DashboardLayout } from "@/shared/layouts";
-import { HomePage } from "@/shared/pages";
-import { Route, Navigate } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import RoutesWithNotFound from "./routes-with-not-found";
+import ApplicationLayout from "@/shared/layouts/ApplicationLayout";
+import { DashboardPage } from "@/modules/dashboard/pages/DashboardPage";
+import { TransacctionPage } from '../../modules/transacctions/pages/TransacctionPage';
+import { SuppliersPage } from "@/modules/suppliers/pages/SuppliersPage";
+import { UserPage } from "@/modules/users/pages/UserPage";
+import { ProductPage } from "@/modules/products/pages/ProductPage";
+import { RolePages } from "@/modules/roles/pages/RolesPage";
 
 export const PrivateRoutes = () => {
-  return (
-    <RoutesWithNotFound>
-      <Route path="/" element={<DashboardLayout />} >
-        <Route index element={<Navigate to="/home" />} />
-        <Route path="home" element={<HomePage />} />
-        {/*<Route path="usuarios" element={<UserPage />} /> */}
-        {/*<Route path="usuarios/nuevo" element={<UserNewPage />} />*/}
-        {/*<Route path="usuarios/editar/:id" element={<UserEditPage />} /> */}
-        {/*<Route path="roles" element={<RolePages />} /> */}
-        {/*<Route path="permisos" element={<PermissionPage />} />*/}
-        {/*<Route path="productos" element={<ProductPage />} /> */}
-        {/*<Route path="productos/nuevo" element={<ProductNew />} /> */}
-        {/*<Route path="productos/editar/:id" element={<ProductEdit />} /> */}
-        {/*<Route path="categorias" element={<CategoryPage />} />*/}
-      </Route>
-    </RoutesWithNotFound>
-  );
+	return (
+		<RoutesWithNotFound>
+			<Route path="/" element={<ApplicationLayout />}>
+				<Route index element={<Navigate to="/dashboard" />} />
+				<Route path="dashboard" element={<DashboardPage />} />
+				<Route path="transaccions" element={<TransacctionPage />} />
+				<Route path="suppliers" element={<SuppliersPage />} />
+				<Route path="users" element={<UserPage />} />
+				<Route path="products" element={<ProductPage />} />
+				<Route path="configuration" element={<RolePages />} />
+			</Route>
+		</RoutesWithNotFound>
+	);
 };
 
 export default PrivateRoutes;

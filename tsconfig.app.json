@@ -1,5 +1,16 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/shared/components/*"],
+      "@/ui/*": ["./src/shared/components/ui/*"],
+      "@/utils/*": ["./src/core/lib/utils/*"],
+      "@/lib/*": ["./src/core/lib/*"],
+      "@/hooks/*": ["./src/shared/hooks/*"],
+      "@/modules/*": ["./src/modules/*"],
+      "@/layouts/*": ["./src/shared/layouts/*"]
+    },
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2020",

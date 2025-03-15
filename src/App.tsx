@@ -1,26 +1,34 @@
 import { useEffect } from "react";
-import { Fragment } from "react/jsx-runtime";
 import { useNavigate } from "react-router-dom";
-import { useGithubOauth } from "./modules/auth/hooks/use-github-oauth";
-
+import { Fragment } from "react/jsx-runtime";
+import { useOauth } from "./modules/auth/hooks/use-oauth";
 
 const App = () => {
-  const { GithubCallback } = useGithubOauth();
-  const navigate = useNavigate();
-  const tokenFromURL = new URLSearchParams(window.location.search).get('access_token');
+	const { setOauthUser } = useOauth();
+	const navigate = useNavigate();
+	const tokenFromURL = new URLSearchParams(window.location.search).get(
+		"access_token",
+	);
+	const userNameFromURL = new URLSearchParams(window.location.search).get("name");
+	const userEmailFromURL = new URLSearchParams(window.location.search).get("email");
+	const userAvatarFromURL = new URLSearchParams(window.location.search).get("picture");
 
-  useEffect(() => {
-    if (tokenFromURL) {
-      GithubCallback(tokenFromURL);
-      navigate("/home");
-    }
-  }, [tokenFromURL, navigate, GithubCallback]);
+	const userData = {
+		full_name: userNameFromURL || undefined,
+		email: userEmailFromURL || undefined,
+		user_details: {
+			profile_filename: userAvatarFromURL || null, 
+		},
+	};
 
-  return (
-    <Fragment>
+	useEffect(() => {
+		if (tokenFromURL) {
+			setOauthUser(tokenFromURL, userData);
+			navigate("/home");
+		}
+	}, [tokenFromURL, userData,navigate, setOauthUser]);
 
-    </Fragment>
-  );
-}
+	return <Fragment></Fragment>;
+};
 
 export default App;

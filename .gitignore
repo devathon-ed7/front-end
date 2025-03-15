@@ -1,4 +1,6 @@
 # Logs
+.env
+.env.production.local
 logs
 *.log
 npm-debug.log*
@@ -27,3 +29,4 @@ dist-ssr
 yarn.lock
 package-lock.json
 pnpm-lock.yaml
+bun.lock

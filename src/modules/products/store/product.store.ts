@@ -1,20 +1,20 @@
-import { create, StateCreator } from "zustand";
+import { StateCreator, create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import { Product, ProductState } from "../interfaces/product.interface";
 
 const ProductApi: StateCreator<ProductState, [["zustand/devtools", never]]> = (
-  set
+	set,
 ) => ({
-  products: [],
-  setProducts: (value: Product[]) =>
-    set({ products: value }, false, "SET_PRODUCTS"),
+	products: [],
+	setProducts: (value: Product[]) =>
+		set({ products: value }, false, "SET_PRODUCTS"),
 });
 
 export const useProductStore = create<ProductState>()(
-  devtools(
-    persist(ProductApi, {
-      name: "product-store",
-      storage: createJSONStorage(() => sessionStorage),
-    })
-  )
+	devtools(
+		persist(ProductApi, {
+			name: "product-store",
+			storage: createJSONStorage(() => sessionStorage),
+		}),
+	),
 );
