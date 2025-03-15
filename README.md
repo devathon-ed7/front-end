@@ -47,30 +47,3 @@ This invention system, which is participating in an event called devathon, which
 6. Desing on Figma
    [here](https://www.figma.com/design/SCcubbrfRBqwdriPYy2KjW/Team-%237-Inventory-System?node-id=0-1&t=CS321tOWWvTWDKCg-0)
 
-## Data Flow Diagram
-
-### Diagram for Home
-
-![alt text](./public/img/DiagramHome.png)
-
-### Diagram for Categories
-
-![alt text](./public/img/DiagramenCategories.png)
-
-### Diagram for Products
-
-![alt text](./public/img/DesingProduct.png)
-
-# Component Desing
-
-### Component for Login
-
-![alt text](./public/img/DesingLogin.png)
-
-### Component for User
-
-![alt text](./public/img/DesingUser.png)
-
-### Component for Product
-
-![alt text](./public/img/DesingProduct.png)
