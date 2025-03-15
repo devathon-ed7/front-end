@@ -1,4 +1,4 @@
-import productService from "../services/products.service";
+// import productService from "../services/products.service";
 import { useProductStore } from "../store/product.store";
 
 export const useProducts = () => {
@@ -7,8 +7,8 @@ export const useProducts = () => {
 
 	const getProducts = async () => {
 		try {
-			const resp = await productService.getProducts();
-			const { products } = resp;
+			// const resp = await productService.getProducts();
+			// const { products } = resp;
 			setProducts(products);
 		} catch (error) {
 			console.error("Error al obtener productos:", error);

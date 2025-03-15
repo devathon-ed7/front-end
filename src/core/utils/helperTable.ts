@@ -27,23 +27,23 @@ export const getComparator = <Key extends keyof any>(
 		: (a, b) => descendingComparator(a, b, orderBy) * -1;
 };
 
-export const createHeadCells = (
-	cells: {
-		id: string;
-		numeric?: boolean;
-		disablePadding?: boolean;
-		label: string;
-	}[],
-): HeadCelll[] => {
-	return cells.map(
-		({ id, numeric = false, disablePadding = false, label }) => ({
-			id,
-			numeric,
-			disablePadding,
-			label,
-		}),
-	);
-};
+// export const createHeadCells = (
+// 	cells: {
+// 		id: string;
+// 		numeric?: boolean;
+// 		disablePadding?: boolean;
+// 		label: string;
+// 	}[],
+// ): HeadCelll[] => {
+// 	return cells.map(
+// 		({ id, numeric = false, disablePadding = false, label }) => ({
+// 			id,
+// 			numeric,
+// 			disablePadding,
+// 			label,
+// 		}),
+// 	);
+// };
 
 export const getColumnKeys = (
 	data: Array<Record<string, any>>,
@@ -60,7 +60,7 @@ export const createSortHandler = <TableData>(
 	setOrder: Dispatch<SetStateAction<Order>>,
 	setOrderBy: Dispatch<SetStateAction<keyof TableData>>,
 ) => {
-	return (event: React.MouseEvent<unknown>, property: keyof TableData) => {
+	return ( property: keyof TableData) => {
 		const isAsc = orderBy === property && order === "asc";
 		setOrder(isAsc ? "desc" : "asc");
 		setOrderBy(property);

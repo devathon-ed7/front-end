@@ -21,15 +21,15 @@ export const useProductForm = () => {
 			return;
 		}
 
-		const newProduct = {
-			id: Date.now(),
-			name,
-			price: parseFloat(price),
-			stock,
-			category,
-			imageUrl,
-		};
-		addProduct(newProduct);
+		// const newProduct = {
+		// 	id: Date.now(),
+		// 	name,
+		// 	price: parseFloat(price),
+		// 	stock,
+		// 	category,
+		// 	imageUrl,
+		// };
+		// addProduct(newProduct);
 		navigate("/productos");
 	}, [name, price, stock, category, imageUrl, addProduct, navigate]);
 

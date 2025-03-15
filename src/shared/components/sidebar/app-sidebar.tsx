@@ -8,7 +8,7 @@ import {
   ShoppingCart,
   Users,
 } from "lucide-react"
-import { Sidebar, SidebarContent, SidebarHeader, SidebarRail } from "../UI/sidebar"
+import { Sidebar, SidebarContent, SidebarHeader } from "../UI/sidebar"
 import { TeamSwitcher } from "../TeamSwitcher"
 import { NavMain } from "../NavMain"
 
