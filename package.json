@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:prod": "VITE_NODE_ENV=production bun run build",
     "format": "bunx biome format --write ./src",
     "lint": "bunx biome lint --write ./src",
     "check": "bunx biome check --write ./src",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@fullhuman/postcss-purgecss": "^7.0.2",
     "@tailwindcss/postcss": "^4.0.10",
     "@tanstack/eslint-plugin-query": "^5.67.2",
     "@types/node": "^22.13.9",
