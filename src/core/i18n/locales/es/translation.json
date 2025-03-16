@@ -51,6 +51,12 @@
     "settingsMenu": "CONFIGURACIONES"
   },
   "dashboard": {
-    "selectLanguage": "Seleccionar idioma"
+    "selectLanguage": "Seleccionar idioma",
+    "title": "Panel de control",
+    "transactions": "Transacciones",
+    "suppliers": "Proveedores",
+    "users": "Usuarios",
+    "products": "Productos",
+    "configuration": "Configuración"
   }
 }

@@ -52,6 +52,12 @@
     "settingsMenu": "SETTINGS"
   },
   "dashboard": {
-    "selectLanguage": "Select language"
+    "selectLanguage": "Select language",
+    "title": "Dashboard",
+    "transactions": "Transactions",
+    "suppliers": "Suppliers",
+    "users": "Users",
+    "products": "Products",
+    "configuration": "Configuration"
   }
 }

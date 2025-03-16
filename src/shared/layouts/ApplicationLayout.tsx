@@ -27,9 +27,12 @@ import { useCurrentUser } from "@/modules/auth/hooks/use-current-user";
 import { useAuth } from "@/modules/auth/hooks/use-auth";
 import { useTheme } from "../components/theme-provider";
 
-type PageTitleMap = {
-  [key: string]: string;
-};
+interface PageTitle {
+  path: string;
+  title: string;
+}
+
+type PageTitleMap = () => PageTitle[];
 
 const TABLET_BREAKPOINT = 1024;
 
@@ -59,24 +62,40 @@ export default function ApplicationLayout() {
   const getPageTitle = (): string => {
     const location = useLocation();
 
-    const pageTitles: PageTitleMap = {
-      "/dashboard": "Dashboard",
-      "/transaccions": "Transacciones",
-      "/suppliers": "Proveedores",
-      "/users": "Usuarios",
-      "/products": "Productos",
-      "/configuration": "Configuracion",
-    };
+    const pageTitles: PageTitleMap = () => [
+      {
+        path: "/dashboard",
+        title: t("dashboard.title"),
+      },
+      {
+        path: "/transaccions",
+        title: t("dashboard.transactions"),
+      },
+      {
+        path: "/suppliers",
+        title: t("dashboard.suppliers"),
+      },
+      {
+        path: "/users",
+        title: t("dashboard.users"),
+      },
+      {
+        path: "/products",
+        title: t("dashboard.products"),
+      },
+      {
+        path: "/configuration",
+        title: t("dashboard.configuration"),
+      },
+    ];
 
-    if (pageTitles[location.pathname]) {
-      return pageTitles[location.pathname];
-    }
-
-    const path = Object.keys(pageTitles).find(
-      (route) => location.pathname.includes(route) && route !== "/dashboard"
+    const paths = pageTitles();
+    const path = paths.find(
+      (route) =>
+        location.pathname.includes(route.path) && route.path !== "/dashboard"
     );
 
-    return path ? pageTitles[path] : "Dashboard";
+    return path ? path.title : t("dashboard.title");
   };
 
   const { theme, setTheme } = useTheme(); //use provider theme
