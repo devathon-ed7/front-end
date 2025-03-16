@@ -9,9 +9,11 @@ import {
 } from "@/shared/components/UI/dropdown-menu";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { Loader, LogOutIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const UserButton = () => {
   const { Logout } = useAuth();
+  const { t } = useTranslation();
   const { data, isLoading } = useCurrentUser();
   if (isLoading) {
     return <Loader className="size-4 animated-spin text-muted-foreground" />;
@@ -41,7 +43,7 @@ export const UserButton = () => {
       <DropdownMenuContent className="w-60" align="center" side="bottom">
         <DropdownMenuItem onClick={() => Logout()} className="h-10">
           <LogOutIcon className="size-4 mr-2" />
-          Logout
+          {t("common.logout")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

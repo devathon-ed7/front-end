@@ -7,7 +7,7 @@ import {
   SidebarTrigger,
 } from "@/shared/components/UI/sidebar";
 import { Outlet, useLocation } from "react-router-dom";
-import { Globe, Moon, SearchIcon, Sun, XIcon } from "lucide-react";
+import { Globe, LogOutIcon, Moon, SearchIcon, Sun, XIcon } from "lucide-react";
 import { Button } from "../components/UI/button";
 import { useTheme } from "../hooks/useTheme";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/UI/avatar";
@@ -24,6 +24,8 @@ import { Sheet, SheetContent, SheetTrigger } from "../components/UI/sheet";
 import { Input } from "../components/UI/input";
 import { UserButton } from "../components/user-button";
 import { useTranslation } from "react-i18next";
+import { useCurrentUser } from "@/modules/auth/hooks/use-current-user";
+import { useAuth } from "@/modules/auth/hooks/use-auth";
 
 type PageTitleMap = {
   [key: string]: string;
@@ -32,12 +34,15 @@ type PageTitleMap = {
 const TABLET_BREAKPOINT = 1024;
 
 export default function ApplicationLayout() {
-  const { i18n } = useTranslation();
-  const currentLanguage = i18n.language;
+  const { i18n, t } = useTranslation();
+  const { data: user } = useCurrentUser();
+
+  const { Logout } = useAuth();
 
   const isMobile = useIsMobile();
   const [isTablet, setIsTablet] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const currentLanguage = i18n.language;
 
   useEffect(() => {
     const handleResize = () => {
@@ -76,6 +81,9 @@ export default function ApplicationLayout() {
 
   const { theme, toggleTheme } = useTheme();
 
+  const setLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
   const UserControls = ({ compact = false }) => (
     <>
       <Button
@@ -125,10 +133,10 @@ export default function ApplicationLayout() {
       {!compact && (
         <div className="hidden sm:flex flex-col text-right">
           <span className="font-semibold text-[#303972] dark:text-white">
-            Ray
+            {user?.full_name}
           </span>
           <span className="text-xs text-[#A098AE] dark:text-gray-400">
-            Admin
+            {user?.user_details?.role?.name}
           </span>
         </div>
       )}
@@ -136,10 +144,6 @@ export default function ApplicationLayout() {
       <UserButton />
     </>
   );
-
-  const setLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
 
   return (
     <SidebarProvider>
@@ -222,42 +226,73 @@ export default function ApplicationLayout() {
                         <DropdownMenuTrigger asChild>
                           <Button variant="ghost" size="icon">
                             <Avatar className="h-8 w-8">
-                              <AvatarImage src="https://github.com/shadcn.png" />
-                              <AvatarFallback>RY</AvatarFallback>
+                              <AvatarImage
+                                src={user?.user_details?.profile_filename}
+                                alt={user?.full_name}
+                                referrerPolicy="no-referrer"
+                              />
+                              <AvatarFallback>
+                                {user?.full_name?.charAt(0).toUpperCase()}
+                              </AvatarFallback>
                             </Avatar>
                           </Button>
                         </DropdownMenuTrigger>
+
                         <DropdownMenuContent align="end">
                           <DropdownMenuItem className="flex items-center gap-2">
                             <Globe size={16} />
+                            <span className="text-sm">
+                              {currentLanguage === "es" ? "Español" : "English"}
+                            </span>
+                          </DropdownMenuItem>
+
+                          <DropdownMenuItem className="flex items-center gap-2">
                             <DropdownMenu>
-                              <DropdownMenuTrigger className="flex items-center gap-1">
-                                {currentLanguage === "es"
-                                  ? "Español"
-                                  : "English"}
+                              <DropdownMenuTrigger>
+                                <span className="text-sm">
+                                  {t("dashboard.selectLanguage")}
+                                </span>
                               </DropdownMenuTrigger>
+
                               <DropdownMenuContent>
                                 <DropdownMenuItem
-                                  onClick={() => setLanguage("es")}
+                                  onClick={() => {
+                                    setLanguage("es");
+                                    DropdownMenu.close();
+                                  }}
                                 >
                                   Español
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
-                                  onClick={() => setLanguage("en")}
+                                  onClick={() => {
+                                    setLanguage("en");
+                                    DropdownMenu.close();
+                                  }}
                                 >
                                   English
                                 </DropdownMenuItem>
                               </DropdownMenuContent>
                             </DropdownMenu>
                           </DropdownMenuItem>
+
                           <DropdownMenuLabel className="font-normal">
                             <div className="flex flex-col">
-                              <span className="font-semibold">Ray</span>
+                              <span className="font-semibold">
+                                {user?.full_name}
+                              </span>
                               <span className="text-xs text-muted-foreground">
-                                Admin
+                                {user?.user_details?.role.name}
                               </span>
                             </div>
                           </DropdownMenuLabel>
+
+                          <DropdownMenuItem
+                            onClick={() => Logout()}
+                            className="h-10"
+                          >
+                            <LogOutIcon className="size-4 mr-2" />
+                            {t("common.logout")}
+                          </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </div>

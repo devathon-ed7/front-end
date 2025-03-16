@@ -10,7 +10,8 @@
     "back": "Atrás",
     "save": "Guardar",
     "light": "Claro",
-    "dark": "Oscuro"
+    "dark": "Oscuro",
+    "logout": "Cerrar sesión"
   },
   "auth": {
     "title": "Track inventory",
@@ -48,5 +49,8 @@
     "mainMenu": "MENU PRINCIPAL",
     "productsMenu": "PRODUCTOS",
     "settingsMenu": "CONFIGURACIONES"
+  },
+  "dashboard": {
+    "selectLanguage": "Seleccionar idioma"
   }
 }

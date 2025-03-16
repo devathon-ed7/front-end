@@ -19,9 +19,9 @@ export interface User {
   user_details?: UserDetails;
 }
 export interface UserDetails {
-  role_id?: number;
+  role_id: number;
   profile_filename?: string | undefined;
-  role?: Roles;
+  role: Roles;
   id?: number;
 }
 
