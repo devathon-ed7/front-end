@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     if (tokenFromURL) {
       const userData = {
-        name: params.get("name")?.replace(/\n/g, "").trim() ?? undefined,
+        full_name: params.get("name")?.replace(/\n/g, "").trim() ?? undefined,
         email: params.get("email")?.replace(/\n/g, "").trim() ?? undefined,
         user_details: {
           profile_filename:

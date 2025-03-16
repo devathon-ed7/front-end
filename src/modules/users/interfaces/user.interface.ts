@@ -56,3 +56,11 @@ export interface UserNewRequest {
   user: UserForm;
   file: File | null;
 }
+
+export interface UserOauth {
+  email?: string;
+  full_name?: string;
+  user_details?: {
+    profile_filename?: string | undefined;
+  };
+}
