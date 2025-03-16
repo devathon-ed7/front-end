@@ -1,10 +1,14 @@
 import { useAuth } from "@/modules/auth/hooks/use-auth";
 import { useCurrentUser } from "@/modules/auth/hooks/use-current-user";
 import { Avatar, AvatarFallback } from "@/shared/components/UI/avatar";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shared/components/UI/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/shared/components/UI/dropdown-menu";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { Loader, LogOutIcon } from "lucide-react";
-
 
 export const UserButton = () => {
   const { Logout } = useAuth();
@@ -13,23 +17,28 @@ export const UserButton = () => {
     return <Loader className="size-4 animated-spin text-muted-foreground" />;
   }
   if (!data) {
-      return null;
+    return null;
   }
 
   const { full_name, user_details } = data;
-  const avatarFallback =  full_name ? full_name.charAt(0).toUpperCase() : '';
+  const image = user_details?.profile_filename?.toString();
+  const avatarFallback = full_name ? full_name.charAt(0).toUpperCase() : "";
 
   return (
-    <DropdownMenu modal={false} >
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger className="outline-none relative">
         <Avatar className="size-10 hover:opcity-75 transition">
-          <AvatarImage src={user_details?.profile_filename?.toString()} alt={full_name} />
+          <AvatarImage
+            src={image}
+            alt={full_name}
+            referrerPolicy="no-referrer"
+          />
           <AvatarFallback className="bg-sky-500 text-white">
             {avatarFallback}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-60" align="center" side="right">
+      <DropdownMenuContent className="w-60" align="center" side="bottom">
         <DropdownMenuItem onClick={() => Logout()} className="h-10">
           <LogOutIcon className="size-4 mr-2" />
           Logout
@@ -37,5 +46,4 @@ export const UserButton = () => {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-
-}
+};
