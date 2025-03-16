@@ -9,7 +9,6 @@ import {
 import { Outlet, useLocation } from "react-router-dom";
 import { Globe, LogOutIcon, Moon, SearchIcon, Sun, XIcon } from "lucide-react";
 import { Button } from "../components/UI/button";
-import { useTheme } from "../hooks/useTheme";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/UI/avatar";
 import {
   DropdownMenu,
@@ -26,6 +25,7 @@ import { UserButton } from "../components/user-button";
 import { useTranslation } from "react-i18next";
 import { useCurrentUser } from "@/modules/auth/hooks/use-current-user";
 import { useAuth } from "@/modules/auth/hooks/use-auth";
+import { useTheme } from "../components/theme-provider";
 
 type PageTitleMap = {
   [key: string]: string;
@@ -79,7 +79,7 @@ export default function ApplicationLayout() {
     return path ? pageTitles[path] : "Dashboard";
   };
 
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme(); //use provider theme
 
   const setLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -89,7 +89,7 @@ export default function ApplicationLayout() {
       <Button
         variant="ghost"
         size="icon"
-        onClick={toggleTheme}
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         className="rounded-full w-8 h-8 bg-gray-100 dark:bg-gray-800 transition-colors duration-200"
       >
         {theme === "dark" ? (
@@ -212,7 +212,9 @@ export default function ApplicationLayout() {
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={toggleTheme}
+                        onClick={() =>
+                          setTheme(theme === "dark" ? "light" : "dark")
+                        }
                         className="rounded-full w-8 h-8"
                       >
                         {theme === "dark" ? (
