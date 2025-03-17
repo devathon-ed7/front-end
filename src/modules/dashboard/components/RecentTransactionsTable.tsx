@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/UI/card";
 import { ArrowUp, ArrowDown } from "lucide-react";
-import { useOptimistic, useState, use } from "react";
+import { useOptimistic } from "react";
 import { useDataDashboard } from "../hooks/useDataDashboard";
 import { Transaction } from "../interfaces/dashboard.interface";
 
@@ -11,16 +11,16 @@ interface RecentTransactionsTableProps {
 }
 
 export function RecentTransactionsTable({ transactions }: RecentTransactionsTableProps) {
-  const [optimisticTransactions, addOptimisticTransaction] = useOptimistic(
+  const [optimisticTransactions] = useOptimistic(
     transactions,
     (state, newTransaction: Transaction) => [...state, newTransaction]
   );
-
+  /*
   const handleNewTransaction = async (transaction: Transaction) => {
     addOptimisticTransaction(transaction);
 
     // await apiPost('/api/v1/transactions', transaction);
-  };
+  }; */
   const { formatDate } = useDataDashboard()
   return (
     <Card>

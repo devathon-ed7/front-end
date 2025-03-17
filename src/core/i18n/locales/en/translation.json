@@ -10,7 +10,8 @@
     "back": "Back",
     "save": "Save",
     "light": "Light",
-    "dark": "Dark"
+    "dark": "Dark",
+    "logout": "Logout"
   },
   "auth": {
     "title": "Track inventory",
@@ -49,5 +50,16 @@
     "mainMenu": "MAIN MENU",
     "productsMenu": "PRODUCTS",
     "settingsMenu": "SETTINGS"
+  },
+  "dashboard": {
+    "selectLanguage": "Select language",
+    "title": "Dashboard",
+    "transactions": "Transactions",
+    "suppliers": "Suppliers",
+    "users": "Users",
+    "products": "Products",
+    "configuration": "Configuration",
+    "search":"Search...",
+    "categories": "Categories"
   }
 }
