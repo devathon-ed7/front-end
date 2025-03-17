@@ -5,6 +5,7 @@ import { UserControls } from "./user-control";
 import { DesktopSearch } from "@/modules/dashboard/components/desktop-search";
 import { Fragment } from "react/jsx-runtime";
 import { MobileSearch } from "./mobile-search";
+import { SidebarTrigger } from "@/shared/components/UI/sidebar";
 
 interface HeaderProps {
   isMobile: boolean | undefined;
@@ -22,6 +23,7 @@ export const Header = ({
   return (
     <header className="flex h-14 items-center gap-2 border-b dark:border-gray-800 dark:bg-gray-950">
       <div className="flex items-center gap-2 px-4 w-full">
+        <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mr-2 h-4" />
         <Breadcrumb className="w-full">
           <BreadcrumbList className="flex items-center justify-between w-full">
@@ -50,9 +52,3 @@ export const Header = ({
     </header>
   );
 };
-
-
-
-
-
-
