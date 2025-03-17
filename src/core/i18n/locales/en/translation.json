@@ -58,6 +58,7 @@
     "suppliers": "Suppliers",
     "users": "Users",
     "products": "Products",
-    "configuration": "Configuration"
+    "configuration": "Configuration",
+    "search":"Search..."
   }
 }

@@ -57,6 +57,7 @@
     "suppliers": "Proveedores",
     "users": "Usuarios",
     "products": "Productos",
-    "configuration": "Configuración"
+    "configuration": "Configuración",
+    "search":"Buscar..."
   }
 }
