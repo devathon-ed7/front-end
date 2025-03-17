@@ -1,7 +1,17 @@
-'use client';
+"use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/UI/card";
-import { ChartContainer, ChartTooltip, ChartLegend } from "@/shared/components/UI/chart";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/UI/card";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartLegend,
+} from "@/shared/components/UI/chart";
 import { PieChart, Pie, Cell } from "recharts";
 import { CategoryStock } from "../interfaces/dashboard.interface";
 import { useDataDashboard } from "../hooks/useDataDashboard";
@@ -11,20 +21,15 @@ interface CategoryPieChartProps {
 }
 
 export function CategoryPieChart({ categories }: CategoryPieChartProps) {
-  const {chartConfig,CHART_COLORS} = useDataDashboard()
+  const { chartConfig, CHART_COLORS } = useDataDashboard();
   return (
     <Card>
       <CardHeader>
         <CardTitle>Inventario por Categoría</CardTitle>
-        <CardDescription>
-          Distribución del stock actual
-        </CardDescription>
+        <CardDescription>Distribución del stock actual</CardDescription>
       </CardHeader>
       <CardContent className="h-[300px]">
-        <ChartContainer 
-          config={chartConfig} 
-          className="w-full h-full"
-        >
+        <ChartContainer config={chartConfig} className="w-full h-full">
           <PieChart margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
             <Pie
               data={categories}
@@ -35,10 +40,15 @@ export function CategoryPieChart({ categories }: CategoryPieChartProps) {
               fill="#8884d8"
               dataKey="stock"
               nameKey="name"
-              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+              label={({ name, percent }) =>
+                `${name} ${(percent * 100).toFixed(0)}%`
+              }
             >
-              {categories.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
+              {categories.map((_, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={CHART_COLORS[index % CHART_COLORS.length]}
+                />
               ))}
             </Pie>
             <ChartTooltip
