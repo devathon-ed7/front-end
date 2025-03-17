@@ -1,5 +1,5 @@
-"use client"
-import * as React from "react"
+"use client";
+import * as React from "react";
 import {
   Boxes,
   FileText,
@@ -7,50 +7,53 @@ import {
   MonitorCog,
   ShoppingCart,
   Users,
-} from "lucide-react"
-import { Sidebar, SidebarContent, SidebarHeader } from "../UI/sidebar"
-import { TeamSwitcher } from "../TeamSwitcher"
-import { NavMain } from "../NavMain"
+} from "lucide-react";
+import { Sidebar, SidebarContent, SidebarHeader } from "../UI/sidebar";
+import { TeamSwitcher } from "../TeamSwitcher";
+import { NavMain } from "../NavMain";
+import { useTranslation } from "react-i18next"; // Importa useTranslation
 
-const data = {
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: House,
-      isActive: true,
-    },
-    {
-      title: "Transacciones",
-      url: "/transaccions",
-      icon: ShoppingCart,
+export const AppSidebar = ({
+  ...props
+}: React.ComponentProps<typeof Sidebar>) => {
+  const { t } = useTranslation();
 
-    },
-    {
-      title: "Proveedores",
-      url: "/suppliers",
-      icon: FileText,
+  const data = {
+    navMain: [
+      {
+        title: t("dashboard.title"),
+        url: "/dashboard",
+        icon: House,
+        isActive: true,
+      },
+      {
+        title: t("dashboard.transactions"),
+        url: "/transaccions",
+        icon: ShoppingCart,
+      },
+      {
+        title: t("dashboard.suppliers"),
+        url: "/suppliers",
+        icon: FileText,
+      },
+      {
+        title: t("dashboard.users"),
+        url: "/users",
+        icon: Users,
+      },
+      {
+        title: t("dashboard.products"),
+        url: "/products",
+        icon: Boxes,
+      },
+      {
+        title: t("dashboard.configuration"),
+        url: "/configuration",
+        icon: MonitorCog,
+      },
+    ],
+  };
 
-    },
-    {
-      title: "Usuarios",
-      url: "/users",
-      icon: Users,
-    },
-    {
-      title: "Productos",
-      url: "/products",
-      icon: Boxes,
-    },
-    {
-      title: "Configuracion",
-      url: "/configuration",
-      icon: MonitorCog,
-    },
-  ]
-}
-
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -61,5 +64,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       {/* <SidebarRail /> */}
     </Sidebar>
-  )
-}
+  );
+};

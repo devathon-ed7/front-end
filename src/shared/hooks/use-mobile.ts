@@ -1,4 +1,5 @@
-import * as React from "react"
+import { useEffect, useState } from "react"
+
 
 // Definimos breakpoints estándar
 export const MOBILE_BREAKPOINT = 768
@@ -10,9 +11,9 @@ export const DESKTOP_BREAKPOINT = 1280
  * @returns {boolean} true si el ancho de la ventana es menor que MOBILE_BREAKPOINT
  */
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
+  const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
     
     const onChange = () => {
@@ -33,9 +34,9 @@ export function useIsMobile() {
  * @returns {boolean} true si el ancho de la ventana está entre MOBILE_BREAKPOINT y TABLET_BREAKPOINT
  */
 export function useIsTablet() {
-  const [isTablet, setIsTablet] = React.useState<boolean | undefined>(undefined)
+  const [isTablet, setIsTablet] = useState<boolean | undefined>(undefined)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth
       setIsTablet(width >= MOBILE_BREAKPOINT && width < TABLET_BREAKPOINT)
@@ -55,9 +56,9 @@ export function useIsTablet() {
  * @returns {'mobile' | 'tablet' | 'desktop'}
  */
 export function useDeviceType(): 'mobile' | 'tablet' | 'desktop' {
-  const [deviceType, setDeviceType] = React.useState<'mobile' | 'tablet' | 'desktop'>('desktop')
+  const [deviceType, setDeviceType] = useState<'mobile' | 'tablet' | 'desktop'>('desktop')
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth
       if (width < MOBILE_BREAKPOINT) {
