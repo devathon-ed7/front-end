@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import {
+  BlendIcon,
   Boxes,
   FileText,
   House,
@@ -40,6 +41,11 @@ export const AppSidebar = ({
         title: t("dashboard.users"),
         url: "/users",
         icon: Users,
+      },
+      {
+        title: t("dashboard.categories"),
+        url: "/categories",
+        icon: BlendIcon,
       },
       {
         title: t("dashboard.products"),

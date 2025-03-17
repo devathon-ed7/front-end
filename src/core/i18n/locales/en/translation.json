@@ -59,6 +59,7 @@
     "users": "Users",
     "products": "Products",
     "configuration": "Configuration",
-    "search":"Search..."
+    "search":"Search...",
+    "categories": "Categories"
   }
 }

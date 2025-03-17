@@ -11,6 +11,7 @@ export const PageTitle = () => {
     { path: "/transaccions", title: t("dashboard.transactions") },
     { path: "/suppliers", title: t("dashboard.suppliers") },
     { path: "/users", title: t("dashboard.users") },
+    { path: "/categories", title: t("dashboard.categories") },
     { path: "/products", title: t("dashboard.products") },
     { path: "/configuration", title: t("dashboard.configuration") },
   ];

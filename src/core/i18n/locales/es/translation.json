@@ -58,6 +58,7 @@
     "users": "Usuarios",
     "products": "Productos",
     "configuration": "Configuración",
-    "search":"Buscar..."
+    "search":"Buscar...",
+    "categories": "Categorias"
   }
 }
