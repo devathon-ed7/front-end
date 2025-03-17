@@ -9,14 +9,12 @@ import {
 import { useAuthStore } from "@/modules/auth/store/auth-store";
 import { authService } from "@/modules/auth/services/auth-service";
 
-
 export const useAuth = () => {
   const navigate = useNavigate();
   const setOnChecking = useAuthStore((state) => state.setChecking);
   const setStatus = useAuthStore((state) => state.setStatus);
   const setUser = useAuthStore((state) => state.setUser);
   const setToken = useAuthStore((state) => state.setToken);
-
 
   const loginMutation = useMutation({
     mutationFn: async (user: UserLogin) => {
@@ -28,7 +26,7 @@ export const useAuth = () => {
       setStatus("authenticated");
       setUser(result.user);
       setToken(result.token);
-      navigate("/home");
+      navigate("/dashboard");
     },
     onError: (error: unknown) => {
       if (typeof error === "string") {
@@ -48,7 +46,6 @@ export const useAuth = () => {
     mutationFn: async (user: UserRegister) => {
       setOnChecking(true);
       return await authService.register(user);
-      
     },
     onSuccess: (result) => {
       setStatus("authenticated");

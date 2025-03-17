@@ -1,31 +1,30 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Fragment } from "react/jsx-runtime";
 import { useOauth } from "./modules/auth/hooks/use-oauth";
 
 const App = () => {
   const { setOauthUser } = useOauth();
-  const navigate = useNavigate();
-  
+  //check if token get for oauth
+  const tokenFromURL = new URLSearchParams(window.location.search).get(
+    "access_token"
+  );
+  const params = new URLSearchParams(window.location.search);
+
   useEffect(() => {
-    // Extract parameters only if they exist
-    const params = new URLSearchParams(window.location.search);
-    const tokenFromURL = params.get("access_token");
-    
     if (tokenFromURL) {
       const userData = {
-        full_name: params.get("name") || undefined,
-        email: params.get("email") || undefined,
+        full_name: params.get("name")?.replace(/\n/g, "").trim() ?? undefined,
+        email: params.get("email")?.replace(/\n/g, "").trim() ?? undefined,
         user_details: {
-          profile_filename: params.get("picture") || null, 
+          profile_filename:
+            params.get("picture")?.replace(/\n/g, "").trim() ?? undefined,
         },
       };
-      
       setOauthUser(tokenFromURL, userData);
-      navigate("/home");
     }
-  }, [navigate, setOauthUser]);
+  }, [tokenFromURL, setOauthUser]);
 
-  return null; // More efficient than empty Fragment
+  return <Fragment></Fragment>;
 };
 
 export default App;
