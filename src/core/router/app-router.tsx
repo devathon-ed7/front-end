@@ -4,10 +4,8 @@ import PrivateGuard from "./private-guard";
 import PrivateRoutes from "./private-routes";
 import RoutesWithNotFound from "./routes-with-not-found";
 
-// Lazy load authentication page
 const AuthPage = lazy(() => import("@/modules/auth/pages/AuthPage"));
 
-// Loading component
 const LoadingAuth = () => (
   <div className="flex items-center justify-center h-screen w-full">
     <div className="animate-spin h-10 w-10 border-4 border-blue-500 border-t-transparent rounded-full"></div>
