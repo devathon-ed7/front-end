@@ -1,58 +1,68 @@
 import { Roles } from "../../roles/interfaces/roles.interface";
 
 export interface UserLogin extends Record<string, unknown> {
-	email: string;
-	password: string;
+    email: string;
+    password: string;
 }
 
 export interface UserRegister extends Record<string, unknown> {
-	email: string;
-	password: string;
-	fullName: string;
+    email: string;
+    password: string;
+    fullName: string;
+}
+
+export interface UserDetails {
+    id?: number;
+    name?: string;
+    email?: string;
+    description?: string;
+    notes?: string;
+    profile_filename?: string | null;
+    user_account_id?: number;
+    role_id?: number;
+    role?: Roles;
 }
 
 export interface User {
-	id?: number;
-	email?: string;
-	password?: string;
-	full_name?: string;
-	user_details?: UserDetails;
+    id?: number;
+    username?: string;
+    email?: string;
+    password?: string;
+    full_name?: string;
+    user_details?: UserDetails;
 }
-export interface UserDetails {
-	role_id?: number;
-	profile_filename?: string | null;
-	role?: Roles;
-	id?: number;
+
+// Add this to make UserForm public
+export interface UserForm {
+    username: string;
+    password: string;
+    name: string;
+    email: string;
+    description: string;
+    notes: string;
+    role_id: number;
+    id: number;  
 }
 
 export interface UsersReponse {
-	users: User[];
+    users: User[];
 }
 
 export interface UsersStore {
-	users: User[];
-	setUsers: (value: User[]) => void;
+    users: User[];
+    setUsers: (value: User[]) => void;
 }
 
 export interface UserDatagrid {
-	id: number;
-	username: string;
-	name: string | null;
-	email: string | null;
-	role_id: number | null;
-	role: string | null;
-}
-
-export interface UserForm {
-	username: string;
-	password: string;
-	name: string;
-	email: string;
-	role_id: number;
-	id: number;
+    id: number;
+    username: string;
+    name: string | null;
+    email: string | null;
+    role_id: number | null;
+    role: string | null;
 }
 
 export interface UserNewRequest {
-	user: UserForm;
-	file: File | null;
+    user: UserForm;
+    file: File | null;
 }

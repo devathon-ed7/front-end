@@ -20,15 +20,15 @@ const AppRouter = ({ children }: AppRouterProps) => {
   return (
     <BrowserRouter>
       <RoutesWithNotFound>
-        <Route path="/" element={<Navigate to="/auth/login" />} />
-        <Route path="auth/login" element={
+        {/* <Route path="/" element={<Navigate to="/auth/login" />} /> */}
+        {/* <Route path="auth/login" element={
           <Suspense fallback={<LoadingAuth />}>
             <AuthPage />
           </Suspense>
-        } />
-        <Route element={<PrivateGuard />}>
+        } /> */}
+        {/* <Route element={<PrivateGuard />}> */}
           <Route path="/*" element={<PrivateRoutes />} />
-        </Route>
+        {/* </Route> */}
       </RoutesWithNotFound>
       {children}
     </BrowserRouter>

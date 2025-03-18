@@ -1,43 +1,60 @@
+// Server Component - Acts as the main container
 import { Suspense } from "react";
-import { TransactionHeader } from "../components/TransactionHeader";
-import { TransactionFilters } from "../components/TransactionFilters";
-import { TransactionStats } from "../components/TransactionStats";
-import { TransactionTopProducts } from "../components/TransactionTopProducts";
-import { TransactionCreateDialog } from "../components/TransactionCreateDialog";
-import { TransactionsProvider } from "../context/TransactionsContext";
-import { TransactionsTable } from "../components/TransactionsTable";
+import { Card, CardContent, CardFooter, CardHeader } from "@/shared/components/UI/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/UI/tabs";
+import { UserHeader } from "../components/UserHeader";
+import { UserSearchProvider } from "../context/UserSearchContext";
+import { UsersDialogProvider } from "../context/UserDialogContext";
+import { UserPagination } from "../components/UserPagination";
+import { UserCardHeader } from "../components/UserCardHeader";
+import { UserGridContainer } from "../components/UserGridContainer";
+import { UserGridSkeleton } from "../components/UserGridSkeleton";
+import { UserTableContainer } from "../components/UserTableContainer";
+import { UserTableSkeleton } from "../components/UserTableSkeleton";
+import { UserTabsTriggers } from "../components/UserTabsTriggers";
+import { UserDialogs } from "../components/UserDialogs";
 
-const TableSkeleton = () => (
-  <div className="h-[400px] animate-pulse bg-muted rounded-lg"></div>
-);
-
-const CardSkeleton = () => (
-  <div className="h-[200px] animate-pulse bg-muted rounded-lg"></div>
-);
-
-export const TransacctionPage = () => {
+export const UserPage = () => {
   return (
-    <TransactionsProvider>
-      <div className="space-y-6">
-        <TransactionHeader />
+    <div className="space-y-6 p-1 md:p-0">
+      <UserSearchProvider>
+        <UsersDialogProvider>
+          {/* Header is a server component */}
+          <UserHeader />
 
-        <Suspense fallback={<TableSkeleton />}>
-          <TransactionFilters />
-          <TransactionsTable />
-        </Suspense>
+          <Card>
+            {/* Card Header with search and filters */}
+            <UserCardHeader />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Suspense fallback={<CardSkeleton />}>
-            <TransactionStats />
-          </Suspense>
+            <CardContent>
+              <Tabs defaultValue="list" className="w-full">
+                <TabsList className="mb-4">
+                  <UserTabsTriggers />
+                </TabsList>
+                
+                <TabsContent value="list">
+                  <Suspense fallback={<UserTableSkeleton />}>
+                    <UserTableContainer />
+                  </Suspense>
+                </TabsContent>
+                
+                <TabsContent value="grid">
+                  <Suspense fallback={<UserGridSkeleton />}>
+                    <UserGridContainer />
+                  </Suspense>
+                </TabsContent>
+              </Tabs>
+            </CardContent>
 
-          <Suspense fallback={<CardSkeleton />}>
-            <TransactionTopProducts />
-          </Suspense>
-        </div>
+            <CardFooter className="flex items-center justify-between border-t p-4">
+              <UserPagination />
+            </CardFooter>
 
-        <TransactionCreateDialog />
-      </div>
-    </TransactionsProvider>
+            {/* All dialogs are client components */}
+            <UserDialogs />
+          </Card>
+        </UsersDialogProvider>
+      </UserSearchProvider>
+    </div>
   );
 };
