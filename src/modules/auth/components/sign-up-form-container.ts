@@ -1,30 +1,27 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/use-auth";
-import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useAuthStore } from "../store/auth-store";
 import { UserRegister } from "@/modules/users/interfaces/user.interface";
 
 interface SignUpForm {
-  fullName: string;
+  name: string;
   email: string;
   password: string;
 }
 
 export const SignUpFormContainer = () => {
   const [form, setForm] = useState<SignUpForm>({
-    fullName: "",
+    name: "",
     email: "",
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const checking = useAuthStore((state) => state.checking);
   const errorMessage = useAuthStore((state) => state.errorMessage);
 
-  const { Register } = useAuth();
-  const navigate = useNavigate();
+  const { Register, isPending } = useAuth();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -33,12 +30,11 @@ export const SignUpFormContainer = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    setLoading(true);
+   
 
     await Register(form as UserRegister);
 
-    setLoading(false);
-    navigate("/home");
+  
   };
 
   useEffect(() => {
@@ -58,7 +54,7 @@ export const SignUpFormContainer = () => {
   return {
     form,
     showPassword,
-    loading,
+    isPending,
     checking,
     handleInputChange,
     handleSubmit,

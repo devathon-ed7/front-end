@@ -45,10 +45,7 @@ export const apiRequest = async <T>(config: AxiosRequestConfig): Promise<T> => {
     const response: AxiosResponse<T> = await axiosInstance(config);
     return response.data;
   } catch (error) {
-    if (error instanceof Error) {
-      throw error.message;
-    }
-    throw String(error);
+    return Promise.reject(error);
   }
 };
 

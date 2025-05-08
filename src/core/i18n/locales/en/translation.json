@@ -24,6 +24,7 @@
     "register": "Register",
     "submit": "Submit",
     "fullName": "Full name",
+    "name": "Name",
     "confirmPassword": "Confirm password",
     "signUp": "Sign up",
     "signIn": "Sign in",
@@ -40,7 +41,8 @@
     "emailOrPasswordInvalid": "email or password invalid",
     "invalidRequest": "The request is invalid.",
     "unknownError": " An unknown error occurred.",
-    "invalidServerResponse": "Invalid server response."
+    "invalidServerResponse": "Invalid server response.",
+    "NotFound": "Not found"
   },
   "sidebar": {
     "home": "Home",

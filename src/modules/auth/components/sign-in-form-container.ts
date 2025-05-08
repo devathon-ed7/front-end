@@ -8,12 +8,11 @@ import { UserLogin } from "@/modules/users/interfaces/user.interface";
 export const SignInFormContainer = () => {
   const [form, setForm] = useState<UserLogin>({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const checking = useAuthStore((state) => state.checking);
   const errorMessage = useAuthStore((state) => state.errorMessage);
 
-  const { Login } = useAuth();
+  const { Login, isPending } = useAuth();
   
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +22,7 @@ export const SignInFormContainer = () => {
 
   const handleSubmit =  (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    setLoading(true);
+
     Login(form);
   };
 
@@ -44,7 +43,7 @@ export const SignInFormContainer = () => {
   return {
     form,
     showPassword,
-    loading,
+    isPending,
     checking,
     handleInputChange,
     handleSubmit,

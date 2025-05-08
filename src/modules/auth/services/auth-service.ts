@@ -1,5 +1,4 @@
 import { apiPost } from "@/core/config/axiosConfig";
-import { handleError } from "@/core/utils/handle-error";
 import {
   User,
   UserLogin,
@@ -13,16 +12,16 @@ interface AuthResponse {
 export const authService = {
   login: async (user: UserLogin): Promise<AuthResponse> => {
     try {
-      return await apiPost<AuthResponse>("/auth/login", user);
+      return await apiPost<AuthResponse>("/auth/signin", user);
     } catch (error) {
-      throw new Error(handleError(error));
+      return Promise.reject(error);
     }
   },
   register: async (user: UserRegister): Promise<AuthResponse> => {
     try {
-      return await apiPost<AuthResponse>("/auth/register", user);
+      return await apiPost<AuthResponse>("/auth/signup", user);
     } catch (error) {
-      throw new Error(handleError(error));
+      return Promise.reject(error);
     }
   },
 };
