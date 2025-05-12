@@ -12,7 +12,7 @@ export const useOauth = () => {
     setStatusAuth("authenticated");
     setToken(token);
     const userData: User = {
-      full_name: user.full_name,
+      name: user.name,
       email: user.email,
       user_details: {
         profile_filename: user.user_details?.profile_filename,

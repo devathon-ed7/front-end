@@ -59,7 +59,7 @@ export interface UserNewRequest {
 
 export interface UserOauth {
   email?: string;
-  full_name?: string;
+  name?: string;
   user_details?: {
     profile_filename?: string | undefined;
   };
