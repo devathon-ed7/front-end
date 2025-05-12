@@ -8,14 +8,14 @@ export interface UserLogin extends Record<string, unknown> {
 export interface UserRegister extends Record<string, unknown> {
   email: string;
   password: string;
-  fullName: string;
+  name: string;
 }
 
 export interface User {
   id?: number;
   email?: string;
   password?: string;
-  full_name?: string;
+  name?: string;
   user_details?: UserDetails;
 }
 export interface UserDetails {
@@ -59,7 +59,7 @@ export interface UserNewRequest {
 
 export interface UserOauth {
   email?: string;
-  full_name?: string;
+  name?: string;
   user_details?: {
     profile_filename?: string | undefined;
   };

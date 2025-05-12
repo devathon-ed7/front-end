@@ -22,19 +22,15 @@ export const UserButton = () => {
     return null;
   }
 
-  const { full_name, user_details } = data;
+  const { name, user_details } = data;
   const image = user_details?.profile_filename?.toString();
-  const avatarFallback = full_name ? full_name.charAt(0).toUpperCase() : "";
+  const avatarFallback = name ? name.charAt(0).toUpperCase() : "";
 
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger className="outline-none relative">
         <Avatar className="size-10 hover:opcity-75 transition">
-          <AvatarImage
-            src={image}
-            alt={full_name}
-            referrerPolicy="no-referrer"
-          />
+          <AvatarImage src={image} alt={name} referrerPolicy="no-referrer" />
           <AvatarFallback className="bg-sky-500 text-white">
             {avatarFallback}
           </AvatarFallback>

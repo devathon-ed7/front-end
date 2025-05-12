@@ -1,6 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { t } from "i18next";
 import { toast } from "sonner";
 import {
   UserLogin,
@@ -8,6 +7,7 @@ import {
 } from "@/modules/users/interfaces/user.interface";
 import { useAuthStore } from "@/modules/auth/store/auth-store";
 import { authService } from "@/modules/auth/services/auth-service";
+import { getErrorMessage } from "@/core/utils/handle-error";
 
 export const useAuth = () => {
   const navigate = useNavigate();
@@ -29,13 +29,8 @@ export const useAuth = () => {
       navigate("/dashboard");
     },
     onError: (error: unknown) => {
-      if (typeof error === "string") {
-        toast(error);
-      } else if (error instanceof Error) {
-        toast(error.message);
-      } else {
-        toast(t("exception.unknown_error"));
-      }
+      const message = getErrorMessage(error);
+      toast(message);
     },
     onSettled: () => {
       setOnChecking(false);
@@ -51,15 +46,11 @@ export const useAuth = () => {
       setStatus("authenticated");
       setUser(result.user);
       setToken(result.token);
+      navigate("/dashboard");
     },
     onError: (error: unknown) => {
-      if (typeof error === "string") {
-        toast(error);
-      } else if (error instanceof Error) {
-        toast(error.message);
-      } else {
-        toast(t("exception.unknown_error"));
-      }
+      const message = getErrorMessage(error);
+      toast(message);
     },
     onSettled: () => {
       setOnChecking(false);

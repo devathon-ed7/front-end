@@ -24,6 +24,7 @@
     "register": "Registrarse",
     "submit": "Enviar",
     "fullName": "Nombre completo",
+    "name": "Nombre",
     "confirmPassword": "Confirmar contraseña",
     "signUp": "Regístrate",
     "signIn": "Iniciar sesión",
@@ -39,7 +40,8 @@
     "emailOrPasswordInvalid": "El correo electrónico o la contraseña son inválidos.",
     "invalidRequest": "La solicitud es inválida.",
     "unknownError": "Ocurrió un error desconocido.",
-    "invalidServerResponse": "Respuesta inválida del servidor."
+    "invalidServerResponse": "Respuesta inválida del servidor.",
+    "NotFound": "No encontrado"
   },
   "sidebar": {
     "home": "Inicio",
