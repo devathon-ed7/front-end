@@ -16,6 +16,7 @@ export interface User {
   email?: string;
   password?: string;
   name?: string;
+  image?: string;
   user_details?: UserDetails;
 }
 export interface UserDetails {
@@ -60,6 +61,7 @@ export interface UserNewRequest {
 export interface UserOauth {
   email?: string;
   name?: string;
+  image?: string;
   user_details?: {
     profile_filename?: string | undefined;
   };

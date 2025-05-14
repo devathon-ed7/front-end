@@ -60,15 +60,13 @@ export const UserControls = ({ compact }: UserControlsProps) => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar>
-            <AvatarImage
-              src={user?.user_details?.profile_filename}
-              alt={user?.name}
-            />
+            <AvatarImage src={user?.image} alt={user?.name} />
             <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>
+            {/** TODO: Add user details */}
             {user?.name} - {user?.user_details?.role?.name}
           </DropdownMenuLabel>
           <DropdownMenuItem onClick={Logout}>
