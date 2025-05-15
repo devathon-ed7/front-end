@@ -3,12 +3,12 @@ import categoriesService from "../services/categories-service";
 import { toast } from "sonner";
 import { getErrorMessage } from "@/core/utils/handle-error";
 
-export const useCategories = () => {
+export const useCategories = (page: number) => {
   const { data, error, isLoading, isError } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
       try {
-        return await categoriesService.getCategories();
+        return await categoriesService.getCategories(page);
       } catch (error) {
         const message = getErrorMessage(error);
         toast(message);
@@ -17,8 +17,10 @@ export const useCategories = () => {
     },
   });
 
+  const categories = data?.categories || [];
+
   return {
-    categories: data?.categories || [],
+    categories: categories,
     currentPage: data?.currentPage || 1,
     totalCategories: data?.totalCategories || 0,
     totalPages: data?.totalPages || 0,

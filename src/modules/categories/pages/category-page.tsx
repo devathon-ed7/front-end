@@ -1,25 +1,14 @@
-import { useCategories } from "../hooks/use-categories";
+import { CategoryHeader } from "../components/category-header";
+import { CategoryTableWrapper } from "../components/category-table-wrapper";
+import ErrorBoundary from "../error-boundary";
 
-export const CategoryPage = () => {
-  const { categories, isLoading, isError, error } = useCategories();
-
-  if (isLoading) {
-    return <div>Cargando categorías...</div>;
-  }
-
-  if (isError) {
-    if (error !== null) {
-      return <div>Error: {error.message}</div>;
-    }
-  }
+export const CategoryPage: React.FC = () => {
   return (
-    <div>
-      <h1>Categorías:</h1>
-      <ul>
-        {categories.map((category) => (
-          <li key={category.id}>{category.name}</li>
-        ))}
-      </ul>
-    </div>
+    <ErrorBoundary>
+      <>
+        <CategoryHeader />
+        <CategoryTableWrapper />
+      </>
+    </ErrorBoundary>
   );
 };
