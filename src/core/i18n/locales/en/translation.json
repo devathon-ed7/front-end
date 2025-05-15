@@ -61,7 +61,14 @@
     "users": "Users",
     "products": "Products",
     "configuration": "Configuration",
-    "search":"Search...",
+    "search": "Search...",
     "categories": "Categories"
+  },
+  "categories": {
+    "title": "Categories",
+    "addCategory": "Add category",
+    "listCategory": "Category's list",
+    "category": "Category",
+    "description": "Description"
   }
 }

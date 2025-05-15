@@ -17,8 +17,10 @@ export const useCategories = () => {
     },
   });
 
+  const categories = data?.categories || [];
+
   return {
-    categories: data?.categories || [],
+    categories: categories,
     currentPage: data?.currentPage || 1,
     totalCategories: data?.totalCategories || 0,
     totalPages: data?.totalPages || 0,

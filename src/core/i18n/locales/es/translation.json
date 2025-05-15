@@ -60,7 +60,14 @@
     "users": "Usuarios",
     "products": "Productos",
     "configuration": "Configuración",
-    "search":"Buscar...",
+    "search": "Buscar...",
     "categories": "Categorias"
+  },
+  "categories": {
+    "title": "Categorías",
+    "addCategory": "Agregar categoría",
+    "listCategory": "Lista de categorías",
+    "category": "Categoría",
+    "description": "Descripción"
   }
 }
