@@ -46,7 +46,7 @@ export const CategoryTableWrapper = () => {
             <div className="flex items-center gap-1">
               {Array.from({ length: Math.min(totalPages, 10) }, (_, i) => {
                 let pageNumber;
-                if (totalPages <= 5) {
+                if (totalPages <= 10) {
                   pageNumber = i + 1;
                 } else {
                   const middle = Math.min(
