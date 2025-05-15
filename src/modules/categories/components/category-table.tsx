@@ -6,17 +6,23 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/UI/table";
-import { useTranslation } from "react-i18next";
 import { Fragment } from "react/jsx-runtime";
-import { Category } from "../interfaces/categories.interface";
 import { useState } from "react";
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import { Category } from "../interfaces/categories.interface";
 
 interface CategoryTableProps {
-  categories: Category[];
+  columns: ColumnDef<Category>[];
+  data: Category[];
 }
 
-export const CategoryTable = ({ categories }: CategoryTableProps) => {
-  const { t } = useTranslation();
+export const CategoryTable = ({ columns, data }: CategoryTableProps) => {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set()
   );
@@ -32,38 +38,73 @@ export const CategoryTable = ({ categories }: CategoryTableProps) => {
       return newExpanded;
     });
   };
+  const table = useReactTable({
+    columns,
+    data,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  });
 
   return (
     <Table>
       <TableHeader>
-        <TableRow>
-          <TableHead>{t("categories.category")}</TableHead>
-          <TableHead>{t("categories.description")}</TableHead>
-        </TableRow>
+        {table.getHeaderGroups().map((headerGroup) => (
+          <TableRow key={headerGroup.id}>
+            {headerGroup.headers.map((header) => {
+              return (
+                <TableHead key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </TableHead>
+              );
+            })}
+          </TableRow>
+        ))}
       </TableHeader>
       <TableBody>
-        {categories.map((category) => (
-          <Fragment key={category.id}>
-            <TableRow
-              onClick={() => toggleCategory(category.id)}
-              style={{ cursor: "pointer" }}
-            >
-              <TableCell>{category.name}</TableCell>
-              <TableCell>{category.description}</TableCell>
-            </TableRow>
-            {/* show sub categories */}
-            {expandedCategories.has(category.id) &&
-              category.children &&
-              category.children.map((subCategory) => (
-                <TableRow key={subCategory.id}>
-                  <TableCell style={{ paddingLeft: "20px" }}>
-                    {subCategory.name}
-                  </TableCell>
-                  <TableCell>{subCategory.description}</TableCell>
+        {table.getRowModel().rows.length ? (
+          table.getRowModel().rows.map((row) => {
+            const category = row.original;
+
+            return (
+              <Fragment key={row.id}>
+                <TableRow
+                  onClick={() => toggleCategory(category.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
+                  ))}
                 </TableRow>
-              ))}
-          </Fragment>
-        ))}
+                {/* show subcategories */}
+                {expandedCategories.has(category.id) &&
+                  category.children?.map((subCategory) => (
+                    <TableRow key={subCategory.id}>
+                      <TableCell style={{ paddingLeft: "20px" }}>
+                        {subCategory.name}
+                      </TableCell>
+                      <TableCell>{subCategory.description}</TableCell>
+                    </TableRow>
+                  ))}
+              </Fragment>
+            );
+          })
+        ) : (
+          <TableRow>
+            <TableCell colSpan={columns.length} className="h-24 text-center">
+              No results.
+            </TableCell>
+          </TableRow>
+        )}
       </TableBody>
     </Table>
   );
