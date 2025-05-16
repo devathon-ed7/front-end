@@ -25,3 +25,5 @@ export interface RequestCategory extends Record<string, unknown> {
   description?: string;
   parentCategoryId?: string;
 }
+
+export interface ResponseCategory extends Category {}

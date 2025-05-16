@@ -2,6 +2,7 @@ import { apiGet, apiPost } from "@/core/config/axiosConfig";
 import {
   RequestCategory,
   ResponseCategories,
+  ResponseCategory,
 } from "../interfaces/categories.interface";
 
 export const categoriesService = {
@@ -12,9 +13,11 @@ export const categoriesService = {
       return Promise.reject(error);
     }
   },
-  createCategory: async (category: RequestCategory): Promise<String> => {
+  createCategory: async (
+    category: RequestCategory
+  ): Promise<ResponseCategory> => {
     try {
-      return await apiPost<String>("/categories", category);
+      return await apiPost<ResponseCategory>("/categories", category);
     } catch (error) {
       return Promise.reject(error);
     }

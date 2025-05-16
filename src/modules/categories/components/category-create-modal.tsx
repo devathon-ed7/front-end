@@ -24,7 +24,7 @@ import { toast } from "sonner";
 
 export const CategoryCreateModal = () => {
   const { t } = useTranslation();
-  const { createCategory, isPending } = useCreateCategory();
+  const { createCategory, isPending, isSuccess } = useCreateCategory();
   const open = useCategoriesStore((state) => state.modalState);
   const setOpen = useCategoriesStore((state) => state.setModalState);
   const form = useForm<CategorySchema>({
@@ -42,6 +42,10 @@ export const CategoryCreateModal = () => {
   const onSubmit = async (category: CategorySchema) => {
     try {
       await createCategory(category);
+      if (isSuccess) {
+        toast("Categoría creada correctamente");
+        onClose();
+      }
     } catch {
       toast("Error al crear la categoría");
     }
