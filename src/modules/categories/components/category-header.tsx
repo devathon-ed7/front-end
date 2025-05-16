@@ -7,7 +7,7 @@ export const CategoryHeader = () => {
   const { t } = useTranslation();
   //TODO: Add category creation
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center py-4">
       <h1 className="text-2xl font-bold">{t("categories.title")}</h1>
 
       <Button className="gap-2" onClick={() => {}}>

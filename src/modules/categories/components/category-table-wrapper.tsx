@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ErrorBoundary from "../error-boundary";
-import { useCategories } from "../hooks/use-categories";
+import { useCategories } from "../hooks/use-get-categories";
 import { CategoryTable } from "./category-table";
 import { CategoryTableColumns } from "./category-table-columns";
 import Pagination from "./pagination";
