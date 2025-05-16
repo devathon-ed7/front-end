@@ -9,7 +9,7 @@ export interface Category {
 export interface CategoryState {
   categories: Category[];
   modalState: boolean;
-  setModalState: () => void;
+  setModalState: (value: boolean) => void;
   setCategories: (value: Category[]) => void;
 }
 

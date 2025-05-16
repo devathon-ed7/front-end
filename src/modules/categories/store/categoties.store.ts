@@ -12,7 +12,7 @@ const CategoriesApi: StateCreator<
   setCategories: (value: Category[]) =>
     set({ categories: value }, false, "SET_CATEGORIES"),
 
-  setModalState: () => set((state) => ({ modalState: !state.modalState })),
+  setModalState: (isOpen: boolean) => set({ modalState: isOpen }),
 });
 
 export const useCategoriesStore = create<CategoryState>()(

@@ -71,6 +71,11 @@
     "addCategory": "Add category",
     "listCategory": "Category's list",
     "category": "Category",
-    "description": "Description"
+    "description": "Description",
+    "addCategoryDescription": "Add a new category to the inventory.",
+    "name": "Name",
+    "namePlaceholder": "Enter a name",
+    "descriptionPlaceholder": "Enter a description",
+    "create": "Create"
   }
 }
