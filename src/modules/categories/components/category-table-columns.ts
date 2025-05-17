@@ -14,5 +14,9 @@ export const CategoryTableColumns = (): ColumnDef<Category>[] => {
       accessorKey: "description",
       header: t("categories.description"),
     },
+    {
+      accessorKey: "actions",
+      header: t("categories.actions"),
+    },
   ];
 };

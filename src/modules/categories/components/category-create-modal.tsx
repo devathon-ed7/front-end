@@ -20,7 +20,6 @@ import {
 } from "@/shared/components/UI/form";
 import { Input } from "@/shared/components/UI/input";
 import { Button } from "@/shared/components/UI/button";
-import { toast } from "sonner";
 
 export const CategoryCreateModal = () => {
   const { t } = useTranslation();
@@ -40,14 +39,9 @@ export const CategoryCreateModal = () => {
   };
 
   const onSubmit = async (category: CategorySchema) => {
-    try {
-      await createCategory(category);
-      if (isSuccess) {
-        toast("Categoría creada correctamente");
-        onClose();
-      }
-    } catch {
-      toast("Error al crear la categoría");
+    await createCategory(category);
+    if (isSuccess) {
+      onClose();
     }
   };
 

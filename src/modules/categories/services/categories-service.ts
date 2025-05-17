@@ -1,4 +1,4 @@
-import { apiGet, apiPost } from "@/core/config/axiosConfig";
+import { apiDelete, apiGet, apiPost } from "@/core/config/axiosConfig";
 import {
   RequestCategory,
   ResponseCategories,
@@ -18,6 +18,13 @@ export const categoriesService = {
   ): Promise<ResponseCategory> => {
     try {
       return await apiPost<ResponseCategory>("/categories", category);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  },
+  deleteCategory: async (id: string): Promise<ResponseCategory> => {
+    try {
+      return await apiDelete<ResponseCategory>("/categories/" + id);
     } catch (error) {
       return Promise.reject(error);
     }
