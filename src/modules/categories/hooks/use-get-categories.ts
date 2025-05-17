@@ -5,7 +5,7 @@ import { getErrorMessage } from "@/core/utils/handle-error";
 
 export const useCategories = (page: number) => {
   const { data, error, isLoading, isError } = useQuery({
-    queryKey: ["categories"],
+    queryKey: ["categories", page],
     queryFn: async () => {
       try {
         return await categoriesService.getCategories(page);

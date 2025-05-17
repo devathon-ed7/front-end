@@ -1,23 +1,40 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import categoriesService from "../services/categories-service";
 import { RequestCategory } from "../interfaces/categories.interface";
-import { toast } from "sonner";
 import { getErrorMessage } from "@/core/utils/handle-error";
+import { useToast } from "@/shared/hooks/useToast";
+import { useTranslation } from "react-i18next";
 
 export const useCreateCategory = () => {
+  const queryClient = useQueryClient();
+  const { toast } = useToast();
+  const { t } = useTranslation();
+
   const createCategoryMutation = useMutation({
     mutationFn: async (category: RequestCategory) => {
       const result = await categoriesService.createCategory(category);
       return result;
     },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["categories"] }),
+        toast({
+          variant: "success",
+          title: "Success",
+          description: t("categories.createCategorySuccess"),
+        });
+    },
     onError: (error) => {
       const message = getErrorMessage(error);
-      toast(message);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: message,
+      });
     },
   });
 
   const createCategory = (category: RequestCategory) => {
-    createCategoryMutation.mutate(category);
+    createCategoryMutation.mutateAsync(category);
   };
 
   return {

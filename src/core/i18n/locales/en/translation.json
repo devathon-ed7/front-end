@@ -13,7 +13,8 @@
     "dark": "Dark",
     "logout": "Logout",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "confirm": "Confirm"
   },
   "auth": {
     "title": "Track inventory",
@@ -77,6 +78,10 @@
     "namePlaceholder": "Enter a name",
     "descriptionPlaceholder": "Enter a description",
     "create": "Create",
-    "actions": "Actions"
+    "actions": "Actions",
+    "deleteCategory": "Delete category",
+    "deleteCategoryDescription": "Are you sure you want to delete this category?",
+    "deleteCategorySuccess": "Category deleted successfully",
+    "createCategorySuccess": "Category created successfully"
   }
 }

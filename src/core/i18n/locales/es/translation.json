@@ -13,7 +13,8 @@
     "dark": "Oscuro",
     "logout": "Cerrar sesión",
     "previous": "Anterior",
-    "next": "Siguiente"
+    "next": "Siguiente",
+    "confirm": "Confirmar"
   },
   "auth": {
     "title": "Track inventory",
@@ -76,6 +77,10 @@
     "namePlaceholder": "Ingrese un nombre",
     "descriptionPlaceholder": "Ingrese una descripción",
     "create": "Crear",
-    "actions": "Acciones"
+    "actions": "Acciones",
+    "deleteCategory": "Eliminar categoría",
+    "deleteCategoryDescription": "¿Estás seguro de eliminar esta categoría?",
+    "deleteCategorySuccess": "Categoría eliminada correctamente",
+    "createCategorySuccess": "Categoría creada correctamente"
   }
 }

@@ -1,22 +1,39 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import categoriesService from "../services/categories-service";
-import { toast } from "sonner";
 import { getErrorMessage } from "@/core/utils/handle-error";
+import { useToast } from "@/shared/hooks/useToast";
+import { useTranslation } from "react-i18next";
 
 export const useDeleteCategory = () => {
+  const { t } = useTranslation();
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+
   const deleteCategoryMutation = useMutation({
     mutationFn: async (id: string) => {
       const result = await categoriesService.deleteCategory(id);
       return result;
     },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["categories"] });
+      toast({
+        variant: "success",
+        title: "Success",
+        description: t("categories.deleteCategorySuccess"),
+      });
+    },
     onError: (error) => {
       const message = getErrorMessage(error);
-      toast(message);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: message,
+      });
     },
   });
 
   const deleteCategory = (id: string) => {
-    deleteCategoryMutation.mutate(id);
+    deleteCategoryMutation.mutateAsync(id);
   };
 
   return {
