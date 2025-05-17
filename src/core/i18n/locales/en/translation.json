@@ -76,6 +76,7 @@
     "name": "Name",
     "namePlaceholder": "Enter a name",
     "descriptionPlaceholder": "Enter a description",
-    "create": "Create"
+    "create": "Create",
+    "actions": "Actions"
   }
 }
