@@ -1,6 +1,6 @@
 import { Button } from "@/shared/components/UI/button";
 import { TableCell, TableRow } from "@/shared/components/UI/table";
-import { Trash2Icon } from "lucide-react";
+import { PencilIcon, Trash2Icon } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
 import { Category } from "../interfaces/categories.interface";
 
@@ -9,10 +9,11 @@ interface CategoryTableRowProps {
   category: Category;
   onToggle: (id: string) => void;
   onDelete: (id: string) => void; 
+  onUpdate: (id: string) => void;
   isExpanded: boolean;
 }
 
-export const CategoryTableRow = ({ category, onToggle, onDelete, isExpanded }: CategoryTableRowProps) => (
+export const CategoryTableRow = ({ category, onToggle, onDelete, onUpdate, isExpanded }: CategoryTableRowProps) => (
   <Fragment>
     <TableRow
       onClick={() => onToggle(category.id)}
@@ -31,6 +32,16 @@ export const CategoryTableRow = ({ category, onToggle, onDelete, isExpanded }: C
         >
           <Trash2Icon className="h-4 w-4 text-destructive" />
         </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={(e) => {
+            e.stopPropagation(); 
+            onUpdate(category.id); 
+          }}
+          >
+            <PencilIcon className="h-4 w-4 text-primary" />
+          </Button>
       </TableCell>
     </TableRow>
     {isExpanded && category.children?.map((subCategory) => (
