@@ -7,8 +7,7 @@ import Pagination from "./pagination";
 import { useDeleteCategory } from "../hooks/use-delete-category";
 import { useConfirm } from "@/shared/hooks/use-confirm";
 import { useTranslation } from "react-i18next";
-import { useUpdateCategory } from "../hooks/use-update-category";
-import { Category, RequestCategory } from "../interfaces/categories.interface";
+import { Category } from "../interfaces/categories.interface";
 import { useCategoriesStore } from "../store/categoties.store";
 
 export const CategoryTableWrapper = () => {

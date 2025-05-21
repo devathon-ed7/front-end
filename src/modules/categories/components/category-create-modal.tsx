@@ -8,7 +8,7 @@ import {
 import { useCreateCategory } from "../hooks/use-create-category";
 import { useCategoriesStore } from "../store/categoties.store";
 import { useTranslation } from "react-i18next";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { CategorySchema } from "../schemas/category-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -21,6 +21,7 @@ import {
 import { Input } from "@/shared/components/UI/input";
 import { Button } from "@/shared/components/UI/button";
 import { useUpdateCategory } from "../hooks/use-update-category";
+import { useEffect } from "react";
 
 
 
@@ -42,12 +43,22 @@ export const CategoryCreateModal = () => {
     },
   });
 
+  useEffect(() => {
+    if (category) {
+      form.reset({
+        name: category.name,
+        description: category.description || "",
+      });
+    }
+  }, [category, form]);
+
   const onClose = () => {
     setOpen(false);
     setSelectedCategory(null);
   };
 
   const onSubmit =  (data: CategorySchema) => {
+    
     if (category) {
       updateCategory(category.id, data);
       if (isCreatingSuccess) {

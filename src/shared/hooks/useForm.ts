@@ -5,7 +5,6 @@ export const useForm = () => {
 
 	const initializeForm = <T extends Record<string, any>>(initialValues: T) => {
 		setForm((prevValues) => ({ ...prevValues, ...initialValues }));
-		console.log("Formulario inicializado", form);
 	};
 
 	const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
