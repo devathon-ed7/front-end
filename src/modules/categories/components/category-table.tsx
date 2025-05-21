@@ -22,9 +22,10 @@ interface CategoryTableProps {
   columns: ColumnDef<Category>[];
   data: Category[];
   onDelete: (id: string) => void;
+  onUpdate: (category: Category) => void;
 }
 
-export const CategoryTable = ({ columns, data, onDelete }: CategoryTableProps) => {
+export const CategoryTable = ({ columns, data, onDelete, onUpdate }: CategoryTableProps) => {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set()
   );
@@ -75,6 +76,7 @@ export const CategoryTable = ({ columns, data, onDelete }: CategoryTableProps) =
                 category={row.original}
                 onToggle={() => toggleCategory(row.original.id)}
                 onDelete={() => onDelete(row.original.id)}
+                onUpdate={() => onUpdate( row.original)}
                 isExpanded={expandedCategories.has(row.original.id)}
               />
             </Fragment>

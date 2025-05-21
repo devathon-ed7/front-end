@@ -7,6 +7,8 @@ import Pagination from "./pagination";
 import { useDeleteCategory } from "../hooks/use-delete-category";
 import { useConfirm } from "@/shared/hooks/use-confirm";
 import { useTranslation } from "react-i18next";
+import { Category } from "../interfaces/categories.interface";
+import { useCategoriesStore } from "../store/categoties.store";
 
 export const CategoryTableWrapper = () => {
   const { t } = useTranslation();
@@ -14,6 +16,8 @@ export const CategoryTableWrapper = () => {
   const { categories, isLoading, isError, error, currentPage, totalPages } =
     useCategories(page);
   const { deleteCategory } = useDeleteCategory();
+  const setOpen = useCategoriesStore((state) => state.setModalState);
+  const setSelectedCategory = useCategoriesStore((state) => state.setSelectedCategory);
 
   const columns = CategoryTableColumns();
 
@@ -25,7 +29,13 @@ export const CategoryTableWrapper = () => {
   const onDelete = async (id: string) => {
     const ok = await confirm();
     if (!ok) return;
-    await deleteCategory(id);
+    deleteCategory(id);
+  };
+
+  const onUpdate = async ( category: Category) => {
+    setSelectedCategory(category);
+    setOpen(true);
+    
   };
 
   if (isLoading) {
@@ -44,6 +54,7 @@ export const CategoryTableWrapper = () => {
               columns={columns}
               data={categories}
               onDelete={onDelete}
+              onUpdate={onUpdate}
             />
           </div>
 
