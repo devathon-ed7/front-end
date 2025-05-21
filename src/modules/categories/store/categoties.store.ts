@@ -8,11 +8,14 @@ const CategoriesApi: StateCreator<
 > = (set) => ({
   categories: [],
   modalState: false,
+  selectedCategory: null,
 
   setCategories: (value: Category[]) =>
     set({ categories: value }, false, "SET_CATEGORIES"),
 
   setModalState: (isOpen: boolean) => set({ modalState: isOpen }),
+  
+  setSelectedCategory: (value: Category | null) => set({ selectedCategory: value }),
 });
 
 export const useCategoriesStore = create<CategoryState>()(

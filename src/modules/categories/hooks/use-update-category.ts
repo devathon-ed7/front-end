@@ -11,8 +11,8 @@ export const useUpdateCategory = () => {
   const { t } = useTranslation();
 
   const updateCategoryMutation = useMutation({
-    mutationFn: async ({ id, request }: { id: string; request: RequestCategory }) => {
-      const result = await categoriesService.updateCategory(id, request);
+    mutationFn: async ({ id, category }: { id: string; category: RequestCategory }) => {
+      const result = await categoriesService.updateCategory(id, category);
       return result;
     },
     onSuccess: (_data, _variables, _context) => {
@@ -35,8 +35,8 @@ export const useUpdateCategory = () => {
     },
   });
 
-  const updateCategory = (id: string, request: RequestCategory) => {
-    updateCategoryMutation.mutateAsync({ id, request });
+  const updateCategory = (id: string, category: RequestCategory) => {
+    updateCategoryMutation.mutateAsync({ id, category });
   };
 
   return {

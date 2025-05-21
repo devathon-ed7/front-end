@@ -9,7 +9,7 @@ interface CategoryTableRowProps {
   category: Category;
   onToggle: (id: string) => void;
   onDelete: (id: string) => void; 
-  onUpdate: (id: string) => void;
+  onUpdate: ( category: Category) => void;
   isExpanded: boolean;
 }
 
@@ -37,7 +37,7 @@ export const CategoryTableRow = ({ category, onToggle, onDelete, onUpdate, isExp
           size="icon"
           onClick={(e) => {
             e.stopPropagation(); 
-            onUpdate(category.id); 
+            onUpdate( category );
           }}
           >
             <PencilIcon className="h-4 w-4 text-primary" />

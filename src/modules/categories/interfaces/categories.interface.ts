@@ -9,8 +9,10 @@ export interface Category {
 export interface CategoryState {
   categories: Category[];
   modalState: boolean;
+  selectedCategory: Category | null;
   setModalState: (value: boolean) => void;
   setCategories: (value: Category[]) => void;
+  setSelectedCategory: (value: Category | null) => void;
 }
 
 export interface ResponseCategories {
@@ -21,9 +23,15 @@ export interface ResponseCategories {
 }
 
 export interface RequestCategory extends Record<string, unknown> {
+  id?: string;
   name: string;
   description?: string;
-  parentCategoryId?: string;
+  parentCategoryId?: string | null;
+  children?: Category[] | null;
 }
 
 export interface ResponseCategory extends Category {}
+
+export interface CategoriesData {
+  categories: Category[];
+}

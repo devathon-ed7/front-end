@@ -8,7 +8,7 @@ import {
 import { useCreateCategory } from "../hooks/use-create-category";
 import { useCategoriesStore } from "../store/categoties.store";
 import { useTranslation } from "react-i18next";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { CategorySchema } from "../schemas/category-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -20,12 +20,20 @@ import {
 } from "@/shared/components/UI/form";
 import { Input } from "@/shared/components/UI/input";
 import { Button } from "@/shared/components/UI/button";
+import { useUpdateCategory } from "../hooks/use-update-category";
+
+
 
 export const CategoryCreateModal = () => {
   const { t } = useTranslation();
-  const { createCategory, isPending, isSuccess } = useCreateCategory();
+  const { createCategory, isPending: isCreating, isSuccess: isCreatingSuccess } = useCreateCategory();
+  const { updateCategory, isPending: isUpdating, isSuccess: isUpdatingSuccess } = useUpdateCategory();
   const open = useCategoriesStore((state) => state.modalState);
+  //modal store
   const setOpen = useCategoriesStore((state) => state.setModalState);
+  const category = useCategoriesStore((state) => state.selectedCategory);
+  const setSelectedCategory = useCategoriesStore((state) => state.setSelectedCategory);
+
   const form = useForm<CategorySchema>({
     resolver: zodResolver(CategorySchema),
     defaultValues: {
@@ -36,22 +44,31 @@ export const CategoryCreateModal = () => {
 
   const onClose = () => {
     setOpen(false);
+    setSelectedCategory(null);
   };
 
-  const onSubmit = async (category: CategorySchema) => {
-    await createCategory(category);
-    if (isSuccess) {
+  const onSubmit =  (data: CategorySchema) => {
+    if (category) {
+      updateCategory(category.id, data);
+      if (isCreatingSuccess) {
+        onClose();
+      }
+    }else {
+      createCategory(data); 
+    }
+    if (isCreatingSuccess || isUpdatingSuccess) {
       onClose();
     }
+    
   };
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t("categories.addCategory")}</DialogTitle>
+           <DialogTitle>{category ? t("categories.editCategory") : t("categories.addCategory")}</DialogTitle>
           <DialogDescription>
-            {t("categories.addCategoryDescription")}
+            {category ? t("categories.editCategoryDescription") : t("categories.addCategoryDescription")}
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -69,7 +86,7 @@ export const CategoryCreateModal = () => {
                         placeholder={t("categories.namePlaceholder")}
                         type="text"
                         required
-                        disabled={isPending}
+                        disabled={isCreating || isUpdating}
                       />
                     </FormControl>
                   </FormItem>
@@ -87,14 +104,14 @@ export const CategoryCreateModal = () => {
                         placeholder={t("categories.descriptionPlaceholder")}
                         type="text"
                         required
-                        disabled={isPending}
+                        disabled={isCreating || isUpdating}
                       />
                     </FormControl>
                   </FormItem>
                 )}
               />
-              <Button disabled={isPending} type="submit" className="w-full">
-                {t("categories.create")}
+              <Button disabled={isCreating || isUpdating} type="submit" className="w-full">
+                {isCreating || isUpdating ? t("categories.saving") : (category ? t("categories.update") : t("categories.create"))}
               </Button>
             </div>
           </form>
